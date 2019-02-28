@@ -1,0 +1,3 @@
+2018-10-19 11:20:40.098 AM	****** Start Logging ******
+2018-10-19 11:20:40.100 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-23 09:57:51.629 AM	GenerateReportWithKey	Unable to cast object of type 'System.__ComObject' to type 'Microsoft.Office.Interop.Excel.Worksheet'.\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox

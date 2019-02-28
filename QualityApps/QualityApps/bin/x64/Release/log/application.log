@@ -1,0 +1,5 @@
+2018-11-30 05:06:33.632 PM	****** Start Logging ******
+2018-11-30 05:06:33.646 PM	doWork	--------Start----------
+2018-11-30 05:06:34.631 PM	doWork	Generate Report.
+2018-11-30 05:07:12.605 PM	doWork	Exception from HRESULT: 0x800A03EC
+2018-11-30 05:07:14.030 PM	doWork	--------End----------

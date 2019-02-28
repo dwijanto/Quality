@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8CD818A0-E1E2-4B34-9E65-D8295ADC3AA5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>QualityApps.My.MyApplication</StartupObject>
+    <RootNamespace>QualityApps</RootNamespace>
+    <AssemblyName>QualityApps</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>QualityApps.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>QualityApps.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Quality.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DocumentationFile>QualityApps.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DocumentationFile>QualityApps.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>QualityApps.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>QualityApps.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Exchange.WebServices">
+      <HintPath>.\Microsoft.Exchange.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="npgsql, Version=2.1.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Npgsql\v4.0_2.1.3.0__5d8b90d52f46fda7\npgsql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Class\ActiveRecord.vb" />
+    <Compile Include="Class\Adapter\ParamAdapter.vb" />
+    <Compile Include="Class\Adapter\PostgreSQLDBAdapter.vb" />
+    <Compile Include="Class\ADPrincipalContext.vb" />
+    <Compile Include="Class\AutoInspectionReport.vb" />
+    <Compile Include="Class\BaseImport.vb" />
+    <Compile Include="Class\ClassEWS.vb" />
+    <Compile Include="Class\Controller\ActivityLogController.vb" />
+    <Compile Include="Class\Controller\ActivityMasterController.vb" />
+    <Compile Include="Class\Controller\AnnouncementController.vb" />
+    <Compile Include="Class\Controller\GenerateExcelController.vb" />
+    <Compile Include="Class\Controller\InspectionController.vb" />
+    <Compile Include="Class\Controller\OTMController.vb" />
+    <Compile Include="Class\Controller\SendEmailController.vb" />
+    <Compile Include="Class\Controller\UserController.vb" />
+    <Compile Include="Class\Controller\VendorAssignmentController.vb" />
+    <Compile Include="Class\Controller\VendorController.vb" />
+    <Compile Include="Class\Email.vb" />
+    <Compile Include="Class\EmailEWS.vb" />
+    <Compile Include="Class\ExportToExcelFile.vb" />
+    <Compile Include="Class\GenerateEmail.vb" />
+    <Compile Include="Class\GenerateExcel.vb" />
+    <Compile Include="Class\GetReply.vb" />
+    <Compile Include="Class\ImportDailyTx.vb" />
+    <Compile Include="Class\ImportOTM.vb" />
+    <Compile Include="Class\Interface\IActiveRecord.vb" />
+    <Compile Include="Class\Interface\IController.vb" />
+    <Compile Include="Class\Interface\IIdentity.vb" />
+    <Compile Include="Class\Interface\IImport.vb" />
+    <Compile Include="Class\Interface\IModel.vb" />
+    <Compile Include="Class\Interface\IToolbarAction.vb" />
+    <Compile Include="Class\Logger.vb" />
+    <Compile Include="Class\Model\ActivityLogModel.vb" />
+    <Compile Include="Class\Model\ActivityMasterModel.vb" />
+    <Compile Include="Class\Model\AnnouncementModel.vb" />
+    <Compile Include="Class\Model\GenerateExcelModel.vb" />
+    <Compile Include="Class\Model\InspectionModel.vb" />
+    <Compile Include="Class\Model\SendEmailModel.vb" />
+    <Compile Include="Class\Model\UserModel.vb" />
+    <Compile Include="Class\Model\VendorAssignmentModel.vb" />
+    <Compile Include="Class\Model\VendorModel.vb" />
+    <Compile Include="Class\RBAC\Assignment.vb" />
+    <Compile Include="Class\RBAC\BaseManager.vb" />
+    <Compile Include="Class\RBAC\DbManager.vb" />
+    <Compile Include="Class\RBAC\IManager.vb" />
+    <Compile Include="Class\RBAC\Item.vb" />
+    <Compile Include="Class\RBAC\Permission.vb" />
+    <Compile Include="Class\RBAC\Role.vb" />
+    <Compile Include="Class\RBAC\Rule.vb" />
+    <Compile Include="Class\SendEmailConfirmation.vb" />
+    <Compile Include="Class\User.vb" />
+    <Compile Include="Class\UserControl\UCDataGridExcel.Designer.vb">
+      <DependentUpon>UCDataGridExcel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCDataGridExcel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCDGVParam.Designer.vb">
+      <DependentUpon>UCDGVParam.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCDGVParam.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCUserInfo.Designer.vb">
+      <DependentUpon>UCUserInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCUserInfo.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserInfo.vb" />
+    <Compile Include="FormMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMenu.Designer.vb">
+      <DependentUpon>FormMenu.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogActivityLog.Designer.vb">
+      <DependentUpon>DialogActivityLog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogActivityLog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogAnnouncement.Designer.vb">
+      <DependentUpon>DialogAnnouncement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogAnnouncement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogAskDate.Designer.vb">
+      <DependentUpon>DialogAskDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogAskDate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogHistory.Designer.vb">
+      <DependentUpon>DialogHistory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogHistory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogVendorQEAssignment.Designer.vb">
+      <DependentUpon>DialogVendorQEAssignment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogVendorQEAssignment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormActivityLog.Designer.vb">
+      <DependentUpon>FormActivityLog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormActivityLog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormActivityMaster.Designer.vb">
+      <DependentUpon>FormActivityMaster.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormActivityMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormAnnouncement.Designer.vb">
+      <DependentUpon>FormAnnouncement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormAnnouncement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormAutoTask.Designer.vb">
+      <DependentUpon>FormAutoTask.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormAutoTask.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormGenerateCSVOTM.Designer.vb">
+      <DependentUpon>FormGenerateCSVOTM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormGenerateCSVOTM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormGenerateExcel.Designer.vb">
+      <DependentUpon>FormGenerateExcel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormGenerateExcel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormGenerateExcelDataGrid.Designer.vb">
+      <DependentUpon>FormGenerateExcelDataGrid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormGenerateExcelDataGrid.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormGenerateReportActivityLog.Designer.vb">
+      <DependentUpon>FormGenerateReportActivityLog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormGenerateReportActivityLog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormGetReply.Designer.vb">
+      <DependentUpon>FormGetReply.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormGetReply.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormHelper.Designer.vb">
+      <DependentUpon>FormHelper.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormHelper.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportDailyExtraction.Designer.vb">
+      <DependentUpon>FormImportDailyExtraction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportDailyExtraction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportOTM.Designer.vb">
+      <DependentUpon>FormImportOTM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportOTM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormInspection.Designer.vb">
+      <DependentUpon>FormInspection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormInspection.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormMissingRemarks.Designer.vb">
+      <DependentUpon>FormMissingRemarks.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormMissingRemarks.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormParameters.Designer.vb">
+      <DependentUpon>FormParameters.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormParameters.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormRBAC.Designer.vb">
+      <DependentUpon>FormRBAC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormRBAC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormRemarkHistory.Designer.vb">
+      <DependentUpon>FormRemarkHistory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormRemarkHistory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSendEmailConfirmation.Designer.vb">
+      <DependentUpon>FormSendEmailConfirmation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSendEmailConfirmation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormUser.Designer.vb">
+      <DependentUpon>FormUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVendor.Designer.vb">
+      <DependentUpon>FormVendor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVendorQEAssignment.Designer.vb">
+      <DependentUpon>FormVendorQEAssignment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendorQEAssignment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SplashScreen1.Designer.vb">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Class\UserControl\UCDataGridExcel.resx">
+      <DependentUpon>UCDataGridExcel.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCDGVParam.resx">
+      <DependentUpon>UCDGVParam.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCUserInfo.resx">
+      <DependentUpon>UCUserInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMenu.resx">
+      <DependentUpon>FormMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogActivityLog.resx">
+      <DependentUpon>DialogActivityLog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogAnnouncement.resx">
+      <DependentUpon>DialogAnnouncement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogAskDate.resx">
+      <DependentUpon>DialogAskDate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogHistory.resx">
+      <DependentUpon>DialogHistory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogVendorQEAssignment.resx">
+      <DependentUpon>DialogVendorQEAssignment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormActivityLog.resx">
+      <DependentUpon>FormActivityLog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormActivityMaster.resx">
+      <DependentUpon>FormActivityMaster.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormAnnouncement.resx">
+      <DependentUpon>FormAnnouncement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormAutoTask.resx">
+      <DependentUpon>FormAutoTask.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormGenerateCSVOTM.resx">
+      <DependentUpon>FormGenerateCSVOTM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormGenerateExcel.resx">
+      <DependentUpon>FormGenerateExcel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormGenerateExcelDataGrid.resx">
+      <DependentUpon>FormGenerateExcelDataGrid.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormGenerateReportActivityLog.resx">
+      <DependentUpon>FormGenerateReportActivityLog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormGetReply.resx">
+      <DependentUpon>FormGetReply.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormHelper.resx">
+      <DependentUpon>FormHelper.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportDailyExtraction.resx">
+      <DependentUpon>FormImportDailyExtraction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportOTM.resx">
+      <DependentUpon>FormImportOTM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormInspection.resx">
+      <DependentUpon>FormInspection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormMissingRemarks.resx">
+      <DependentUpon>FormMissingRemarks.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormParameters.resx">
+      <DependentUpon>FormParameters.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormRBAC.resx">
+      <DependentUpon>FormRBAC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormRemarkHistory.resx">
+      <DependentUpon>FormRemarkHistory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSendEmailConfirmation.resx">
+      <DependentUpon>FormSendEmailConfirmation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormUser.resx">
+      <DependentUpon>FormUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendor.resx">
+      <DependentUpon>FormVendor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendorQEAssignment.resx">
+      <DependentUpon>FormVendorQEAssignment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Quality.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

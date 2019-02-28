@@ -1,0 +1,65 @@
+2018-10-18 10:55:50.261 AM	****** Start Logging ******
+2018-10-18 10:55:50.262 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:55:52.266 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:55:53.371 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:55:55.411 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:55:57.322 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:55:59.214 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:00.814 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:02.763 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:04.362 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:05.925 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:08.921 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:09.632 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:11.251 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:13.317 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:16.104 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:18.174 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:19.659 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:21.976 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:24.041 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:25.643 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:27.561 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:29.751 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:31.439 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:33.322 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:35.282 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:37.174 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:38.815 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:40.822 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-18 10:56:43.293 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-10-30 03:59:36.618 PM	createemailSave	,Error found: The request failed. The process cannot access the file '\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox\InternalAll.xlsx' because it is being used by another process.
+2018-11-01 09:39:02.994 AM	GenerateReportWithKey	General ODBC Error\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-11-07 03:03:06.339 PM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-11-07 03:03:07.484 PM	GenerateReportWithKey	Cannot access '20181107-10012062.xlsx'.\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox\20181107-10012062
+2018-11-07 03:03:18.453 PM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2018-11-20 10:35:14.165 AM	createemailSave	,Error found: The request failed. The remote server returned an error: (401) Unauthorized.
+2018-11-28 11:28:39.761 AM	GenerateReportWithKey	Microsoft Excel cannot access the file 'c:\junk\getresult\91447000'. There are several possible reasons:
+
+• The file name or path does not exist.
+• The file is being used by another program.
+• The workbook you are trying to save has the same name as a currently open workbook.c:\junk\getresult\20181128-10002059
+2018-11-28 11:46:27.124 AM	GenerateReportWithKey	Cannot access '20181128-10002063.xlsx'.C:\junk\getreply\20181128-10002063
+2018-11-30 09:52:10.745 AM	doWork	--------Start----------
+2018-11-30 09:52:23.718 AM	doWork	Generate Report.
+2018-11-30 10:11:33.090 AM	doWork	--------Start----------
+2018-11-30 10:11:33.105 AM	doWork	Generate Report.
+2018-11-30 10:37:52.774 AM	doWork	--------Start----------
+2018-11-30 10:37:53.662 AM	doWork	Generate Report.
+2018-11-30 10:38:33.752 AM	doWork	Invalid index. (Exception from HRESULT: 0x8002000B (DISP_E_BADINDEX))
+2018-11-30 10:39:44.861 AM	doWork	--------Start----------
+2018-11-30 10:39:44.892 AM	doWork	Generate Report.
+2018-11-30 11:17:24.483 AM	doWork	--------Start----------
+2018-11-30 11:17:24.513 AM	doWork	Generate Report.
+2018-11-30 11:18:00.600 AM	doWork	--------Start----------
+2018-11-30 11:18:00.628 AM	doWork	Generate Report.
+2018-11-30 11:19:35.300 AM	doWork	--------End----------
+2018-11-30 05:07:33.665 PM	doWork	--------Start----------
+2018-11-30 05:07:33.696 PM	doWork	Generate Report.
+2018-11-30 05:08:21.685 PM	doWork	--------End----------
+2018-11-30 05:17:01.177 PM	doWork	--------Start----------
+2018-11-30 05:17:01.203 PM	doWork	Generate Report.
+2018-11-30 05:17:42.317 PM	doWork	--------End----------
+2018-11-30 05:18:01.981 PM	doWork	--------Start----------
+2018-11-30 05:18:02.004 PM	doWork	Generate Report.
+2018-11-30 05:18:41.395 PM	doWork	--------End----------
