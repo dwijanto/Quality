@@ -38,3 +38,8 @@ C:\Users\dlie\OneDrive\Projects\VB2013\Quality\QualityApps\QualityApps\obj\x64\D
 C:\Users\dlie\OneDrive\Projects\VB2013\Quality\QualityApps\QualityApps\obj\x64\Debug\QualityApps.FormImportOTM.resources
 C:\Users\dlie\OneDrive\Projects\VB2013\Quality\QualityApps\QualityApps\obj\x64\Debug\QualityApps.FormMissingRemarks.resources
 C:\Users\dlie\OneDrive\Projects\VB2013\Quality\QualityApps\QualityApps\obj\x64\Debug\QualityApps.SplashScreen1.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\bin\x64\Debug\QualityApps.exe.config
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x64\Debug\QualityApps.vbproj.ResolveComReference.cache
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x64\Debug\QualityApps.exe
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x64\Debug\QualityApps.xml
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x64\Debug\QualityApps.pdb
