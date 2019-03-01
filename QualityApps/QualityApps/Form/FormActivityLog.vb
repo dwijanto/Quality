@@ -181,14 +181,7 @@ Public Class FormActivityLog
 
 
 
-    Private Sub DataGridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
-        'If Not IsNothing(myController.GetCurrentRecord) Then
-        '    showTx(TxEnum.UpdateRecord)
-        'Else
-        '    MessageBox.Show("Nothing to update.")
-        'End If
-        UpdateToolStripButton.PerformClick()
-    End Sub
+
 
 
     Private Sub CopyToolStripButton_Click(sender As Object, e As EventArgs) Handles CopyToolStripButton.Click
@@ -211,5 +204,9 @@ Public Class FormActivityLog
         Else
             MessageBox.Show("Nothing to update.")
         End If
+    End Sub
+
+    Private Sub DataGridView1_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseDoubleClick
+        If e.RowIndex > -1 Then UpdateToolStripButton.PerformClick()
     End Sub
 End Class
