@@ -41,6 +41,7 @@ Public Class FormGenerateReportActivityLog
         If osheet.cells(2, 2).text.ToString = "" Then
             Err.Raise(100, Description:="Data not available.")
         End If
+        osheet.Columns("B:B").NumberFormat = "dd-MMM-yyyy"
         osheet.name = "RawData"
         owb.Names.Add("db", RefersToR1C1:="=OFFSET('RawData'!R1C1,0,0,COUNTA('RawData'!C1),COUNTA('RawData'!R1))")
 
