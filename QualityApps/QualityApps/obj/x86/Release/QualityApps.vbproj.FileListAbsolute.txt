@@ -38,3 +38,8 @@ C:\Users\dlie\OneDrive\Projects\VB2013\Quality\QualityApps\QualityApps\obj\x86\R
 C:\Users\dlie\OneDrive\Projects\VB2013\Quality\QualityApps\QualityApps\obj\x86\Release\QualityApps.FormImportOTM.resources
 C:\Users\dlie\OneDrive\Projects\VB2013\Quality\QualityApps\QualityApps\obj\x86\Release\QualityApps.FormGenerateCSVOTM.resources
 C:\Users\dlie\OneDrive\Projects\VB2013\Quality\QualityApps\QualityApps\obj\x86\Release\QualityApps.FormGenerateReportActivityLog.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\bin\x86\Release\QualityApps.exe.config
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Release\QualityApps.vbproj.ResolveComReference.cache
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Release\QualityApps.exe
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Release\QualityApps.xml
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Release\QualityApps.pdb

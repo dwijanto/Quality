@@ -42,6 +42,7 @@ Partial Class FormActivityLog
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
+        Me.UcUserInfo1 = New QualityApps.UCUserInfo()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -50,7 +51,6 @@ Partial Class FormActivityLog
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UcUserInfo1 = New QualityApps.UCUserInfo()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
@@ -66,7 +66,7 @@ Partial Class FormActivityLog
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripButton, Me.CopyToolStripButton, Me.UpdateToolStripButton, Me.DeleteToolStripButton, Me.CommitToolStripButton, Me.RefreshToolStripButton, Me.ToolStripSeparator1, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripLabel2})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(581, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(612, 25)
         Me.ToolStrip1.TabIndex = 0
         '
         'AddToolStripButton
@@ -195,6 +195,13 @@ Partial Class FormActivityLog
         '
         Me.ToolStripContainer1.TopToolStripPanel.Controls.Add(Me.ToolStrip1)
         '
+        'UcUserInfo1
+        '
+        Me.UcUserInfo1.Location = New System.Drawing.Point(3, 3)
+        Me.UcUserInfo1.Name = "UcUserInfo1"
+        Me.UcUserInfo1.Size = New System.Drawing.Size(613, 84)
+        Me.UcUserInfo1.TabIndex = 1
+        '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
@@ -275,13 +282,6 @@ Partial Class FormActivityLog
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
         Me.Column7.Width = 300
-        '
-        'UcUserInfo1
-        '
-        Me.UcUserInfo1.Location = New System.Drawing.Point(3, 3)
-        Me.UcUserInfo1.Name = "UcUserInfo1"
-        Me.UcUserInfo1.Size = New System.Drawing.Size(613, 84)
-        Me.UcUserInfo1.TabIndex = 1
         '
         'FormActivityLog
         '

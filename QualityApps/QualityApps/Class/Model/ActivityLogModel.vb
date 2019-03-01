@@ -18,7 +18,7 @@ Public Class ActivityLogModel
                                    " left join quality.activity a on a.id = u.activityid  " &
                                    " left join vendor v on v.vendorcode = u.vendorcode  " &
                                    " left join quality.user us on lower(us.userid) = lower(u.userid)" &
-                                   " {1} order by {2};", tablename, criteria, sortField))
+                                   " {1} order by {2};", tablename, criteria, "us.username,u.activitydate"))
         Return sb.ToString
     End Function
 

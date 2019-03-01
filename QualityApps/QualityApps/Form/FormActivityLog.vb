@@ -181,13 +181,13 @@ Public Class FormActivityLog
 
 
 
-    Private Sub DataGridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick, UpdateToolStripButton.Click
-        If Not IsNothing(myController.GetCurrentRecord) Then
-            showTx(TxEnum.UpdateRecord)
-        Else
-            MessageBox.Show("Nothing to update.")
-        End If
-
+    Private Sub DataGridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
+        'If Not IsNothing(myController.GetCurrentRecord) Then
+        '    showTx(TxEnum.UpdateRecord)
+        'Else
+        '    MessageBox.Show("Nothing to update.")
+        'End If
+        UpdateToolStripButton.PerformClick()
     End Sub
 
 
@@ -203,5 +203,13 @@ Public Class FormActivityLog
     Private Sub checkbox1_CheckedChanged(sender As Object, e As EventArgs) Handles checkbox1.CheckedChanged
         dtPicker1.Enabled = checkbox1.Checked
         dtPicker2.Enabled = checkbox1.Checked
+    End Sub
+
+    Private Sub UpdateToolStripButton_Click(sender As Object, e As EventArgs) Handles UpdateToolStripButton.Click
+        If Not IsNothing(myController.GetCurrentRecord) Then
+            showTx(TxEnum.UpdateRecord)
+        Else
+            MessageBox.Show("Nothing to update.")
+        End If
     End Sub
 End Class
