@@ -4,7 +4,8 @@
 
     Public Model As New ActivityLogModel
     Public BS As BindingSource
-    Dim DS As DataSet
+    Public BS2 As BindingSource
+    Public DS As DataSet
     Private VendorBS As BindingSource
     Private ActivityBS As BindingSource
     Private TimeSessionBS As BindingSource
@@ -60,6 +61,10 @@
         If Model.LoadData(DS, criteria) Then
             BS = New BindingSource
             BS.DataSource = DS.Tables(0)
+            BS2 = New BindingSource
+            bs2.DataSource = BS
+            bs2.DataMember = "hdrel"
+
 
             VendorBS = New BindingSource
             VendorBS.DataSource = DS.Tables("Vendor")
