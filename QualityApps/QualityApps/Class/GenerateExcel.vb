@@ -98,7 +98,7 @@ Public Class GenerateExcel
                                    " inspector as ""Inspector"",code as ""Inspection Result"",vendor as ""Vendor"",vendorname as ""Vendor Name"",material as ""Material"", materialdesc as ""Material desc""," &
                                    " custpono as ""Cust PO No"",sbu as ""SBU"",city as ""City"",ccetd as ""Confirmed ETD"",qty as ""Quantity"", qtyoun as	""OUn""," &
                                    " quality.changesamplesize(inspector,samplesize::integer) as ""Sample size"",null::date as""New Input Inspection Date"",quality.getinspdate(tx.purchdoc,tx.item,tx.seqn,qty) as ""Inspection Date"",null::text as ""Remarks"",quality.getproductionenddate(tx.purchdoc,tx.item,tx.seqn,qty)  as ""Production End Date"" ,quality.getremarks(tx.purchdoc,tx.item,tx.seqn) as ""Remarks History"" from quality.dailytx tx" &
-                                   " where vendor = {0} and ccetd >= current_date - {1} {2} order by ccetd asc", vendorcode, datespan, SBException.ToString)
+                                   " where vendor = {0} and ccetd >= current_date - {1} {2} order by tx.purchdoc,tx.item,tx.seqn", vendorcode, datespan, SBException.ToString)
 
         'Dim ReportName = String.Format("{0:yyyyMMdd}-{1}", Today.Date, vendorcode)
         Dim ReportName = String.Format("{0:yyyyMMdd}-{1}", MyDate.Date, vendorcode)

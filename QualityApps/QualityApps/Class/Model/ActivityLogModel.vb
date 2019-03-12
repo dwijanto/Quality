@@ -73,16 +73,17 @@ Public Class ActivityLogModel
         Using conn As NpgsqlConnection = myadapter.getConnection
             conn.Open()
 
-            sb.Append(String.Format("select *,v.vendorcode::text || ' - ' || v.vendorname as vendorcodename,a.activityname,quality.showtimesession(u.timesession) as timesessiondesc from {0} u" &
-                                   " left join quality.activity a on a.id = u.activityid  " &
+            sb.Append(String.Format("select *,v.vendorcode::text || ' - ' || v.vendorname as vendorcodename,quality.getactivityname(u.id) as activityname,quality.showtimesession(u.timesession) as timesessiondesc from {0} u" &                                   
                                    " left join vendor v on v.vendorcode = u.vendorcode  " &
                                    " {1} order by {2};", tablename, criteria, sortField))
-            'sb.Append(String.Format("select *,qv.vendorcode::text || ' - ' || v.shortname::text || ' - ' || qv.vendorname as vendorcodename from quality.vendor qv left join vendor v on v.vendorcode = qv.vendorcode order by v.shortname;"))
             sb.Append(String.Format("select *,qv.vendorcode::text || ' - ' || v.shortname::text || ' - ' || v.vendorname as vendorcodename from quality.vendorassignment qv left join vendor v on v.vendorcode = qv.vendorcode where lower(qv.userid) = lower('{0}') order by v.shortname;", userinfo1.Userid.ToLower))
             sb.Append(String.Format("select * from quality.activity where activitygroup = '{0}' order by activityname;", mygroup))
             sb.Append(String.Format("select 0.5 as myvalue,'Half day'::text as description" &
                                     " union all select 0.1 as myvalue,'Full day'::text as description" &
                                     " union all select 2 as myvalue,'OT'::text as description;"))
+            sb.Append(String.Format("select dt.*,a.activityname,a.activitygroup from quality.activitylogdtltx dt " &
+                                    " left join quality.activity a on a.id = dt.actid" &
+                                    " left join quality.activitylogtx u on u.id = dt.hdid {0};", criteria))
             dataAdapter.SelectCommand = myadapter.getCommandObject(sb.ToString, conn)
             dataAdapter.SelectCommand.CommandType = CommandType.Text
             dataAdapter.Fill(DS, tablename)
@@ -133,6 +134,24 @@ Public Class ActivityLogModel
         DS.Tables(1).TableName = "Vendor"
         DS.Tables(2).TableName = "Activity"
         DS.Tables(3).TableName = "TimeSession"
+        DS.Tables(4).TableName = "Detail"
+
+        Dim pk4(0) As DataColumn
+        pk4(0) = DS.Tables(4).Columns("id")
+        DS.Tables(4).PrimaryKey = pk4
+        DS.Tables(4).Columns("id").AutoIncrement = True
+        DS.Tables(4).Columns("id").AutoIncrementSeed = -1
+        DS.Tables(4).Columns("id").AutoIncrementStep = -1
+
+        Dim rel As DataRelation
+        Dim hcol As DataColumn
+        Dim dcol As DataColumn
+        'create relation ds.table(0) and ds.table(1)
+        hcol = DS.Tables(0).Columns("id") 'id in table header
+        dcol = DS.Tables(4).Columns("hdid") 'headerid in table vendordoc
+        rel = New DataRelation("hdrel", hcol, dcol)
+        DS.Relations.Add(rel)
+
     End Sub
 
     Public Function save(obj As Object, mye As ContentBaseEventArgs) As Boolean Implements IModel.save
@@ -182,6 +201,34 @@ Public Class ActivityLogModel
             dataadapter.DeleteCommand.Transaction = mytransaction
 
             mye.ra = dataadapter.Update(mye.dataset.Tables(tablename))
+
+            'Table Detail
+            sqlstr = "quality.sp_deleteaactivitylogdtltx"
+            dataadapter.DeleteCommand = New NpgsqlCommand(sqlstr, conn)
+            dataadapter.DeleteCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "id").SourceVersion = DataRowVersion.Original
+            dataadapter.DeleteCommand.CommandType = CommandType.StoredProcedure
+
+            sqlstr = "quality.sp_insertactivitylogdtltx"
+            dataadapter.InsertCommand = New NpgsqlCommand(sqlstr, conn)
+            dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "hdid").SourceVersion = DataRowVersion.Current
+            dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "actid").SourceVersion = DataRowVersion.Current
+            dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "id").Direction = ParameterDirection.InputOutput
+
+            dataadapter.InsertCommand.CommandType = CommandType.StoredProcedure
+
+            sqlstr = "quality.sp_updateactivitylogdtltx"
+            dataadapter.UpdateCommand = New NpgsqlCommand(sqlstr, conn)
+            dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "id").SourceVersion = DataRowVersion.Original
+            dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "hdid").SourceVersion = DataRowVersion.Current
+            dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "actid").SourceVersion = DataRowVersion.Current
+            dataadapter.UpdateCommand.CommandType = CommandType.StoredProcedure
+
+            dataadapter.InsertCommand.Transaction = mytransaction
+            dataadapter.UpdateCommand.Transaction = mytransaction
+            dataadapter.DeleteCommand.Transaction = mytransaction
+
+            mye.ra = dataadapter.Update(mye.dataset.Tables("Detail"))
+
 
             mytransaction.Commit()
             myret = True

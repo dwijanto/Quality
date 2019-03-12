@@ -69,6 +69,9 @@ Public Class FormActivityLog
                 Case 4
                     DataGridView1.AutoGenerateColumns = False
                     DataGridView1.DataSource = myController.BS
+
+                   
+
                     UcUserInfo1.BindingObject()
             End Select
         End If
@@ -99,7 +102,7 @@ Public Class FormActivityLog
                     drv.Item("remark") = drv2.Item("remark")
             End Select
             drv.Item("modifiedby") = myIdentity.userid
-            Dim myform = New DialogActivityLog(drv, myController.GetVendorBS, myController.GetActivityBS, myController.GetTimeSessionBS)
+            Dim myform = New DialogActivityLog(drv, myController.GetVendorBS, myController.GetActivityBS, myController.GetTimeSessionBS, myController.BS2)
             RemoveHandler myform.RefreshInterface, AddressOf RefreshMYInterface
             AddHandler myform.RefreshInterface, AddressOf RefreshMYInterface
             myform.ShowDialog()
@@ -121,6 +124,24 @@ Public Class FormActivityLog
                     myController.RemoveAt(drv.Index)
                 Next
             End If
+        End If
+    End Sub
+
+    Private Sub FormActivityLog_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Dim abc = myController.DS.GetChanges()
+        If Not IsNothing(abc) Then
+
+            Select Case MessageBox.Show("Save unsaved records?", "Unsaved records", MessageBoxButtons.YesNoCancel)
+                Case Windows.Forms.DialogResult.Yes
+                    If Me.Validate Then
+                        CommitToolStripButton.PerformClick()
+                    Else
+                        e.Cancel = True
+                    End If
+
+                Case Windows.Forms.DialogResult.Cancel
+                    e.Cancel = True
+            End Select
         End If
     End Sub
 

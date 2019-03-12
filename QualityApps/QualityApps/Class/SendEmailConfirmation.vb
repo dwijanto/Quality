@@ -196,9 +196,9 @@ Public Class SendEmailConfirmation
 
 
         sb.Append("<table border=1 cellspacing=0 class='defaultfont'> ")
-        sb.Append("<tr><th>Inspection Booking</th><th>Inspector</th><th>Insp.Lot.</th><th>Sample Size</th><th>Purch.Doc.</th><th>Item</th><th>Purchase Order Number</th><th>Supplier Name</th><th>Material</th><th>Material Description</th><th>SBU Description</th><th>Confirmed ETD</th><th>Quantity</th></tr>")
+        sb.Append("<tr><th>Inspection Booking</th><th>Inspector</th><th>Insp.Lot.</th><th>Sample Size</th><th>Purch.Doc.</th><th>Item</th><th>Purchase Order Number</th><th>Supplier Name</th><th>Material</th><th>Material Description</th><th>SBU Description</th><th>Confirmed ETD</th><th>Quantity</th><th>City</th><th>Sold To Party Name</th></tr>")
         For Each drv In bs.List
-            sb.Append(String.Format("<tr><td>{11:dd-MMM-yyyy}</td><td>{12}</td><td>{0}</td><td>{1:#,##0}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td><td>{9:dd-MMM-yyyy}</td><td>{10:#,##0}</td></tr>", drv.row.item("insplot"), drv.row.item("samplesize"), drv.row.item("purchdoc"), drv.row.item("item"), drv.row.item("custpono"), drv.row.item("vendorname"), drv.row.item("material"), drv.row.item("materialdesc"), drv.row.item("sbu"), drv.row.item("ccetd"), drv.row.item("qty"), drv.row.item("startdate"), drv.row.item("inspector")))
+            sb.Append(String.Format("<tr><td>{11:dd-MMM-yyyy}</td><td>{12}</td><td>{0}</td><td>{1:#,##0}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td><td>{9:dd-MMM-yyyy}</td><td>{10:#,##0}</td><td>{13}</td><td>{14}</td></tr>", drv.row.item("insplot"), drv.row.item("samplesize"), drv.row.item("purchdoc"), drv.row.item("item"), drv.row.item("custpono"), drv.row.item("vendorname"), drv.row.item("material"), drv.row.item("materialdesc"), drv.row.item("sbu"), drv.row.item("ccetd"), drv.row.item("qty"), drv.row.item("startdate"), drv.row.item("inspector"), drv.row.item("city"), drv.row.item("soldtopartyname")))
         Next
         sb.Append("</table> ")        
         sb.Append("<p> Best Regards,<br>WONG Tracy</br></html>")

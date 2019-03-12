@@ -363,5 +363,20 @@ Public Class ParamAdapter
             myret = True
         End Using
         Return myret
-    End Function    
+    End Function
+
+    Public Function SaveSendEmailTx() As Boolean
+        Dim userinfo1 = UserInfo.getInstance
+        Dim myret As Boolean = False
+        Try
+            Dim sqlstr = String.Format("insert into quality.sendemailtx(userid) values(:userid)")
+            Dim myresult As String = String.Empty
+            Dim myparam(0) As NpgsqlParameter
+            myparam(0) = New NpgsqlParameter("userid", userinfo1.Userid)
+            myAdapter.ExecuteScalar(sqlstr, myparam, recordAffected:=myresult)
+            myret = IsNothing(myresult)
+        Catch ex As Exception
+        End Try
+        Return myret
+    End Function
 End Class

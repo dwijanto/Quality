@@ -45,6 +45,11 @@
         If Not IsNothing(myresult) Then
             myresult.Item(fieldname) = myValue(1)
             myresult.EndEdit()
+            'Check Send Internal mykey = 0
+            If mykey(0) = 0 And myValue(1) = "Sending email...Done" Then
+                Dim myparam As ParamAdapter = ParamAdapter.getInstance
+                myparam.SaveSendEmailTx()
+            End If
         End If
     End Sub
 End Class

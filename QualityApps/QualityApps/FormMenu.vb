@@ -167,6 +167,8 @@ Public Class FormMenu
 
    
     Private Sub Send2DaysEmailInAdvanceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Send2DaysEmailInAdvanceToolStripMenuItem.Click
+        
+
         Dim AskDate As New DialogAskDate
         If AskDate.ShowDialog = Windows.Forms.DialogResult.OK Then
             Dim myform = New FormSendEmailConfirmation
@@ -182,59 +184,5 @@ Public Class FormMenu
         myform.ShowDialog()
     End Sub
 
-    Private Sub TransactionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransactionToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub ReportsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportsToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub MasterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MasterToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub AdminToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AdminToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub GenerateExcelForSupplierToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles GenerateExcelForSupplierToolStripMenuItem1.Click
-
-    End Sub
-
-    Private Sub UserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UserToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub ActivityLogToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ActivityLogToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub CreateActivityLogToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateActivityLogToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub ReportActivityLogToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportActivityLogToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub ImportDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportDataToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub OTMToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OTMToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub GenerateCSVToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerateCSVToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub ActivityToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ActivityToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub VendorAssignmentQEUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VendorAssignmentQEUserToolStripMenuItem.Click
-
-    End Sub
+  
 End Class

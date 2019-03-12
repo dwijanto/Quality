@@ -43,12 +43,12 @@ Partial Class FormMenu
         Me.ParameterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ActivityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VendorAssignmentQEUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdminToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RBACToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OTMToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImportDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerateCSVToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VendorAssignmentQEUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
@@ -216,6 +216,13 @@ Partial Class FormMenu
         Me.ActivityToolStripMenuItem.Tag = "FormActivityMaster"
         Me.ActivityToolStripMenuItem.Text = "Activity"
         '
+        'VendorAssignmentQEUserToolStripMenuItem
+        '
+        Me.VendorAssignmentQEUserToolStripMenuItem.Name = "VendorAssignmentQEUserToolStripMenuItem"
+        Me.VendorAssignmentQEUserToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.VendorAssignmentQEUserToolStripMenuItem.Tag = "FormVendorQEAssignment"
+        Me.VendorAssignmentQEUserToolStripMenuItem.Text = "Vendor Assignment QE User"
+        '
         'AdminToolStripMenuItem
         '
         Me.AdminToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RBACToolStripMenuItem})
@@ -226,7 +233,7 @@ Partial Class FormMenu
         'RBACToolStripMenuItem
         '
         Me.RBACToolStripMenuItem.Name = "RBACToolStripMenuItem"
-        Me.RBACToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.RBACToolStripMenuItem.Size = New System.Drawing.Size(104, 22)
         Me.RBACToolStripMenuItem.Text = "RBAC"
         '
         'OTMToolStripMenuItem
@@ -249,13 +256,6 @@ Partial Class FormMenu
         Me.GenerateCSVToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
         Me.GenerateCSVToolStripMenuItem.Tag = "FormGenerateCSVOTM"
         Me.GenerateCSVToolStripMenuItem.Text = "Generate CSV"
-        '
-        'VendorAssignmentQEUserToolStripMenuItem
-        '
-        Me.VendorAssignmentQEUserToolStripMenuItem.Name = "VendorAssignmentQEUserToolStripMenuItem"
-        Me.VendorAssignmentQEUserToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
-        Me.VendorAssignmentQEUserToolStripMenuItem.Tag = "FormVendorQEAssignment"
-        Me.VendorAssignmentQEUserToolStripMenuItem.Text = "Vendor Assignment QE User"
         '
         'FormMenu
         '

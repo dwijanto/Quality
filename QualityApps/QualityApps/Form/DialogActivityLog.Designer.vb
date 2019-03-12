@@ -22,6 +22,7 @@ Partial Class DialogActivityLog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.OK_Button = New System.Windows.Forms.Button()
         Me.Cancel_Button = New System.Windows.Forms.Button()
@@ -34,10 +35,22 @@ Partial Class DialogActivityLog
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.AddActivityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteActivityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1.SuspendLayout()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -48,7 +61,7 @@ Partial Class DialogActivityLog
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(422, 274)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(428, 343)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
@@ -149,18 +162,10 @@ Partial Class DialogActivityLog
         Me.Label5.TabIndex = 10
         Me.Label5.Text = "Activity"
         '
-        'ComboBox3
-        '
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(134, 141)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(393, 21)
-        Me.ComboBox3.TabIndex = 9
-        '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(84, 171)
+        Me.Label6.Location = New System.Drawing.Point(84, 240)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(44, 13)
         Me.Label6.TabIndex = 12
@@ -168,11 +173,92 @@ Partial Class DialogActivityLog
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(134, 168)
+        Me.TextBox2.Location = New System.Drawing.Point(134, 237)
         Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(393, 71)
         Me.TextBox2.TabIndex = 11
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(254, 64)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(11, 13)
+        Me.Label7.TabIndex = 13
+        Me.Label7.Text = "*"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(131, 324)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(73, 13)
+        Me.Label8.TabIndex = 14
+        Me.Label8.Text = "* = Mandatory"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(533, 91)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(11, 13)
+        Me.Label9.TabIndex = 15
+        Me.Label9.Text = "*"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(533, 144)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(11, 13)
+        Me.Label10.TabIndex = 16
+        Me.Label10.Text = "*"
+        '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AllowUserToOrderColumns = True
+        Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.ColumnHeadersVisible = False
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1})
+        Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.DataGridView1.Location = New System.Drawing.Point(137, 147)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(389, 80)
+        Me.DataGridView1.TabIndex = 17
+        '
+        'Column1
+        '
+        Me.Column1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.Column1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Column1.HeaderText = "Activity Name"
+        Me.Column1.Name = "Column1"
+        Me.Column1.Width = 300
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddActivityToolStripMenuItem, Me.DeleteActivityToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(153, 70)
+        '
+        'AddActivityToolStripMenuItem
+        '
+        Me.AddActivityToolStripMenuItem.Name = "AddActivityToolStripMenuItem"
+        Me.AddActivityToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AddActivityToolStripMenuItem.Text = "Add Activity"
+        '
+        'DeleteActivityToolStripMenuItem
+        '
+        Me.DeleteActivityToolStripMenuItem.Name = "DeleteActivityToolStripMenuItem"
+        Me.DeleteActivityToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DeleteActivityToolStripMenuItem.Text = "Delete Activity"
         '
         'DialogActivityLog
         '
@@ -180,11 +266,15 @@ Partial Class DialogActivityLog
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
-        Me.ClientSize = New System.Drawing.Size(580, 315)
+        Me.ClientSize = New System.Drawing.Size(586, 384)
+        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.ComboBox3)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label3)
@@ -202,6 +292,9 @@ Partial Class DialogActivityLog
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "DialogActivityLog"
         Me.TableLayoutPanel1.ResumeLayout(False)
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -218,8 +311,17 @@ Partial Class DialogActivityLog
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox3 As System.Windows.Forms.ComboBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
+    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents AddActivityToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DeleteActivityToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewComboBoxColumn
 
 End Class

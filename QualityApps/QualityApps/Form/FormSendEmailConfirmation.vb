@@ -78,6 +78,8 @@ Public Class FormSendEmailConfirmation
                     Case 2003
                         myController.showMessage(message, "status")
                         UcDataGridExcel1.DataGridView1.Invalidate()
+
+                       
                     Case 2004
                         TotalProcess = message
                         TotalRowExecuted = TotalProcess
