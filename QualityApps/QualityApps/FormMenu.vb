@@ -185,4 +185,7 @@ Public Class FormMenu
     End Sub
 
   
+    Private Sub ReportActivityLogToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportActivityLogToolStripMenuItem.Click
+
+    End Sub
 End Class

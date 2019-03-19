@@ -23,12 +23,12 @@ Partial Class FormInspection
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormInspection))
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
@@ -41,6 +41,7 @@ Partial Class FormInspection
         Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton6 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton7 = New System.Windows.Forms.ToolStripButton()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -52,6 +53,7 @@ Partial Class FormInspection
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -63,19 +65,20 @@ Partial Class FormInspection
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column24 = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Column26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.soldtoparty = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.soldtopartyname = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ToolStripButton7 = New System.Windows.Forms.ToolStripButton()
+        Me.Column28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
@@ -91,7 +94,7 @@ Partial Class FormInspection
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3, Me.ToolStripSeparator1, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripLabel2, Me.ToolStripTextBox2, Me.ToolStripButton4, Me.ToolStripButton5, Me.ToolStripButton6, Me.ToolStripButton7})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1236, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1205, 25)
         Me.ToolStrip1.TabIndex = 0
         '
         'ToolStripButton1
@@ -175,6 +178,15 @@ Partial Class FormInspection
         Me.ToolStripButton6.Size = New System.Drawing.Size(132, 22)
         Me.ToolStripButton6.Text = "Show Missing Remarks"
         '
+        'ToolStripButton7
+        '
+        Me.ToolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.ToolStripButton7.Image = CType(resources.GetObject("ToolStripButton7.Image"), System.Drawing.Image)
+        Me.ToolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton7.Name = "ToolStripButton7"
+        Me.ToolStripButton7.Size = New System.Drawing.Size(136, 22)
+        Me.ToolStripButton7.Text = "Show Missing Insp Date"
+        '
         'StatusStrip1
         '
         Me.StatusStrip1.Dock = System.Windows.Forms.DockStyle.None
@@ -229,11 +241,11 @@ Partial Class FormInspection
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToOrderColumns = True
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView1.ColumnHeadersHeight = 35
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column25, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column9, Me.Column20, Me.Column22, Me.Column23, Me.Column10, Me.Column11, Me.Column12, Me.Column13, Me.Column14, Me.Column15, Me.Column16, Me.Column17, Me.Column18, Me.Column21, Me.Column19, Me.Column24, Me.Column26, Me.soldtoparty, Me.soldtopartyname})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column25, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column27, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column9, Me.Column20, Me.Column22, Me.Column23, Me.Column10, Me.Column11, Me.Column12, Me.Column14, Me.Column15, Me.Column16, Me.Column18, Me.Column21, Me.Column17, Me.Column19, Me.Column13, Me.Column24, Me.Column26, Me.soldtoparty, Me.soldtopartyname, Me.Column28, Me.Column29})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
@@ -276,6 +288,12 @@ Partial Class FormInspection
         Me.Column4.HeaderText = "Insp. Lot"
         Me.Column4.Name = "Column4"
         Me.Column4.Width = 80
+        '
+        'Column27
+        '
+        Me.Column27.DataPropertyName = "reference"
+        Me.Column27.HeaderText = "reference"
+        Me.Column27.Name = "Column27"
         '
         'Column5
         '
@@ -351,19 +369,12 @@ Partial Class FormInspection
         Me.Column12.Name = "Column12"
         Me.Column12.Width = 200
         '
-        'Column13
-        '
-        Me.Column13.DataPropertyName = "City"
-        Me.Column13.HeaderText = "City"
-        Me.Column13.Name = "Column13"
-        Me.Column13.Width = 70
-        '
         'Column14
         '
         Me.Column14.DataPropertyName = "Confirmed ETD"
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle8.Format = "dd-MMM-yyyy"
-        Me.Column14.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "dd-MMM-yyyy"
+        Me.Column14.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column14.HeaderText = "Confirmed ETD"
         Me.Column14.Name = "Column14"
         Me.Column14.Width = 110
@@ -371,9 +382,9 @@ Partial Class FormInspection
         'Column15
         '
         Me.Column15.DataPropertyName = "Quantity"
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle9.Format = "#,##0"
-        Me.Column15.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "#,##0"
+        Me.Column15.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column15.HeaderText = "Quantity"
         Me.Column15.Name = "Column15"
         '
@@ -383,21 +394,12 @@ Partial Class FormInspection
         Me.Column16.HeaderText = "OUn"
         Me.Column16.Name = "Column16"
         '
-        'Column17
-        '
-        Me.Column17.DataPropertyName = "Sample size"
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle10.Format = "#,##0"
-        Me.Column17.DefaultCellStyle = DataGridViewCellStyle10
-        Me.Column17.HeaderText = "Sample size"
-        Me.Column17.Name = "Column17"
-        '
         'Column18
         '
         Me.Column18.DataPropertyName = "Inspection Date"
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle11.Format = "dd-MMM-yyyy"
-        Me.Column18.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "dd-MMM-yyyy"
+        Me.Column18.DefaultCellStyle = DataGridViewCellStyle4
         Me.Column18.HeaderText = "Inspection Date"
         Me.Column18.Name = "Column18"
         Me.Column18.Width = 110
@@ -409,11 +411,27 @@ Partial Class FormInspection
         Me.Column21.Name = "Column21"
         Me.Column21.Width = 50
         '
+        'Column17
+        '
+        Me.Column17.DataPropertyName = "Sample size"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "#,##0"
+        Me.Column17.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Column17.HeaderText = "Sample size"
+        Me.Column17.Name = "Column17"
+        '
         'Column19
         '
         Me.Column19.DataPropertyName = "Remarks"
         Me.Column19.HeaderText = "Remarks"
         Me.Column19.Name = "Column19"
+        '
+        'Column13
+        '
+        Me.Column13.DataPropertyName = "City"
+        Me.Column13.HeaderText = "City"
+        Me.Column13.Name = "Column13"
+        Me.Column13.Width = 70
         '
         'Column24
         '
@@ -427,9 +445,9 @@ Partial Class FormInspection
         'Column26
         '
         Me.Column26.DataPropertyName = "Production End Date"
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle12.Format = "dd-MMM-yyyy"
-        Me.Column26.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "dd-MMM-yyyy"
+        Me.Column26.DefaultCellStyle = DataGridViewCellStyle6
         Me.Column26.HeaderText = "Production End Date"
         Me.Column26.Name = "Column26"
         '
@@ -447,14 +465,17 @@ Partial Class FormInspection
         Me.soldtopartyname.Name = "soldtopartyname"
         Me.soldtopartyname.Width = 300
         '
-        'ToolStripButton7
+        'Column28
         '
-        Me.ToolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripButton7.Image = CType(resources.GetObject("ToolStripButton7.Image"), System.Drawing.Image)
-        Me.ToolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton7.Name = "ToolStripButton7"
-        Me.ToolStripButton7.Size = New System.Drawing.Size(136, 22)
-        Me.ToolStripButton7.Text = "Show Missing Insp Date"
+        Me.Column28.DataPropertyName = "description"
+        Me.Column28.HeaderText = "PO CMMF"
+        Me.Column28.Name = "Column28"
+        '
+        'Column29
+        '
+        Me.Column29.DataPropertyName = "risk"
+        Me.Column29.HeaderText = "Risk"
+        Me.Column29.Name = "Column29"
         '
         'FormInspection
         '
@@ -496,11 +517,14 @@ Partial Class FormInspection
     Friend WithEvents ToolStripTextBox2 As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents ToolStripButton4 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripButton5 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripButton6 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripButton7 As System.Windows.Forms.ToolStripButton
     Friend WithEvents Column25 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column27 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -512,18 +536,18 @@ Partial Class FormInspection
     Friend WithEvents Column10 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column11 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column12 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column13 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column14 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column15 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column16 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column17 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column18 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column21 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column17 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column19 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column13 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column24 As System.Windows.Forms.DataGridViewButtonColumn
     Friend WithEvents Column26 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents soldtoparty As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents soldtopartyname As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ToolStripButton6 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton7 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents Column28 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column29 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

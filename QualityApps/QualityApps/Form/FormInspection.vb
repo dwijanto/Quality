@@ -118,8 +118,8 @@ Public Class FormInspection
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
         If e.RowIndex >= 0 Then
-            If e.ColumnIndex = 24 Then
-                
+            If e.ColumnIndex = 25 Then
+
                 Dim drv As DataRowView = DataGridView1.Rows(e.RowIndex).DataBoundItem
                 Dim myDialog As DialogHistory = DialogHistory.getInstance
                 RemoveHandler myDialog.RefreshInspectionDate, AddressOf doRefreshInspectionDate

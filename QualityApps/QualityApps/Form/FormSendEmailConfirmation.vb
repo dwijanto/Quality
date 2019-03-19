@@ -144,4 +144,9 @@ Public Class FormSendEmailConfirmation
     Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
         loaddata()
     End Sub
+
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+        Dim myform = FormTimeStampSendingReport.getInstance
+        myform.show()
+    End Sub
 End Class

@@ -58,6 +58,8 @@ Public Class FormActivityLog
 
     End Sub
 
+
+
     Public Sub ProgressReport(ByVal id As Integer, ByVal message As String)
         If Me.InvokeRequired Then
             Dim d As New ProgressReportDelegate(AddressOf ProgressReport)
@@ -84,7 +86,7 @@ Public Class FormActivityLog
                 Case TxEnum.NewRecord
                     drv = myController.GetNewRecord                   
                     drv.Item("activitydate") = Today.Date
-                    drv.Item("userid") = myIdentity.userid
+                    drv.Item("userid") = myIdentity.userid                    
                 Case TxEnum.UpdateRecord
                     drv = myController.GetCurrentRecord
                 Case TxEnum.CopyRecord
@@ -101,19 +103,20 @@ Public Class FormActivityLog
                     drv.Item("userid") = drv2.Item("userid")
                     drv.Item("remark") = drv2.Item("remark")
             End Select
+
             drv.Item("modifiedby") = myIdentity.userid
-            Dim myform = New DialogActivityLog(drv, myController.GetVendorBS, myController.GetActivityBS, myController.GetTimeSessionBS, myController.BS2)
+            Dim myform = New DialogActivityLog(drv, myController.GetVendorBS, myController.GetActivityBS, myController.GetTimeSessionBS, myController.BS2, myController.GetDataset)
             RemoveHandler myform.RefreshInterface, AddressOf RefreshMYInterface
             AddHandler myform.RefreshInterface, AddressOf RefreshMYInterface
-            myform.ShowDialog()
-
+            If myform.ShowDialog() = Windows.Forms.DialogResult.Cancel Then
+                If drv.Row.RowState = DataRowState.Detached Or drv.Row.RowState = DataRowState.Added Then
+                    myController.RemoveAt(myController.GetCurrentPosition)
+                End If
+            End If
         End If
-
     End Sub
 
     Private Sub AddNewToolStripButton1_Click(sender As Object, e As EventArgs) Handles AddToolStripButton.Click
-        'drv = myController.GetNewRecord
-        'Me.drv.BeginEdit()
         showTx(TxEnum.NewRecord)
     End Sub
 
@@ -142,7 +145,7 @@ Public Class FormActivityLog
                 Case Windows.Forms.DialogResult.Cancel
                     e.Cancel = True
             End Select
-        End If
+        End If       
     End Sub
 
     Private Sub FormActivity_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -199,12 +202,6 @@ Public Class FormActivityLog
         ToolStrip1.Items.Add(New ToolStripControlHost(dtPicker2))
     End Sub
 
-
-
-
-
-
-
     Private Sub CopyToolStripButton_Click(sender As Object, e As EventArgs) Handles CopyToolStripButton.Click
         If Not IsNothing(myController.GetCurrentRecord) Then
             showTx(TxEnum.CopyRecord)
@@ -229,5 +226,9 @@ Public Class FormActivityLog
 
     Private Sub DataGridView1_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseDoubleClick
         If e.RowIndex > -1 Then UpdateToolStripButton.PerformClick()
+    End Sub
+
+    Private Sub DataGridView1_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles DataGridView1.DataError
+
     End Sub
 End Class

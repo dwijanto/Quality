@@ -29,6 +29,7 @@ Public Class InspectionModel
 
     Public Sub New()
         Dim SBExecption As New StringBuilder
+        Dim sb As New StringBuilder
 
         Dim VendorExceptionlist = myParam.GetVendorExceptionList
         If VendorExceptionlist.Length > 0 Then
@@ -39,12 +40,26 @@ Public Class InspectionModel
         If SBUExceptionList.Length > 0 Then
             SBExecption.Append(String.Format(" and (tx.sbu not in ({0}))", SBUExceptionList))
         End If
-        _sqlstr = String.Format("select false::boolean as ""Selected"",purchdoc::character varying as ""Purch.Doc."",item as ""Item"",seqn as ""SeqN"",insplot::character varying as ""Insp. Lot"",inspector as ""Inspector"",code as ""Inspection Result"",tx.vendor::character varying as ""Vendor"",tx.vendorname as ""Vendor Name"",material::character varying as ""Material"", materialdesc as ""Material desc""," &
-                                  " custpono as ""Cust PO No"",sbu as ""SBU"",city as ""City"",ccetd as ""Confirmed ETD"",qty as ""Quantity"", qtyoun as	""OUn""," &
+        '_sqlstr = String.Format("select false::boolean as ""Selected"",purchdoc::character varying as ""Purch.Doc."",item as ""Item"",seqn as ""SeqN"",insplot::character varying as ""Insp. Lot"",inspector as ""Inspector"",code as ""Inspection Result"",tx.vendor::character varying as ""Vendor"",tx.vendorname as ""Vendor Name"",material::character varying as ""Material"", materialdesc as ""Material desc""," &
+        '                          " custpono as ""Cust PO No"",sbu as ""SBU"",city as ""City"",ccetd as ""Confirmed ETD"",qty as ""Quantity"", qtyoun as	""OUn""," &
+        '                          " quality.changesamplesize(inspector,samplesize::integer) as ""Sample size"",quality.getinspdate(purchdoc,item,seqn,qty) as ""Inspection Date"",quality.getlatestremark(purchdoc,item,seqn,qty) as ""Remarks""," &
+        '                          " ntsg ,quality.dow(date_part('dow',quality.getinspdate(purchdoc,item,seqn,qty))::integer),v.location as ""Location"",v.groupnumber::character varying as ""Group"",startdate,enddate ,quality.getproductionenddate(purchdoc,item,seqn,qty) as ""Production End Date"", soldtoparty::character varying as ""Sold To Party"",soldtopartyname as ""Sold To Party Name"",reference from {0} tx " &
+        '                          " left join quality.vendor v on v.vendorcode = tx.vendor" &
+        '                          " where (ccetd >= (current_date -{2})) {1}  order by purchdoc,item,seqn", TableName, SBExecption.ToString, datespan)
+        sb.Append("with f as (select distinct * from (select material,first_value(ccetd) over (partition by material order by ccetd asc) as ccetd from quality.dailytx dt" &
+                  " inner join quality.firstcmmf f on f.cmmf = dt.material" &
+                  " where material not in (select cmmf from quality.firstcmmftx)" &
+                  " order by material,ccetd)foo)" &
+                  " insert into quality.firstcmmftx(cmmf,po,poitem,ccetd,description) select f.material,purchdoc,item,f.ccetd,'First CMMF PO' from f" &
+                  " left join quality.dailytx dt on dt.material = f.material and dt.ccetd = f.ccetd;")
+        sb.Append(String.Format("select false::boolean as ""Selected"",purchdoc::character varying as ""Purch.Doc."",item as ""Item"",seqn as ""SeqN"",insplot::character varying as ""Insp. Lot"",inspector as ""Inspector"",code as ""Inspection Result"",tx.vendor::character varying as ""Vendor"",tx.vendorname as ""Vendor Name"",material::character varying as ""Material"", materialdesc as ""Material desc""," &
+                                  " custpono as ""Cust PO No"",sbu as ""SBU"",city as ""City"",tx.ccetd as ""Confirmed ETD"",qty as ""Quantity"", qtyoun as	""OUn""," &
                                   " quality.changesamplesize(inspector,samplesize::integer) as ""Sample size"",quality.getinspdate(purchdoc,item,seqn,qty) as ""Inspection Date"",quality.getlatestremark(purchdoc,item,seqn,qty) as ""Remarks""," &
-                                  " ntsg ,quality.dow(date_part('dow',quality.getinspdate(purchdoc,item,seqn,qty))::integer),v.location as ""Location"",v.groupnumber::character varying as ""Group"",startdate,enddate ,quality.getproductionenddate(purchdoc,item,seqn,qty) as ""Production End Date"", soldtoparty::character varying as ""Sold To Party"",soldtopartyname as ""Sold To Party Name"" from {0} tx " &
+                                  " ntsg ,quality.dow(date_part('dow',quality.getinspdate(purchdoc,item,seqn,qty))::integer),v.location as ""Location"",v.groupnumber::character varying as ""Group"",startdate,enddate ,quality.getproductionenddate(purchdoc,item,seqn,qty) as ""Production End Date"", soldtoparty::character varying as ""Sold To Party"",soldtopartyname as ""Sold To Party Name"",reference,f.description,quality.getrisk(f.description,tx.city,tx.ntsg) as risk from {0} tx " &
                                   " left join quality.vendor v on v.vendorcode = tx.vendor" &
-                                  " where (ccetd >= (current_date -{2})) {1}  order by purchdoc,item,seqn", TableName, SBExecption.ToString, datespan)
+                                  " left join quality.firstcmmftx f on f.cmmf = tx.material and f.po = tx.purchdoc and f.poitem = tx.item and f.ccetd = tx.ccetd " &
+                                  " where (tx.ccetd >= (current_date -{2})) {1}  order by purchdoc,item,seqn", TableName, SBExecption.ToString, datespan))
+        _sqlstr = sb.ToString
     End Sub
     Public ReadOnly Property TableName As String
         Get
@@ -189,7 +204,7 @@ Public Class InspectionModel
             sqlstr = String.Format("with  selected as (select h.id,h.purchdoc::text,h.item,h.qty,h.remark,h.docdate from quality.dailytx tx" &
                                    " inner join quality.historytx h on h.purchdoc = tx.purchdoc and h.item = tx.item and h.seqn = tx.seqn" &
                                    " where not h.remark isnull)," &
-                                   " alldata as (select id,purchdoc::text,item,qty,remark,docdate from quality.historytx h where not remark isnull)," &
+                                   " alldata as (select id,purchdoc::text,item,qty,remark,docdate from quality.historytx h where not remark isnull and purchdoc in (select purchdoc from quality.dailytx))," &
                                    " missingdata as (select * from alldata except all select * from selected) " &
                                    " select * from missingdata order by docdate desc,purchdoc")
             'sqlstr = String.Format("with  selected as (select h.id,h.purchdoc::text,h.item,h.qty,h.inspdate,h.remark,h.docdate from quality.dailytx tx" &
@@ -213,7 +228,7 @@ Public Class InspectionModel
             sqlstr = String.Format("with  selected as (select h.id,h.purchdoc::text,h.item,h.qty,h.inspdate,h.docdate from quality.dailytx tx" &
                                    " inner join quality.historytx h on h.purchdoc = tx.purchdoc and h.item = tx.item and h.seqn = tx.seqn" &
                                    " where not h.inspdate isnull)," &
-                                   " alldata as (select id,purchdoc::text,item,qty,inspdate,docdate from quality.historytx h where not inspdate isnull)," &
+                                   " alldata as (select id,purchdoc::text,item,qty,inspdate,docdate from quality.historytx h where not inspdate isnull and purchdoc in (select purchdoc from quality.dailytx))," &
                                    " missingdata as (select * from alldata except all select * from selected) " &
                                    " select * from missingdata order by docdate desc,purchdoc")
             'sqlstr = String.Format("with  selected as (select h.id,h.purchdoc::text,h.item,h.qty,h.inspdate,h.remark,h.docdate from quality.dailytx tx" &

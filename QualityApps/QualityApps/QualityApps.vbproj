@@ -343,6 +343,12 @@
     <Compile Include="Form\FormSendEmailConfirmation.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FormTimeStampSendingReport.Designer.vb">
+      <DependentUpon>FormTimeStampSendingReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormTimeStampSendingReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FormUser.Designer.vb">
       <DependentUpon>FormUser.vb</DependentUpon>
     </Compile>
@@ -465,6 +471,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormSendEmailConfirmation.resx">
       <DependentUpon>FormSendEmailConfirmation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormTimeStampSendingReport.resx">
+      <DependentUpon>FormTimeStampSendingReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormUser.resx">
       <DependentUpon>FormUser.vb</DependentUpon>

@@ -11,8 +11,9 @@ Public Class DialogActivityLog
     Private DetailBS As BindingSource
     Public Event RefreshInterface()
     Dim DetailCurrDrv As DataRowView
+    Private DS As DataSet
 
-    Public Sub New(DRV As DataRowView, vendorbs As BindingSource, activitybs As BindingSource, timesessionbs As BindingSource, dtl As BindingSource)
+    Public Sub New(DRV As DataRowView, vendorbs As BindingSource, activitybs As BindingSource, timesessionbs As BindingSource, dtl As BindingSource, DS As DataSet)
         InitializeComponent()
 
         Me.drv = DRV
@@ -20,6 +21,7 @@ Public Class DialogActivityLog
         Me.VendorBS = vendorbs
         Me.ActivityBS = activitybs
         Me.DetailBS = dtl
+        Me.DS = DS
         'Me.TimeSessionBS = timesessionbs
         InitData()
     End Sub
@@ -51,7 +53,13 @@ Public Class DialogActivityLog
             End If
             sb.Append(String.Format("{0}", DataGridView1.Rows(i).Cells(0).FormattedValue))
         Next
-        drv.Row.Item("activityname") = sb.ToString
+        If sb.Length > 0 Then
+            drv.Row.Item("activityname") = sb.ToString
+        Else
+            ErrorProvider1.SetError(DataGridView1, "Please add some Activity.")
+            myret = False
+        End If
+
         Return myret
     End Function
 
@@ -60,16 +68,49 @@ Public Class DialogActivityLog
         If Me.validate Then
             Me.DialogResult = System.Windows.Forms.DialogResult.OK
             drv.EndEdit()
+            DetailBS.EndEdit()
             RaiseEvent RefreshInterface()
-            Me.Close()
+            'Me.Close()
         End If
 
     End Sub
 
     Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
-        Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        drv.CancelEdit()
-        Me.Close()
+        If Not drv.Row.RowState = DataRowState.Detached Then
+            Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
+            'Use the DataTable to find the Deleted row.
+            Try
+                For i = 0 To DS.Tables(4).Rows.Count - 1
+                    Dim dr = DS.Tables(4).Rows(i)
+                    If dr.RowState = DataRowState.Deleted Then
+                        If dr.Item("hdid", DataRowVersion.Original) = drv.Row.Item("id") Then
+                            dr.RejectChanges()
+                        End If
+                    Else
+                        If dr.Item("hdid") = drv.Row.Item("id") Then
+                            dr.RejectChanges()
+                        End If
+                    End If
+                Next                
+            Catch ex As Exception
+
+            Finally
+                Dim sb As New StringBuilder
+                For i = 0 To DataGridView1.Rows.Count - 1
+                    If sb.Length > 0 Then
+                        sb.Append(", ")
+                    End If
+                    sb.Append(String.Format("{0}", DataGridView1.Rows(i).Cells(0).FormattedValue))
+                Next
+                If sb.Length > 0 Then
+                    drv.Row.Item("activityname") = sb.ToString
+                End If
+            End Try
+
+            DetailBS.CancelEdit()
+            drv.CancelEdit()
+            RaiseEvent RefreshInterface()
+        End If
     End Sub
 
     Private Sub InitData()
@@ -143,32 +184,9 @@ Public Class DialogActivityLog
     End Sub
 
     Private Sub AddActivityToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddActivityToolStripMenuItem.Click
+        drv.EndEdit() 'set rowset header from detached into added
         DetailBS.AddNew()
     End Sub
-
-    'Private Sub DataGridView1_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) Handles DataGridView1.EditingControlShowing
-    '    If (DataGridView1.CurrentCell.ColumnIndex = 0) Then
-    '        DetailCurrDrv = DetailBS.Current
-    '        Dim myCB As ComboBox = DirectCast(e.Control, ComboBox)
-    '        RemoveHandler myCB.SelectionChangeCommitted, AddressOf mycbSelectionChangeCommitted
-    '        AddHandler myCB.SelectionChangeCommitted, AddressOf mycbSelectionChangeCommitted
-    '    End If
-    'End Sub
-
-
-
-    'Private Sub mycbSelectionChangeCommitted(sender As Object, e As EventArgs)
-    '    Dim mycb As ComboBox = DirectCast(sender, ComboBox)
-    '    Dim mydrv = mycb.SelectedItem
-    '    DetailCurrDrv.BeginEdit()
-    '    DetailCurrDrv.Row.Item("activityname") = ""
-    '    DetailCurrDrv.EndEdit()
-    '    Debug.Print("hello")
-    'End Sub
-
-    '    Private Sub DataGridView1_EditModeChanged(sender As Object, e As EventArgs) Handles DataGridView1.EditModeChanged
-    '        Debug.Print("ok")
-    '    End Sub
 
     Private Sub DeleteActivityToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteActivityToolStripMenuItem.Click
         If Not IsNothing(DetailBS.Current) Then

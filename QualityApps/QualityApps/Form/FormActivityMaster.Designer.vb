@@ -56,7 +56,7 @@ Partial Class FormActivityMaster
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripButton, Me.UpdateToolStripButton, Me.DeleteToolStripButton, Me.CommitToolStripButton, Me.RefreshToolStripButton, Me.ToolStripSeparator1, Me.ToolStripLabel1, Me.ToolStripTextBox1})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(515, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(435, 25)
         Me.ToolStrip1.TabIndex = 0
         '
         'AddToolStripButton

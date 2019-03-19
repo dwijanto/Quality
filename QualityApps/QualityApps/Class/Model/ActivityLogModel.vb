@@ -15,7 +15,8 @@ Public Class ActivityLogModel
         '                           " left join quality.vendor v on v.vendorcode = u.vendorcode  " &
         '                           " {1} order by {2};", tablename, criteria, sortField))
         sb.Append(String.Format("select u.*,us.username,v.vendorcode,v.shortname::text,v.vendorname::text ,a.activityname,quality.showtimesession(u.timesession) as timesessiondesc from {0} u" &
-                                   " left join quality.activity a on a.id = u.activityid  " &
+                                " left join quality.activitylogdtltx dt on dt.hdid = u.id" &
+                                   " left join quality.activity a on a.id = dt.actid  " &
                                    " left join vendor v on v.vendorcode = u.vendorcode  " &
                                    " left join quality.user us on lower(us.userid) = lower(u.userid)" &
                                    " {1} order by {2};", tablename, criteria, "us.username,u.activitydate"))

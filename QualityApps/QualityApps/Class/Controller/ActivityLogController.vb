@@ -120,7 +120,11 @@
     Public Function GetCurrentRecord() As DataRowView Implements IToolbarAction.GetCurrentRecord
         Return BS.Current
     End Function
-
+    Public Function GetCurrentPosition() As Integer
+        Dim drv = BS.Current
+        BS.Find("id", drv.row.item("id"))
+        Return BS.Position
+    End Function
     Public Function GetNewRecord() As DataRowView Implements IToolbarAction.GetNewRecord
         Return BS.AddNew
     End Function

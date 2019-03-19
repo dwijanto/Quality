@@ -206,7 +206,6 @@ Public Class ExportToExcelFile
         ProgressReport(5, "Continues..")
         If status Then
 
-
             sw.Stop()
             ProgressReport(2, String.Format("Elapsed Time: {0}:{1}.{2} Done.", Format(sw.Elapsed.Minutes, "00"), Format(sw.Elapsed.Seconds, "00"), sw.Elapsed.Milliseconds.ToString))
             ProgressReport(3, "")
