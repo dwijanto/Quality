@@ -14,6 +14,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property SQLSTRExcel As String
+        Get
+            Return Model.sqlstrExcel
+        End Get
+    End Property
+
     Public Function LoadData() As Boolean Implements IController.loaddata
         Dim myret As Boolean = True
         DS = New DataSet

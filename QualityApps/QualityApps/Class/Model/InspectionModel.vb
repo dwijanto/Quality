@@ -7,6 +7,7 @@ Public Class InspectionModel
     Dim datespan As Integer = myParam.GetCCETDDateSpan()
     'Public sqlstr As String = String.Empty
     Private _sqlstr As String
+    Private _sqlstrExcel As String
 
     Public Property BSHistory As BindingSource
     Public Property DSHistory As DataSet
@@ -24,6 +25,15 @@ Public Class InspectionModel
             _sqlstr = value
         End Set
     End Property
+    Public Property sqlstrExcel As String
+        Get
+            Return _sqlstrExcel
+        End Get
+        Set(value As String)
+            _sqlstrExcel = value
+        End Set
+    End Property
+
 
     Public ErrorMessage As String = String.Empty
 
@@ -52,14 +62,16 @@ Public Class InspectionModel
                   " order by material,ccetd)foo)" &
                   " insert into quality.firstcmmftx(cmmf,po,poitem,ccetd,description) select f.material,purchdoc,item,f.ccetd,'First CMMF PO' from f" &
                   " left join quality.dailytx dt on dt.material = f.material and dt.ccetd = f.ccetd;")
-        sb.Append(String.Format("select false::boolean as ""Selected"",purchdoc::character varying as ""Purch.Doc."",item as ""Item"",seqn as ""SeqN"",insplot::character varying as ""Insp. Lot"",inspector as ""Inspector"",code as ""Inspection Result"",tx.vendor::character varying as ""Vendor"",tx.vendorname as ""Vendor Name"",material::character varying as ""Material"", materialdesc as ""Material desc""," &
+        _sqlstrExcel = String.Format("select false::boolean as ""Selected"",purchdoc::character varying as ""Purch.Doc."",item as ""Item"",seqn as ""SeqN"",insplot::character varying as ""Insp. Lot"",inspector as ""Inspector"",code as ""Inspection Result"",tx.vendor::character varying as ""Vendor"",tx.vendorname as ""Vendor Name"",material::character varying as ""Material"", materialdesc as ""Material desc""," &
                                   " custpono as ""Cust PO No"",sbu as ""SBU"",city as ""City"",tx.ccetd as ""Confirmed ETD"",qty as ""Quantity"", qtyoun as	""OUn""," &
                                   " quality.changesamplesize(inspector,samplesize::integer) as ""Sample size"",quality.getinspdate(purchdoc,item,seqn,qty) as ""Inspection Date"",quality.getlatestremark(purchdoc,item,seqn,qty) as ""Remarks""," &
                                   " ntsg ,quality.dow(date_part('dow',quality.getinspdate(purchdoc,item,seqn,qty))::integer),v.location as ""Location"",v.groupnumber::character varying as ""Group"",startdate,enddate ,quality.getproductionenddate(purchdoc,item,seqn,qty) as ""Production End Date"", soldtoparty::character varying as ""Sold To Party"",soldtopartyname as ""Sold To Party Name"",reference,f.description,quality.getrisk(f.description,tx.city,tx.ntsg) as risk from {0} tx " &
                                   " left join quality.vendor v on v.vendorcode = tx.vendor" &
                                   " left join quality.firstcmmftx f on f.cmmf = tx.material and f.po = tx.purchdoc and f.poitem = tx.item and f.ccetd = tx.ccetd " &
-                                  " where (tx.ccetd >= (current_date -{2})) {1}  order by purchdoc,item,seqn", TableName, SBExecption.ToString, datespan))
+                                  " where (tx.ccetd >= (current_date -{2})) {1}  order by purchdoc,item,seqn", TableName, SBExecption.ToString, datespan)
+        sb.Append(_sqlstrExcel)
         _sqlstr = sb.ToString
+
     End Sub
     Public ReadOnly Property TableName As String
         Get

@@ -148,7 +148,7 @@ Public Class FormInspection
     Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
         SaveFileDialog1.FileName = String.Format("InspectionReport-{0:yyyyMMdd}.xlsx", Date.Today)
         If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
-            Dim myReport As ExportToExcelFile = New ExportToExcelFile(Me, myController.SQLSTR, IO.Path.GetDirectoryName(SaveFileDialog1.FileName), IO.Path.GetFileName(SaveFileDialog1.FileName), AddressOf FormatReport, AddressOf PivotCallback, 1, "\templates\excelTemplate.xltx")
+            Dim myReport As ExportToExcelFile = New ExportToExcelFile(Me, myController.SQLSTRExcel, IO.Path.GetDirectoryName(SaveFileDialog1.FileName), IO.Path.GetFileName(SaveFileDialog1.FileName), AddressOf FormatReport, AddressOf PivotCallback, 1, "\templates\excelTemplate.xltx")
             myReport.Run(Me, New EventArgs)
         End If
     End Sub
