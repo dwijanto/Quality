@@ -38,8 +38,14 @@ Public Class DialogActivityLog
         End If
 
         If ComboBox2.SelectedIndex = -1 Then
-            ErrorProvider1.SetError(ComboBox2, "Please select from the list.")
-            myret = False
+            drv.Item("vendorcodename") = ""
+            drv.Item("vendorcode") = DBNull.Value
+            RaiseEvent RefreshInterface()
+            If TextBox2.Text.Length = 0 Then
+                ErrorProvider1.SetError(ComboBox2, "Please select the vendor. For other vendors, please put it into ""Remarks"".")
+                myret = False
+            End If
+
         End If
 
         'If ComboBox3.SelectedIndex = -1 Then
@@ -65,6 +71,7 @@ Public Class DialogActivityLog
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
         DetailBS.EndEdit()
+
         If Me.validate Then
             Me.DialogResult = System.Windows.Forms.DialogResult.OK
             drv.EndEdit()

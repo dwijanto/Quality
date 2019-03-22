@@ -60,7 +60,7 @@ Public Class SendEmailConfirmation
 
 
 
-        
+
 
         myret = True
         Return myret
@@ -282,10 +282,10 @@ Public Class SendEmailConfirmation
         sbInternal.Append("<p>Dear Colleagues,</p><p>Please find inspection schedule for your reference.</p>")
 
         sbInternal.Append("<table border=1 cellspacing=0 class='defaultfont'> ")
-        sbInternal.Append("<tr><th>Insp.Lot.</th><th>Sample Size</th><th>Purch.Doc.</th><th>Item</th><th>Purchase Order Number</th><th>Supplier Name</th><th>Material</th><th>Material Description</th><th>SBU Description</th><th>Confirmed ETD</th><th>Quantity</th><th>Inspection Booking</th><th>Inspector</th></tr>")
+        sbInternal.Append("<tr><th>Insp.Lot.</th><th>Sample Size</th><th>Purch.Doc.</th><th>Item</th><th>Purchase Order Number</th><th>Supplier Name</th><th>Material</th><th>Material Description</th><th>SBU Description</th><th>Confirmed ETD</th><th>Quantity</th><th>Inspection Booking</th><th>Inspector</th><th>City</th><th>Sold To Party Name</th></tr>")
         For Each dr In myqueryInternal
             'sbInternal.Append(String.Format("<tr><td>{0}</td><td>{1:#,##0}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td><td>{9:dd-MMM-yyyy}</td><td>{10:#,##0}</td><td>{11:dd-MMM-yyyy}</td><td>{12}</td></tr>", dr.Item("Insp. Lot"), dr.Item("Sample size"), dr.Item("Purch.Doc."), dr.Item("Item"), dr.Item("Cust PO No"), dr.Item("Vendor Name"), dr.Item("Material"), dr.Item("Material desc"), dr.Item("SBU"), dr.Item("Confirmed ETD"), dr.Item("Quantity"), dr.Item("startdate"), dr.Item("inspector")))
-            sbInternal.Append(String.Format("<tr><td>{0}</td><td>{1:#,##0}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td><td>{9:dd-MMM-yyyy}</td><td>{10:#,##0}</td><td>{11:dd-MMM-yyyy}</td><td>{12}</td></tr>", dr.Item("Insp. Lot"), dr.Item("Sample size"), dr.Item("Purch.Doc."), dr.Item("Item"), dr.Item("Cust PO No"), dr.Item("Vendor Name"), dr.Item("Material"), dr.Item("Material desc"), dr.Item("SBU"), dr.Item("Confirmed ETD"), dr.Item("Quantity"), InspectionDate, dr.Item("inspector")))
+            sbInternal.Append(String.Format("<tr><td>{0}</td><td>{1:#,##0}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td><td>{9:dd-MMM-yyyy}</td><td>{10:#,##0}</td><td>{11:dd-MMM-yyyy}</td><td>{12}</td><td>{13}</td><td>{14}</td></tr>", dr.Item("Insp. Lot"), dr.Item("Sample size"), dr.Item("Purch.Doc."), dr.Item("Item"), dr.Item("Cust PO No"), dr.Item("Vendor Name"), dr.Item("Material"), dr.Item("Material desc"), dr.Item("SBU"), dr.Item("Confirmed ETD"), dr.Item("Quantity"), InspectionDate, dr.Item("inspector"), dr.Item("City"), dr.Item("Sold To Party Name")))
         Next
         sbInternal.Append("</table> ")
         sbInternal.Append("<p> Best Regards,<br>WONG Tracy</br></html>")
