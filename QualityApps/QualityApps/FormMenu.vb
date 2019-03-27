@@ -150,7 +150,7 @@ Public Class FormMenu
         ReportActivityLogToolStripMenuItem.Visible = User.can("View Report Activity Log")
         OTMToolStripMenuItem.Visible = User.can("View OTM")
         ActivityToolStripMenuItem.Visible = User.can("View Master")
-
+        ReportAcitivtyLogAllDataToolStripMenuItem.Visible = User.can("View Activity Log All Data")
 
     End Sub
     Private Sub ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -188,4 +188,11 @@ Public Class FormMenu
     Private Sub ReportActivityLogToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportActivityLogToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub ReportAcitivtyLogAllDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportAcitivtyLogAllDataToolStripMenuItem.Click
+        Dim myform As New FormGenerateReportActivityLog(True)
+        myform.Show()
+    End Sub
+
+
 End Class

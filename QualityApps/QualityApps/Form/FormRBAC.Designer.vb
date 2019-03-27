@@ -44,6 +44,9 @@ Partial Class FormRBAC
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.ListBox3 = New System.Windows.Forms.ListBox()
+        Me.ListBox2 = New System.Windows.Forms.ListBox()
         Me.SuspendLayout()
         '
         'Button1
@@ -247,11 +250,39 @@ Partial Class FormRBAC
         Me.ListBox1.Size = New System.Drawing.Size(153, 82)
         Me.ListBox1.TabIndex = 25
         '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(311, 108)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(153, 29)
+        Me.Button7.TabIndex = 33
+        Me.Button7.Text = "Show Role && Permission"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'ListBox3
+        '
+        Me.ListBox3.FormattingEnabled = True
+        Me.ListBox3.Location = New System.Drawing.Point(470, 12)
+        Me.ListBox3.Name = "ListBox3"
+        Me.ListBox3.Size = New System.Drawing.Size(153, 82)
+        Me.ListBox3.TabIndex = 32
+        '
+        'ListBox2
+        '
+        Me.ListBox2.FormattingEnabled = True
+        Me.ListBox2.Location = New System.Drawing.Point(311, 12)
+        Me.ListBox2.Name = "ListBox2"
+        Me.ListBox2.Size = New System.Drawing.Size(153, 82)
+        Me.ListBox2.TabIndex = 31
+        '
         'FormRBAC
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(635, 486)
+        Me.Controls.Add(Me.Button7)
+        Me.Controls.Add(Me.ListBox3)
+        Me.Controls.Add(Me.ListBox2)
         Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
@@ -302,4 +333,7 @@ Partial Class FormRBAC
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents Button6 As System.Windows.Forms.Button
     Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
+    Friend WithEvents Button7 As System.Windows.Forms.Button
+    Friend WithEvents ListBox3 As System.Windows.Forms.ListBox
+    Friend WithEvents ListBox2 As System.Windows.Forms.ListBox
 End Class

@@ -7,6 +7,19 @@ Public Class FormGenerateReportActivityLog
     Private SaveFileDialog1 As New SaveFileDialog
     Dim myController As New ActivityLogController
     Private myIdentity As UserController = User.getIdentity
+    Private ViewAllData As Boolean = False
+    Public Sub New(ByVal ViewAllData As Boolean)
+        InitializeComponent()
+        Me.ViewAllData = ViewAllData
+    End Sub
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
 
     Public Shared Function getInstance()
         If myForm Is Nothing Then
@@ -20,7 +33,13 @@ Public Class FormGenerateReportActivityLog
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         myController = New ActivityLogController
         SaveFileDialog1.FileName = String.Format("ActivityLog-{0:yyyyMMdd}.xlsx", Date.Today)
-        Dim criteria = String.Format(" where u.userid in (select quality.getsubordinate('{0}')) and activitydate >= '{1:yyyy-MM-dd}' and activitydate <= '{2:yyyy-MM-dd}'", myIdentity.userid.ToLower, DateTimePicker1.Value.Date, DateTimePicker2.Value.Date)
+        Dim Criteria As String = String.Empty
+        If User.can("View Activity Log All Data") And ViewAllData Then
+            Criteria = String.Format(" where activitydate >= '{0:yyyy-MM-dd}' and activitydate <= '{1:yyyy-MM-dd}'", DateTimePicker1.Value.Date, DateTimePicker2.Value.Date)
+        Else
+            Criteria = String.Format(" where u.userid in (select quality.getsubordinate('{0}')) and activitydate >= '{1:yyyy-MM-dd}' and activitydate <= '{2:yyyy-MM-dd}'", myIdentity.userid.ToLower, DateTimePicker1.Value.Date, DateTimePicker2.Value.Date)
+        End If
+
         If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
             Dim myReport As ExportToExcelFile = New ExportToExcelFile(Me, myController.GetSQLSTRReport(criteria), IO.Path.GetDirectoryName(SaveFileDialog1.FileName), IO.Path.GetFileName(SaveFileDialog1.FileName), AddressOf FormatReport, AddressOf PivotCallback, 2, "\templates\activitylog.xltx")
             myReport.Run(Me, New EventArgs)
@@ -38,6 +57,7 @@ Public Class FormGenerateReportActivityLog
         owb.Worksheets(2).select()
         Dim osheet = owb.Worksheets(2)
         Dim orange = osheet.Range("A2")
+
         If osheet.cells(2, 2).text.ToString = "" Then
             Err.Raise(100, Description:="Data not available.")
         End If
@@ -47,11 +67,16 @@ Public Class FormGenerateReportActivityLog
 
         owb.Worksheets(1).select()
         osheet = owb.Worksheets(1)
+
         osheet.PivotTables("PivotTable1").ChangePivotCache(owb.PivotCaches.Create(Excel.XlPivotTableSourceType.xlDatabase, SourceData:="db"))
         'oXl.Run("ShowFG")
+        Threading.Thread.Sleep(100)
         osheet.PivotTables("PivotTable1").PivotCache.Refresh()
+        Threading.Thread.Sleep(100)
         osheet.pivottables("PivotTable1").SaveData = True
+        Threading.Thread.Sleep(100)
         owb.RefreshAll()
+        Threading.Thread.Sleep(100)
     End Sub
 
 End Class

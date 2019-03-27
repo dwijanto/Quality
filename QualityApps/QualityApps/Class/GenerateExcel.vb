@@ -127,9 +127,13 @@ Public Class GenerateExcel
             .PatternTintAndShade = 0
         End With
 
+
+        Dim strdata As String = osheet.UsedRange.Address
+        Dim maX1 As Integer = CLng(Mid(strdata, InStrRev(strdata, "$")))
+
         'Data Validation For Date
         osheet.Columns("R:R").Validation.Delete()
-        With osheet.Range("R2").Validation
+        With osheet.Range("R2:R" & maX1).Validation
             .Add(Type:=Excel.XlDVType.xlValidateDate, AlertStyle:=Excel.XlDVAlertStyle.xlValidAlertStop, Operator:=Excel.XlFormatConditionOperator.xlGreaterEqual, Formula1:=String.Format("{0:MM/dd/yyyy}", Today.Date.AddDays(1)))
             .IgnoreBlank = True
             .InCellDropdown = True
@@ -141,13 +145,13 @@ Public Class GenerateExcel
             .ShowError = True
         End With
 
-        osheet.Range("R2").Copy()
+        'osheet.Range("R2").Copy()
 
-        Dim strdata As String = osheet.UsedRange.Address
-        Dim maX1 As Integer = CLng(Mid(strdata, InStrRev(strdata, "$")))
-        'osheet.Range(osheet.Range("R2"), osheet.Range("R2").End(Excel.XlDirection.xlDown)).Select()
-        osheet.Range(osheet.Cells(2, 18), osheet.Cells(maX1, 18)).Select()
-        osheet.Paste()
+        'Dim strdata As String = osheet.UsedRange.Address
+        'Dim maX1 As Integer = CLng(Mid(strdata, InStrRev(strdata, "$")))
+        ''osheet.Range(osheet.Range("R2"), osheet.Range("R2").End(Excel.XlDirection.xlDown)).Select()
+        'osheet.Range(osheet.Cells(2, 18), osheet.Cells(maX1, 18)).Select()
+        'osheet.Paste()
 
         osheet.Range("T:U").Locked = False
         With osheet.Columns("T:U").interior
@@ -160,7 +164,8 @@ Public Class GenerateExcel
 
         'Data Validation For Date
         osheet.Columns("U:U").Validation.Delete()
-        With osheet.Range("U2").Validation
+        'With osheet.Range(osheet.Cells(2, 21), osheet.Cells(maX1, 21)).Validation
+        With osheet.Range("U2:U" & maX1).Validation
             .Add(Type:=Excel.XlDVType.xlValidateDate, AlertStyle:=Excel.XlDVAlertStyle.xlValidAlertStop, Operator:=Excel.XlFormatConditionOperator.xlGreaterEqual, Formula1:=String.Format("{0:MM/dd/yyyy}", CDate("2010-01-01")))
             .IgnoreBlank = True
             .InCellDropdown = True
@@ -172,9 +177,9 @@ Public Class GenerateExcel
             .ShowError = True
         End With
 
-        osheet.Range("U2").Copy()
-        osheet.Range(osheet.Cells(2, 21), osheet.Cells(maX1, 21)).Select()
-        osheet.Paste()
+        'osheet.Range("U2").Copy()
+        'osheet.Range(osheet.Cells(2, 21), osheet.Cells(maX1, 21)).Select()
+        'osheet.Paste()
 
         osheet.Columns("T:T").ColumnWidth = 40
         osheet.Columns("N:N").NumberFormat = "dd-MMM-yyyy"

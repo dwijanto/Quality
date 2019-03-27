@@ -42,7 +42,7 @@ Public Class FormActivityLog
         If checkbox1.Checked Then
             daterange = String.Format("activitydate >= '{0:yyyy-MM-dd}' and activitydate <= '{1:yyyy-MM-dd}' and ", dtPicker1.Value, dtPicker2.Value)
         End If
- 
+
 
         'criteria = String.Format(" where {0} lower(u.userid) = '{1}'", daterange, myIdentity.userid.ToLower)
         criteria = String.Format(" where {0} u.userid in (select quality.getsubordinate('{1}'))", daterange, myIdentity.userid.ToLower)

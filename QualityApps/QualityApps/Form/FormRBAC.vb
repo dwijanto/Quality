@@ -170,4 +170,18 @@ Public Class FormRBAC
             ListBox1.Items.Add(a.rolename)
         Next
     End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        Dim myrole As List(Of Item) = myRBAC.getItems(TypeEnum.TYPE_ROLE)
+        ListBox2.Items.Clear()
+        For Each a In myrole
+            ListBox2.Items.Add(a.name)
+        Next
+
+        Dim mypermission As List(Of Item) = myRBAC.getItems(TypeEnum.TYPE_PERMISSION)
+        ListBox3.Items.Clear()
+        For Each a In mypermission
+            ListBox3.Items.Add(a.name)
+        Next
+    End Sub
 End Class

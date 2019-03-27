@@ -37,6 +37,7 @@ Partial Class FormMenu
         Me.ActivityLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CreateActivityLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportActivityLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportAcitivtyLogAllDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MasterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VendorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AnnouncementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -155,7 +156,7 @@ Partial Class FormMenu
         '
         'ActivityLogToolStripMenuItem
         '
-        Me.ActivityLogToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CreateActivityLogToolStripMenuItem, Me.ReportActivityLogToolStripMenuItem})
+        Me.ActivityLogToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CreateActivityLogToolStripMenuItem, Me.ReportActivityLogToolStripMenuItem, Me.ReportAcitivtyLogAllDataToolStripMenuItem})
         Me.ActivityLogToolStripMenuItem.Name = "ActivityLogToolStripMenuItem"
         Me.ActivityLogToolStripMenuItem.Size = New System.Drawing.Size(82, 20)
         Me.ActivityLogToolStripMenuItem.Text = "Activity Log"
@@ -163,16 +164,22 @@ Partial Class FormMenu
         'CreateActivityLogToolStripMenuItem
         '
         Me.CreateActivityLogToolStripMenuItem.Name = "CreateActivityLogToolStripMenuItem"
-        Me.CreateActivityLogToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
+        Me.CreateActivityLogToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.CreateActivityLogToolStripMenuItem.Tag = "FormActivityLog"
         Me.CreateActivityLogToolStripMenuItem.Text = "Create Activity Log"
         '
         'ReportActivityLogToolStripMenuItem
         '
         Me.ReportActivityLogToolStripMenuItem.Name = "ReportActivityLogToolStripMenuItem"
-        Me.ReportActivityLogToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
+        Me.ReportActivityLogToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.ReportActivityLogToolStripMenuItem.Tag = "FormGenerateReportActivityLog"
         Me.ReportActivityLogToolStripMenuItem.Text = "Report Activity Log"
+        '
+        'ReportAcitivtyLogAllDataToolStripMenuItem
+        '
+        Me.ReportAcitivtyLogAllDataToolStripMenuItem.Name = "ReportAcitivtyLogAllDataToolStripMenuItem"
+        Me.ReportAcitivtyLogAllDataToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.ReportAcitivtyLogAllDataToolStripMenuItem.Text = "Report Acitivty Log All Data"
         '
         'MasterToolStripMenuItem
         '
@@ -304,5 +311,6 @@ Partial Class FormMenu
     Friend WithEvents GenerateCSVToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ActivityToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents VendorAssignmentQEUserToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ReportAcitivtyLogAllDataToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

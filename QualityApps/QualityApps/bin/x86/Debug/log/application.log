@@ -63,3 +63,6 @@
 2018-11-30 05:18:01.981 PM	doWork	--------Start----------
 2018-11-30 05:18:02.004 PM	doWork	Generate Report.
 2018-11-30 05:18:41.395 PM	doWork	--------End----------
+2019-03-27 03:48:35.736 PM	GenerateReportWithKey	General ODBC Errorc:\junk
+2019-03-27 03:57:11.765 PM	GenerateReportWithKey	Cannot access '20190327-10040640.xlsx'.c:\junk\20190327-10040640
+2019-03-27 03:58:43.475 PM	GenerateReportWithKey	General ODBC Errorc:\junk
