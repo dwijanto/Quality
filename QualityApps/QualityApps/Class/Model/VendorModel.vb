@@ -14,7 +14,7 @@ Public Class VendorModel
 
     Public ReadOnly Property FilterField
         Get
-            Return "vendorname like '%{0}%'"
+            Return "vendorcode like '%{0}%' or vendorname like '%{0}%' or email like '%{0}%' or groupnumber like '%{0}%' or location like '%{0}%' or sp like '%{0}%' or spemail like '%{0}%' or phone like '%{0}%' or address like '%{0}%'"
         End Get
     End Property
 
@@ -26,7 +26,7 @@ Public Class VendorModel
         Dim sqlstr As String = String.Empty
         Using conn As NpgsqlConnection = myadapter.getConnection
             conn.Open()
-            sqlstr = String.Format("select * from {0} u order by {1}", tablename, sortField)
+            sqlstr = String.Format("select vendorcode::text,vendorname,email,groupnumber::text,location,sp,spemail,phone,copytosp,address from {0} u order by {1}", tablename, sortField)
 
             dataAdapter.SelectCommand = myadapter.getCommandObject(sqlstr, conn)
             dataAdapter.SelectCommand.CommandType = CommandType.Text

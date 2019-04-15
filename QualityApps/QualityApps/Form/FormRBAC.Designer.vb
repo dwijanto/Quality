@@ -47,6 +47,10 @@ Partial Class FormRBAC
         Me.Button7 = New System.Windows.Forms.Button()
         Me.ListBox3 = New System.Windows.Forms.ListBox()
         Me.ListBox2 = New System.Windows.Forms.ListBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -226,7 +230,7 @@ Partial Class FormRBAC
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(12, 396)
+        Me.Button5.Location = New System.Drawing.Point(642, 12)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(79, 48)
         Me.Button5.TabIndex = 23
@@ -275,11 +279,42 @@ Partial Class FormRBAC
         Me.ListBox2.Size = New System.Drawing.Size(153, 82)
         Me.ListBox2.TabIndex = 31
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AllowUserToOrderColumns = True
+        Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.DataGridView1.ColumnHeadersHeight = 35
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2})
+        Me.DataGridView1.Location = New System.Drawing.Point(470, 108)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.Size = New System.Drawing.Size(422, 166)
+        Me.DataGridView1.TabIndex = 34
+        '
+        'Column1
+        '
+        Me.Column1.DataPropertyName = "parent"
+        Me.Column1.HeaderText = "Parent"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 150
+        '
+        'Column2
+        '
+        Me.Column2.DataPropertyName = "child"
+        Me.Column2.HeaderText = "Child"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Width = 200
+        '
         'FormRBAC
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(635, 486)
+        Me.ClientSize = New System.Drawing.Size(980, 486)
+        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.ListBox3)
         Me.Controls.Add(Me.ListBox2)
@@ -307,6 +342,7 @@ Partial Class FormRBAC
         Me.Controls.Add(Me.Button1)
         Me.Name = "FormRBAC"
         Me.Text = "FormRBAC"
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -336,4 +372,7 @@ Partial Class FormRBAC
     Friend WithEvents Button7 As System.Windows.Forms.Button
     Friend WithEvents ListBox3 As System.Windows.Forms.ListBox
     Friend WithEvents ListBox2 As System.Windows.Forms.ListBox
+    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

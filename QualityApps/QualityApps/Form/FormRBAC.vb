@@ -2,6 +2,8 @@
 Public Class FormRBAC
     Implements INotifyPropertyChanged
 
+    Dim myAdapter As PostgreSQLDBAdapter = PostgreSQLDBAdapter.getInstance
+
     Public Event PropertyChanged(sender As Object, e As PropertyChangedEventArgs) Implements INotifyPropertyChanged.PropertyChanged
 
     Public Property ItemType As Integer
@@ -183,5 +185,16 @@ Public Class FormRBAC
         For Each a In mypermission
             ListBox3.Items.Add(a.name)
         Next
+
+        Dim ds As New DataSet
+        myAdapter.GetDataset("select * from quality.auth_item_child;", ds)
+        Dim bs As New BindingSource
+        bs.DataSource = ds.Tables(0)
+
+        DataGridView1.DataSource = bs
+
+
     End Sub
+
+
 End Class

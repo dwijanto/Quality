@@ -50,6 +50,7 @@ Partial Class FormMenu
         Me.OTMToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImportDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerateCSVToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FirstCmmfToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
@@ -183,7 +184,7 @@ Partial Class FormMenu
         '
         'MasterToolStripMenuItem
         '
-        Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VendorToolStripMenuItem, Me.AnnouncementToolStripMenuItem, Me.ParameterToolStripMenuItem, Me.UserToolStripMenuItem, Me.ActivityToolStripMenuItem, Me.VendorAssignmentQEUserToolStripMenuItem})
+        Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VendorToolStripMenuItem, Me.AnnouncementToolStripMenuItem, Me.ParameterToolStripMenuItem, Me.UserToolStripMenuItem, Me.ActivityToolStripMenuItem, Me.VendorAssignmentQEUserToolStripMenuItem, Me.FirstCmmfToolStripMenuItem})
         Me.MasterToolStripMenuItem.Name = "MasterToolStripMenuItem"
         Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
         Me.MasterToolStripMenuItem.Text = "Master"
@@ -264,6 +265,13 @@ Partial Class FormMenu
         Me.GenerateCSVToolStripMenuItem.Tag = "FormGenerateCSVOTM"
         Me.GenerateCSVToolStripMenuItem.Text = "Generate CSV"
         '
+        'FirstCmmfToolStripMenuItem
+        '
+        Me.FirstCmmfToolStripMenuItem.Name = "FirstCmmfToolStripMenuItem"
+        Me.FirstCmmfToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.FirstCmmfToolStripMenuItem.Tag = "FormFirstCMMF"
+        Me.FirstCmmfToolStripMenuItem.Text = "First CMMF"
+        '
         'FormMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -312,5 +320,6 @@ Partial Class FormMenu
     Friend WithEvents ActivityToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents VendorAssignmentQEUserToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ReportAcitivtyLogAllDataToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents FirstCmmfToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

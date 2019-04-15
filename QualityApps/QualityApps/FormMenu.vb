@@ -138,7 +138,7 @@ Public Class FormMenu
         'Admin Function
         'MasterToolStripMenuItem.Visible = userinfo1.isAdmin
         AddHandler VendorAssignmentQEUserToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
-
+        AddHandler FirstCmmfToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
 
         Dim identity As UserController = User.getIdentity
         TransactionToolStripMenuItem.Visible = User.can("View Actions")
@@ -195,4 +195,7 @@ Public Class FormMenu
     End Sub
 
 
+    Private Sub FirstCmmfToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FirstCmmfToolStripMenuItem.Click
+
+    End Sub
 End Class

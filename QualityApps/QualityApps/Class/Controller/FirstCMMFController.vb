@@ -1,14 +1,10 @@
-﻿Public Class ActivityLogController
+﻿Public Class FirstCMMFController
     Implements IController
     Implements IToolbarAction
 
-    Public Model As New ActivityLogModel
+    Public Model As New FirstCMMFModel
     Public BS As BindingSource
-    Public BS2 As BindingSource
-    Public DS As DataSet
-    Private VendorBS As BindingSource
-    Private ActivityBS As BindingSource
-    Private TimeSessionBS As BindingSource
+    Dim DS As DataSet
 
     Public ReadOnly Property GetDataset As DataSet
         Get
@@ -21,56 +17,16 @@
         End Get
     End Property
 
-    Public ReadOnly Property GetVendorBS As BindingSource
-        Get
-            Return VendorBS
-        End Get
-    End Property
-
-    Public ReadOnly Property GetActivityBS As BindingSource
-        Get
-            Return ActivityBS
-        End Get
-    End Property
-    Public ReadOnly Property GetTimeSessionBS As BindingSource
-        Get
-            Return TimeSessionBS
-        End Get
-    End Property
-
-    Public Function GetSQLSTRReport(criteria) As String
-        Return Model.SQLSTRReport(criteria)
-    End Function
-
     Public Function loaddata() As Boolean Implements IController.loaddata
         Dim myret As Boolean = False
-        Model = New ActivityLogModel
+        Model = New FirstCMMFModel
         DS = New DataSet
         If Model.LoadData(DS) Then
+            Dim pk(0) As DataColumn
+            pk(0) = DS.Tables(0).Columns("cmmf")
+            DS.Tables(0).PrimaryKey = pk
             BS = New BindingSource
             BS.DataSource = DS.Tables(0)
-            myret = True
-        End If
-        Return myret
-    End Function
-
-    Public Function loaddata(criteria As String) As Boolean
-        Dim myret As Boolean = False
-        Model = New ActivityLogModel
-        DS = New DataSet
-        If Model.LoadData(DS, criteria) Then
-            BS = New BindingSource
-            BS.DataSource = DS.Tables(0)
-            BS2 = New BindingSource
-            bs2.DataSource = BS
-            bs2.DataMember = "hdrel"
-
-            VendorBS = New BindingSource
-            VendorBS.DataSource = DS.Tables("Vendor")
-            ActivityBS = New BindingSource
-            ActivityBS.DataSource = DS.Tables("Activity")
-            TimeSessionBS = New BindingSource
-            TimeSessionBS.DataSource = DS.Tables("TimeSession")
             myret = True
         End If
         Return myret
@@ -119,11 +75,7 @@
     Public Function GetCurrentRecord() As DataRowView Implements IToolbarAction.GetCurrentRecord
         Return BS.Current
     End Function
-    Public Function GetCurrentPosition() As Integer
-        Dim drv = BS.Current
-        BS.Find("id", drv.row.item("id"))
-        Return BS.Position
-    End Function
+
     Public Function GetNewRecord() As DataRowView Implements IToolbarAction.GetNewRecord
         Return BS.AddNew
     End Function

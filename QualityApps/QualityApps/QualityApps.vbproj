@@ -138,6 +138,7 @@
     <Compile Include="Class\Controller\ActivityLogController.vb" />
     <Compile Include="Class\Controller\ActivityMasterController.vb" />
     <Compile Include="Class\Controller\AnnouncementController.vb" />
+    <Compile Include="Class\Controller\FirstCMMFController.vb" />
     <Compile Include="Class\Controller\GenerateExcelController.vb" />
     <Compile Include="Class\Controller\InspectionController.vb" />
     <Compile Include="Class\Controller\OTMController.vb" />
@@ -163,6 +164,7 @@
     <Compile Include="Class\Model\ActivityLogModel.vb" />
     <Compile Include="Class\Model\ActivityMasterModel.vb" />
     <Compile Include="Class\Model\AnnouncementModel.vb" />
+    <Compile Include="Class\Model\FirstCMMFModel.vb" />
     <Compile Include="Class\Model\GenerateExcelModel.vb" />
     <Compile Include="Class\Model\InspectionModel.vb" />
     <Compile Include="Class\Model\SendEmailModel.vb" />
@@ -257,6 +259,12 @@
       <DependentUpon>FormAutoTask.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\FormAutoTask.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormFirstCMMF.Designer.vb">
+      <DependentUpon>FormFirstCMMF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormFirstCMMF.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FormGenerateCSVOTM.Designer.vb">
@@ -429,6 +437,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormAutoTask.resx">
       <DependentUpon>FormAutoTask.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormFirstCMMF.resx">
+      <DependentUpon>FormFirstCMMF.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormGenerateCSVOTM.resx">
       <DependentUpon>FormGenerateCSVOTM.vb</DependentUpon>
