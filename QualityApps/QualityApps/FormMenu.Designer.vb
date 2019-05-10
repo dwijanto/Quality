@@ -45,12 +45,12 @@ Partial Class FormMenu
         Me.UserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ActivityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VendorAssignmentQEUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FirstCmmfToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdminToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RBACToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OTMToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImportDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerateCSVToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FirstCmmfToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
@@ -231,6 +231,13 @@ Partial Class FormMenu
         Me.VendorAssignmentQEUserToolStripMenuItem.Tag = "FormVendorQEAssignment"
         Me.VendorAssignmentQEUserToolStripMenuItem.Text = "Vendor Assignment QE User"
         '
+        'FirstCmmfToolStripMenuItem
+        '
+        Me.FirstCmmfToolStripMenuItem.Name = "FirstCmmfToolStripMenuItem"
+        Me.FirstCmmfToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.FirstCmmfToolStripMenuItem.Tag = "FormFirstCMMF"
+        Me.FirstCmmfToolStripMenuItem.Text = "First CMMF"
+        '
         'AdminToolStripMenuItem
         '
         Me.AdminToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RBACToolStripMenuItem})
@@ -264,13 +271,6 @@ Partial Class FormMenu
         Me.GenerateCSVToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
         Me.GenerateCSVToolStripMenuItem.Tag = "FormGenerateCSVOTM"
         Me.GenerateCSVToolStripMenuItem.Text = "Generate CSV"
-        '
-        'FirstCmmfToolStripMenuItem
-        '
-        Me.FirstCmmfToolStripMenuItem.Name = "FirstCmmfToolStripMenuItem"
-        Me.FirstCmmfToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
-        Me.FirstCmmfToolStripMenuItem.Tag = "FormFirstCMMF"
-        Me.FirstCmmfToolStripMenuItem.Text = "First CMMF"
         '
         'FormMenu
         '

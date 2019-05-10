@@ -143,7 +143,7 @@ Public Class FormMenu
         Dim identity As UserController = User.getIdentity
         TransactionToolStripMenuItem.Visible = User.can("View Actions")
         ReportsToolStripMenuItem.Visible = User.can("View Scheduling")
-        MasterToolStripMenuItem.Visible = User.can("View Master")
+        MasterToolStripMenuItem.Visible = User.can("View Master") Or User.can("View Master Vendor")
         AdminToolStripMenuItem.Visible = User.can("View Admin")
         ActivityLogToolStripMenuItem.Visible = User.can("View Activity Log")
         CreateActivityLogToolStripMenuItem.Visible = User.can("View Create Activity Log")
@@ -151,6 +151,13 @@ Public Class FormMenu
         OTMToolStripMenuItem.Visible = User.can("View OTM")
         ActivityToolStripMenuItem.Visible = User.can("View Master")
         ReportAcitivtyLogAllDataToolStripMenuItem.Visible = User.can("View Activity Log All Data")
+        VendorToolStripMenuItem.Visible = User.can("View Master") Or User.can("View Master Vendor")
+        AnnouncementToolStripMenuItem.Visible = User.can("View Master")
+        ParameterToolStripMenuItem.Visible = User.can("View Master")
+        UserToolStripMenuItem.Visible = User.can("View Master")
+        ActivityToolStripMenuItem.Visible = User.can("View Master")
+        VendorAssignmentQEUserToolStripMenuItem.Visible = User.can("View Master")
+        FirstCmmfToolStripMenuItem.Visible = User.can("View Master")
 
     End Sub
     Private Sub ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -196,6 +203,30 @@ Public Class FormMenu
 
 
     Private Sub FirstCmmfToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FirstCmmfToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub VendorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VendorToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub AnnouncementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AnnouncementToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ParameterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ParameterToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub UserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UserToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ActivityToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ActivityToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub VendorAssignmentQEUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VendorAssignmentQEUserToolStripMenuItem.Click
 
     End Sub
 End Class
