@@ -127,7 +127,7 @@ Public Class ParamAdapter
         myparam(0) = New NpgsqlParameter("mydate", NpgsqlTypes.NpgsqlDbType.Date, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, mydate)
         If myAdapter.GetDataset(sqlstr, ds, myparam) Then
             For Each dr In ds.Tables(0).Rows
-                If sb.Length > 1 Then sb.Append("{0}", "<br>")
+                If sb.Length > 1 Then sb.Append(String.Format("{0}", "<br>"))
                 sb.Append(String.Format("{0}", dr.item(0)))
             Next
         End If

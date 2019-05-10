@@ -44,8 +44,13 @@ Public Class ADPrincipalContext
             myInfo.DisplayName = userinfo.Properties("displayname")(0).ToString
             myInfo.UserName = myInfo.DisplayName
             myInfo.Email = userinfo.Properties("mail")(0).ToString
-            myInfo.Company = userinfo.Properties("company")(0).ToString
-            myInfo.Title = userinfo.Properties("title")(0).ToString
+            If userinfo.Properties("company").Count > 0 Then
+                myInfo.Company = userinfo.Properties("company")(0).ToString
+            End If
+            If userinfo.Properties("title").Count > 0 Then
+                myInfo.Title = userinfo.Properties("title")(0).ToString
+            End If
+
             myInfo.Surename = userinfo.Properties("sn")(0).ToString
             myInfo.GivenName = userinfo.Properties("givenname")(0).ToString
             If userinfo.Properties("employeenumber").Count > 0 Then
@@ -55,8 +60,11 @@ Public Class ADPrincipalContext
                 myInfo.TelephoneNumber = userinfo.Properties("telephonenumber")(0).ToString
             End If
 
+            If userinfo.Properties("department").Count > 0 Then
+                myInfo.Department = userinfo.Properties("department")(0).ToString
+            End If
 
-            myInfo.Department = userinfo.Properties("department")(0).ToString
+
             myInfo.Country = userinfo.Properties("co")(0).ToString
             If userinfo.Properties("l").Count > 0 Then
                 myInfo.Location = userinfo.Properties("l")(0).ToString
@@ -87,7 +95,12 @@ Public Class ADPrincipalContext
                         myInfo.TelephoneNumber = mgrInfo.Properties("telephonenumber")(0).ToString
                     End If
                     myInfo.Department = mgrInfo.Properties("department")(0).ToString
-                    myInfo.Country = mgrInfo.Properties("co")(0).ToString
+
+                    If mgrInfo.Properties("co").Count > 0 Then
+                        myInfo.Country = mgrInfo.Properties("co")(0).ToString
+                    End If
+
+
                     If mgrInfo.Properties("l").Count > 0 Then
                         myInfo.Location = mgrInfo.Properties("l")(0).ToString
                     End If
