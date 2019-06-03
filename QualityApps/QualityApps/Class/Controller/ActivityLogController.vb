@@ -61,9 +61,9 @@
         If Model.LoadData(DS, criteria) Then
             BS = New BindingSource
             BS.DataSource = DS.Tables(0)
-            BS2 = New BindingSource
-            bs2.DataSource = BS
-            bs2.DataMember = "hdrel"
+            'BS2 = New BindingSource
+            'bs2.DataSource = BS
+            'bs2.DataMember = "hdrel"
 
             VendorBS = New BindingSource
             VendorBS.DataSource = DS.Tables("Vendor")
@@ -87,7 +87,12 @@
             Try
                 If save(mye) Then
                     DS.Merge(ds2)
-                    DS.AcceptChanges()
+                    For Each dt As DataTable In ds2.Tables
+                        If dt.Rows.Count > 0 Then
+                            DS.Tables(dt.TableName).AcceptChanges()
+                        End If
+                    Next
+                    'DS.AcceptChanges()
                     MessageBox.Show("Saved.")
                     myret = True
                 End If

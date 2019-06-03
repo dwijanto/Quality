@@ -229,4 +229,8 @@ Public Class FormMenu
     Private Sub VendorAssignmentQEUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VendorAssignmentQEUserToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub CreateActivityLogToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateActivityLogToolStripMenuItem.Click
+
+    End Sub
 End Class

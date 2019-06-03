@@ -224,23 +224,28 @@ Public Class DbManager
         End If
 
 
-        Dim sqlstr = String.Format("select * from {0} where userid = :userid and item_name = :rolename", assignmentTable)
+        Dim sqlstr = String.Format("select * from {0} where user_id::integer = :userid and item_name = :rolename", assignmentTable)
 
         'Dim dbparams As New List(Of IDataParameter)
         'dbparams.Add(dbadapter1.getParam("userid", userid, DbType.String))
         'dbparams.Add(dbadapter1.getParam("rolename", rolename, DbType.String))
         Dim params(1) As NpgsqlParameter
+        'params(0) = New NpgsqlParameter("userid", userid)
         params(0) = New NpgsqlParameter("userid", userid)
-        params(1) = New NpgsqlParameter("userid", rolename)
+        params(1) = New NpgsqlParameter("rolename", rolename)
 
         Dim ds As New DataSet
         If Not dbadapter1.GetDataset(sqlstr, ds, params) Then
             Return Nothing
         End If
-
-        Return New Assignment With {.userid = ds.Tables(0).Rows(0).Item("user_id"),
-                                    .rolename = ds.Tables(0).Rows(0).Item("rolename"),
-                                    .cretedAt = ds.Tables(0).Rows(0).Item("created_at")}
+        If ds.Tables(0).Rows.Count > 0 Then
+            Return New Assignment With {.userid = ds.Tables(0).Rows(0).Item("user_id"),
+                                   .rolename = ds.Tables(0).Rows(0).Item("item_name"),
+                                   .cretedAt = ds.Tables(0).Rows(0).Item("created_at")}
+        Else
+            Return Nothing
+        End If
+       
 
     End Function
 

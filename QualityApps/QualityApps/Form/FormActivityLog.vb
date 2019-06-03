@@ -1,6 +1,7 @@
 ﻿Imports System.Threading
 
 Public Class FormActivityLog
+    Dim myRBAC As DbManager = New DbManager
     Private Shared myform As FormActivityLog
     Dim myController As ActivityLogController
     Dim criteria As String = String.Empty
@@ -9,6 +10,8 @@ Public Class FormActivityLog
     Private lbl1 As New Label
     Private WithEvents checkbox1 As New CheckBox
     Private myIdentity As UserController = User.getIdentity
+
+
 
     Public Shared Function getInstance()
         If myform Is Nothing Then
@@ -39,13 +42,25 @@ Public Class FormActivityLog
         myController = New ActivityLogController
 
         Dim daterange As String = String.Empty
+        Dim conjunction As String = String.Empty
         If checkbox1.Checked Then
-            daterange = String.Format("activitydate >= '{0:yyyy-MM-dd}' and activitydate <= '{1:yyyy-MM-dd}' and ", dtPicker1.Value, dtPicker2.Value)
+            daterange = String.Format("activitydate >= '{0:yyyy-MM-dd}' and activitydate <= '{1:yyyy-MM-dd}'", dtPicker1.Value, dtPicker2.Value)
+            conjunction = "and"
         End If
 
 
-        'criteria = String.Format(" where {0} lower(u.userid) = '{1}'", daterange, myIdentity.userid.ToLower)
-        criteria = String.Format(" where {0} u.userid in (select quality.getsubordinate('{1}'))", daterange, myIdentity.userid.ToLower)
+        If Not IsNothing(myRBAC.getAssignment("Key User", User.getId)) Then ' is Key User
+            criteria = String.Format("where {0}", daterange)
+        Else
+            criteria = String.Format(" where {0} {1} u.userid in (select quality.getsubordinate('{2}'))", daterange, conjunction, myIdentity.userid.ToLower)
+        End If
+
+        'If User.can("View Activity Log All Data") Then
+        '    criteria = String.Format("where {0}", daterange)
+        'Else
+        '    criteria = String.Format(" where {0} {1} u.userid in (select quality.getsubordinate('{2}'))", daterange, conjunction, myIdentity.userid.ToLower)
+        'End If
+
         Try
             ProgressReport(1, "Loading...Please wait.")
             If myController.loaddata(criteria) Then
@@ -72,21 +87,22 @@ Public Class FormActivityLog
                     DataGridView1.AutoGenerateColumns = False
                     DataGridView1.DataSource = myController.BS
 
-                   
+
 
                     UcUserInfo1.BindingObject()
             End Select
         End If
     End Sub
-
     Public Sub showTx(ByVal tx As TxEnum)
         If Not myThread.IsAlive Then
             Dim drv As DataRowView = Nothing
             Select Case tx
                 Case TxEnum.NewRecord
-                    drv = myController.GetNewRecord                   
+                    drv = myController.GetNewRecord
                     drv.Item("activitydate") = Today.Date
-                    drv.Item("userid") = myIdentity.userid                    
+                    drv.Item("postingdate") = Now
+                    drv.Item("userid") = myIdentity.userid
+                    drv.Item("username") = myIdentity.username
                 Case TxEnum.UpdateRecord
                     drv = myController.GetCurrentRecord
                 Case TxEnum.CopyRecord
@@ -100,6 +116,44 @@ Public Class FormActivityLog
                     drv.Item("activityid") = drv2.Item("activityid")
                     drv.Item("activityname") = drv2.Item("activityname")
                     drv.Item("timesessiondesc") = drv2.Item("timesessiondesc")
+                    drv.Item("userid") = drv2.Item("userid")
+                    drv.Item("remark") = drv2.Item("remark")
+            End Select
+            drv.Item("modifiedby") = myIdentity.userid
+
+            Dim myform = New DialogActivityLogNew(drv, myController.GetVendorBS, myController.GetActivityBS, myController.GetTimeSessionBS, myController.GetDataset)
+            RemoveHandler myform.RefreshInterface, AddressOf RefreshMYInterface
+            AddHandler myform.RefreshInterface, AddressOf RefreshMYInterface
+            If myform.ShowDialog() = Windows.Forms.DialogResult.Cancel Then
+                If drv.Row.RowState = DataRowState.Detached Or drv.Row.RowState = DataRowState.Added Then
+                    myController.RemoveAt(myController.GetCurrentPosition)
+                End If
+            End If
+        End If
+    End Sub
+
+    Public Sub showTxOld(ByVal tx As TxEnum)
+        If Not myThread.IsAlive Then
+            Dim drv As DataRowView = Nothing
+            Select Case tx
+                Case TxEnum.NewRecord
+                    drv = myController.GetNewRecord
+                    drv.Item("activitydate") = Today.Date
+                    drv.Item("userid") = myIdentity.userid
+                Case TxEnum.UpdateRecord
+                    drv = myController.GetCurrentRecord
+                Case TxEnum.CopyRecord
+                    Dim drv2 = myController.GetCurrentRecord
+                    drv = myController.GetNewRecord
+                    drv.Item("activitydate") = drv2.Item("activitydate")
+                    drv.Item("postingdate") = Today.Date
+                    drv.Item("timesession") = drv2.Item("timesession")
+                    drv.Item("vendorcode") = drv2.Item("vendorcode")
+                    drv.Item("vendorcodename") = drv2.Item("vendorcodename")
+                    drv.Item("projectname") = drv2.Item("projectname")
+                    drv.Item("activityid") = drv2.Item("activityid")
+                    drv.Item("activityname") = drv2.Item("activityname")
+                    'drv.Item("timesessiondesc") = drv2.Item("timesessiondesc")
                     drv.Item("userid") = drv2.Item("userid")
                     drv.Item("remark") = drv2.Item("remark")
             End Select
@@ -124,11 +178,41 @@ Public Class FormActivityLog
         If Not IsNothing(myController.GetCurrentRecord) Then
             If MessageBox.Show("Delete this record?", "Delete Record", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = DialogResult.OK Then
                 For Each drv As DataGridViewRow In DataGridView1.SelectedRows
-                    myController.RemoveAt(drv.Index)
+                    If Me.validate(drv) Then
+                        myController.RemoveAt(drv.Index)
+                    End If
+
+
                 Next
             End If
         End If
     End Sub
+
+    Public Overloads Function validate(dgvr As DataGridViewRow) As Boolean
+        Dim myret As Boolean = False
+        myController.BS.Position = dgvr.Index
+        Dim drv = myController.BS.Current
+        If IsNothing(myRBAC.getAssignment("Key User", User.getId)) Then
+            'Not Key User
+            Dim ActivityDate As Date = drv.Row.Item("activitydate")
+            drv.Row.RowError = ""
+            If ActivityDate.Month = Today.Month Then
+                myret = True
+            ElseIf ActivityDate.Month + 1 = Month(Today) Then
+                If Today.Date.Day <= myController.DS.Tables("Cutoff").Rows(0).Item("ivalue") Then
+                    myret = True
+                Else
+                    drv.Row.RowError = String.Format("This Activity date '{0:dd-MMM-yyyy}' has been closed. Cannot be deleted. Please contact Key User!", ActivityDate)
+                End If
+            Else
+                drv.Row.RowError = String.Format("This Activity date '{0:dd-MMM-yyyy}' has been closed. Cannot be deleted. Please contact Key User!", ActivityDate)
+            End If
+        Else
+            myret = True 'Key User
+        End If
+        Return myret
+
+    End Function
 
     Private Sub FormActivityLog_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Dim abc = myController.DS.GetChanges()
@@ -145,7 +229,7 @@ Public Class FormActivityLog
                 Case Windows.Forms.DialogResult.Cancel
                     e.Cancel = True
             End Select
-        End If       
+        End If
     End Sub
 
     Private Sub FormActivity_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -162,7 +246,7 @@ Public Class FormActivityLog
         End If
     End Sub
 
-    Private Sub RefreshToolStripButton4_Click(sender As Object, e As EventArgs) Handles RefreshToolStripButton.Click        
+    Private Sub RefreshToolStripButton4_Click(sender As Object, e As EventArgs) Handles RefreshToolStripButton.Click
         LoadData()
     End Sub
 
@@ -231,4 +315,6 @@ Public Class FormActivityLog
     Private Sub DataGridView1_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles DataGridView1.DataError
 
     End Sub
+
+
 End Class
