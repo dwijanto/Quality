@@ -45,6 +45,7 @@ Partial Class DialogActivityLogNew
         Me.Button2 = New System.Windows.Forms.Button()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -249,6 +250,17 @@ Partial Class DialogActivityLogNew
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Location = New System.Drawing.Point(103, 276)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.CheckBox2.Size = New System.Drawing.Size(75, 17)
+        Me.CheckBox2.TabIndex = 41
+        Me.CheckBox2.Text = "? In Office"
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        '
         'DialogActivityLogNew
         '
         Me.AcceptButton = Me.OK_Button
@@ -256,6 +268,7 @@ Partial Class DialogActivityLogNew
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(687, 409)
+        Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label2)
@@ -310,5 +323,6 @@ Partial Class DialogActivityLogNew
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
     Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
+    Friend WithEvents CheckBox2 As System.Windows.Forms.CheckBox
 
 End Class

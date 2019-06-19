@@ -139,6 +139,8 @@ Public Class FormMenu
         'MasterToolStripMenuItem.Visible = userinfo1.isAdmin
         AddHandler VendorAssignmentQEUserToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
         AddHandler FirstCmmfToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+        AddHandler MissingVendorToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+
 
         Dim identity As UserController = User.getIdentity
         TransactionToolStripMenuItem.Visible = User.can("View Actions")
@@ -192,9 +194,7 @@ Public Class FormMenu
     End Sub
 
   
-    Private Sub ReportActivityLogToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportActivityLogToolStripMenuItem.Click
 
-    End Sub
 
     Private Sub ReportAcitivtyLogAllDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportAcitivtyLogAllDataToolStripMenuItem.Click
         Dim myform As New FormGenerateReportActivityLog(True)
@@ -231,6 +231,11 @@ Public Class FormMenu
     End Sub
 
     Private Sub CreateActivityLogToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateActivityLogToolStripMenuItem.Click
+
+    End Sub
+
+
+    Private Sub MissingVendorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MissingVendorToolStripMenuItem.Click
 
     End Sub
 End Class

@@ -108,6 +108,7 @@ Public Class FormActivityLog
                 Case TxEnum.CopyRecord
                     Dim drv2 = myController.GetCurrentRecord
                     drv = myController.GetNewRecord
+                    drv.Item("username") = drv2.Item("username")
                     drv.Item("activitydate") = drv2.Item("activitydate")
                     drv.Item("timesession") = drv2.Item("timesession")
                     drv.Item("vendorcode") = drv2.Item("vendorcode")
@@ -115,7 +116,7 @@ Public Class FormActivityLog
                     drv.Item("projectname") = drv2.Item("projectname")
                     drv.Item("activityid") = drv2.Item("activityid")
                     drv.Item("activityname") = drv2.Item("activityname")
-                    drv.Item("timesessiondesc") = drv2.Item("timesessiondesc")
+                    'drv.Item("timesessiondesc") = drv2.Item("timesessiondesc")
                     drv.Item("userid") = drv2.Item("userid")
                     drv.Item("remark") = drv2.Item("remark")
             End Select
@@ -125,9 +126,10 @@ Public Class FormActivityLog
             RemoveHandler myform.RefreshInterface, AddressOf RefreshMYInterface
             AddHandler myform.RefreshInterface, AddressOf RefreshMYInterface
             If myform.ShowDialog() = Windows.Forms.DialogResult.Cancel Then
-                If drv.Row.RowState = DataRowState.Detached Or drv.Row.RowState = DataRowState.Added Then
-                    myController.RemoveAt(myController.GetCurrentPosition)
-                End If
+                'If drv.Row.RowState = DataRowState.Detached Or drv.Row.RowState = DataRowState.Added Then
+                '    myController.RemoveAt(myController.GetCurrentPosition)
+                'End If
+                DataGridView1.Invalidate()
             End If
         End If
     End Sub
@@ -280,10 +282,10 @@ Public Class FormActivityLog
         dtPicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         dtPicker2.Size = New Point(100, 20)
 
-        ToolStrip1.Items.Add(New ToolStripControlHost(checkbox1))
-        ToolStrip1.Items.Add(New ToolStripControlHost(dtPicker1))
-        ToolStrip1.Items.Add(New ToolStripControlHost(lbl1))
-        ToolStrip1.Items.Add(New ToolStripControlHost(dtPicker2))
+        ToolStrip1.Items.Insert(10, New ToolStripControlHost(checkbox1))
+        ToolStrip1.Items.Insert(11, New ToolStripControlHost(dtPicker1))
+        ToolStrip1.Items.Insert(12, New ToolStripControlHost(lbl1))
+        ToolStrip1.Items.Insert(13, New ToolStripControlHost(dtPicker2))
     End Sub
 
     Private Sub CopyToolStripButton_Click(sender As Object, e As EventArgs) Handles CopyToolStripButton.Click
@@ -317,4 +319,50 @@ Public Class FormActivityLog
     End Sub
 
 
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+        Dim myform As New DialogGenerateTemplate       
+        If myform.ShowDialog = Windows.Forms.DialogResult.OK Then
+            GenerateTemplate(myform.DateTimePicker1.Value)                     
+        End If
+    End Sub
+
+    Private Sub GenerateTemplate(ByVal selecteddate As Date)
+        Dim DS As New DataSet
+        Dim sqlstr = String.Format("select distinct activitydate from quality.logactivitytx where lower(userid) = '{0}' and activitydate >= '{1:yyyy-MM}-1' and activitydate <= '{1:yyyy-MM}-{2}'", myIdentity.userid.ToString.ToLower, selecteddate, Date.DaysInMonth(selecteddate.Year, selecteddate.Month))
+        Dim myCount As Integer
+        If myController.Model.getActivityDate(DS, sqlstr) Then
+            Dim pk(0) As DataColumn
+            pk(0) = DS.Tables(0).Columns("activitydate")
+            DS.Tables(0).PrimaryKey = pk
+
+            For i = 1 To Date.DaysInMonth(selecteddate.Year, selecteddate.Month)
+                Dim mydate As Date = CDate(String.Format("{0:yyyy-MM}-{1}", selecteddate, i))
+                If Not (mydate.DayOfWeek = DayOfWeek.Saturday Or mydate.DayOfWeek = DayOfWeek.Sunday) Then
+                    'find Existing, if not avail then create one
+                    Dim mykey(0)
+                    mykey(0) = mydate
+
+                    Dim myresult = DS.Tables(0).Rows.Find(mykey)
+                    If IsNothing(myresult) Then
+                        myCount += 1
+                        'Create New
+                        Dim drv As DataRowView = myController.BS.AddNew
+                        drv.Row.Item("userid") = myIdentity.userid
+                        drv.Row.Item("username") = myIdentity.username
+                        drv.Row.Item("activitydate") = mydate
+                        drv.EndEdit()
+                    End If
+
+                End If
+            Next
+            'Commit to DB
+        End If
+        DataGridView1.Invalidate()
+        ProgressReport(1, String.Format("{0} record(s) created.", mycount))
+        myController.save()
+    End Sub
+
+    Private Sub FormActivityLog_LostFocus(sender As Object, e As EventArgs) Handles Me.LostFocus
+
+    End Sub
 End Class

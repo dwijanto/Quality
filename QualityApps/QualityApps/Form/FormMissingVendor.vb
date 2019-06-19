@@ -1,22 +1,21 @@
 ﻿Imports System.Threading
-Public Class FormVendor
-    Private Shared myform As FormVendor
-    Dim myController As VendorController
+Public Class FormMissingVendor
+    Private Shared myform As FormMissingVendor
+    Dim myController As MissingVendorController
 
     Public Shared Function getInstance()
         If myform Is Nothing Then
-            myform = New FormVendor
+            myform = New FormMissingVendor
         ElseIf myform.IsDisposed Then
-            myform = New FormVendor
+            myform = New FormMissingVendor
         End If
         Return myform
     End Function
+
     Dim myThread As New System.Threading.Thread(AddressOf DoWork)
 
-    'Dim UserInfo1 As UserInfo = UserInfo.getInstance
-
     Dim drv As DataRowView
- 
+
 
 
     Public Sub New()
@@ -33,7 +32,7 @@ Public Class FormVendor
     End Sub
 
     Sub DoWork()
-        myController = New VendorController
+        myController = New MissingVendorController
         Try
             ProgressReport(1, "Loading...Please wait.")
             If myController.loaddata() Then
@@ -62,6 +61,7 @@ Public Class FormVendor
 
 
     Private Sub AddNewToolStripButton1_Click(sender As Object, e As EventArgs) Handles AddToolStripButton.Click
+        Me.Validate()
         drv = myController.GetNewRecord
         Me.drv.BeginEdit()
     End Sub
@@ -97,6 +97,7 @@ Public Class FormVendor
 
 
     Private Sub CommitToolStripButton3_Click(sender As Object, e As EventArgs) Handles CommitToolStripButton.Click
+
         Me.Validate()
         myController.save()
     End Sub
@@ -111,14 +112,7 @@ Public Class FormVendor
 
     End Sub
 
+    Private Sub DataGridView1_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles DataGridView1.DataError
 
-
-    Private Sub ToolStripTextBox1_Click(sender As Object, e As EventArgs) Handles ToolStripTextBox1.Click
-
-    End Sub
-
-    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
-        Dim myform As New FormVendorQEAssignment
-        myform.Show()
     End Sub
 End Class

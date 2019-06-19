@@ -141,6 +141,7 @@
     <Compile Include="Class\Controller\FirstCMMFController.vb" />
     <Compile Include="Class\Controller\GenerateExcelController.vb" />
     <Compile Include="Class\Controller\InspectionController.vb" />
+    <Compile Include="Class\Controller\MissingVendorController.vb" />
     <Compile Include="Class\Controller\OTMController.vb" />
     <Compile Include="Class\Controller\SendEmailController.vb" />
     <Compile Include="Class\Controller\UserController.vb" />
@@ -167,6 +168,7 @@
     <Compile Include="Class\Model\FirstCMMFModel.vb" />
     <Compile Include="Class\Model\GenerateExcelModel.vb" />
     <Compile Include="Class\Model\InspectionModel.vb" />
+    <Compile Include="Class\Model\MissingVendorModel.vb" />
     <Compile Include="Class\Model\SendEmailModel.vb" />
     <Compile Include="Class\Model\UserModel.vb" />
     <Compile Include="Class\Model\VendorAssignmentModel.vb" />
@@ -229,6 +231,12 @@
       <DependentUpon>DialogAskDate.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\DialogAskDate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogGenerateTemplate.Designer.vb">
+      <DependentUpon>DialogGenerateTemplate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogGenerateTemplate.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\DialogHistory.Designer.vb">
@@ -333,6 +341,12 @@
     <Compile Include="Form\FormMissingRemarks.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FormMissingVendor.Designer.vb">
+      <DependentUpon>FormMissingVendor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormMissingVendor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FormParameters.Designer.vb">
       <DependentUpon>FormParameters.vb</DependentUpon>
     </Compile>
@@ -429,6 +443,9 @@
     <EmbeddedResource Include="Form\DialogAskDate.resx">
       <DependentUpon>DialogAskDate.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogGenerateTemplate.resx">
+      <DependentUpon>DialogGenerateTemplate.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\DialogHistory.resx">
       <DependentUpon>DialogHistory.vb</DependentUpon>
     </EmbeddedResource>
@@ -479,6 +496,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormMissingRemarks.resx">
       <DependentUpon>FormMissingRemarks.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormMissingVendor.resx">
+      <DependentUpon>FormMissingVendor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormParameters.resx">
       <DependentUpon>FormParameters.vb</DependentUpon>

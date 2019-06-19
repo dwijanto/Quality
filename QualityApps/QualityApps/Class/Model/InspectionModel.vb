@@ -62,7 +62,7 @@ Public Class InspectionModel
                   " order by material,ccetd)foo)" &
                   " insert into quality.firstcmmftx(cmmf,po,poitem,ccetd,description) select distinct f.material,purchdoc,item,f.ccetd,'First CMMF PO' from f" &
                   " left join quality.dailytx dt on dt.material = f.material and dt.ccetd = f.ccetd;")
-        _sqlstrExcel = String.Format("select false::boolean as ""Selected"",purchdoc::character varying as ""Purch.Doc."",item as ""Item"",seqn as ""SeqN"",insplot::character varying as ""Insp. Lot"",inspector as ""Inspector"",code as ""Inspection Result"",tx.vendor::character varying as ""Vendor"",tx.vendorname as ""Vendor Name"",material::character varying as ""Material"", materialdesc as ""Material desc""," &
+        _sqlstrExcel = String.Format("select false::boolean as ""Selected"",tx.plant::character varying,purchdoc::character varying as ""Purch.Doc."",item as ""Item"",seqn as ""SeqN"",insplot::character varying as ""Insp. Lot"",inspector as ""Inspector"",code as ""Inspection Result"",tx.vendor::character varying as ""Vendor"",tx.vendorname as ""Vendor Name"",material::character varying as ""Material"", materialdesc as ""Material desc""," &
                                   " custpono as ""Cust PO No"",sbu as ""SBU"",city as ""City"",tx.ccetd as ""Confirmed ETD"",qty as ""Quantity"", qtyoun as	""OUn""," &
                                   " quality.changesamplesize(inspector,samplesize::integer) as ""Sample size"",quality.getinspdate(purchdoc,item,seqn,qty) as ""Inspection Date"",quality.getlatestremark(purchdoc,item,seqn,qty) as ""Remarks""," &
                                   " ntsg ,quality.dow(date_part('dow',quality.getinspdate(purchdoc,item,seqn,qty))::integer),v.location as ""Location"",v.groupnumber::character varying as ""Group"",startdate,enddate ,quality.getproductionenddate(purchdoc,item,seqn,qty) as ""Production End Date"", soldtoparty::character varying as ""Sold To Party"",soldtopartyname as ""Sold To Party Name"",reference,f.description,quality.getrisk(f.description,tx.city,tx.ntsg) as risk from {0} tx " &
@@ -131,7 +131,7 @@ Public Class InspectionModel
 
     Public ReadOnly Property FilterField
         Get
-            Return "[Purch.Doc.] like '%{0}%' or [Vendor] like '%{0}%' or [Insp. Lot] like '%{0}%' or [Inspector] like '%{0}%' or [Inspection Result] like '%{0}%' or [Insp. Lot] like '%{0}%' or [Vendor Name] like '%{0}%' or [Material] like '%{0}%' or [Material desc] like '%{0}%' " &
+            Return "[plant] like '%{0}%' or [Purch.Doc.] like '%{0}%' or [Vendor] like '%{0}%' or [Insp. Lot] like '%{0}%' or [Inspector] like '%{0}%' or [Inspection Result] like '%{0}%' or [Insp. Lot] like '%{0}%' or [Vendor Name] like '%{0}%' or [Material] like '%{0}%' or [Material desc] like '%{0}%' " &
                 "or [Cust PO No] like '%{0}%' or [SBU] like '%{0}%' or [City] like '%{0}%' or [Remarks] like '%{0}%' or [Location] like '%{0}%' or [Group] like '%{0}%'  or [Sold To Party] like '%{0}%'  or [Sold To Party Name] like '%{0}%'"
         End Get
     End Property

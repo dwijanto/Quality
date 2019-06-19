@@ -6,19 +6,19 @@ Public Class DialogVendorQEAssignment
 
     Private TimeSessions As New List(Of TimeSession)
     Private VendorBS As BindingSource
-    Private UserBS As BindingSource
+    Private SBUBS As BindingSource
     Private QEBS As BindingSource
     Private VendorHelperBS As BindingSource
     Public Event RefreshInterface()
 
-    Public Sub New(DRV As DataRowView, vendorbs As BindingSource, vendorhelperbs As BindingSource, UserBS As BindingSource, QEBS As BindingSource)
+    Public Sub New(DRV As DataRowView, vendorbs As BindingSource, vendorhelperbs As BindingSource, SBUBS As BindingSource, QEBS As BindingSource)
         InitializeComponent()
 
         Me.drv = DRV
         Me.drv.BeginEdit()
         Me.VendorBS = vendorbs
         Me.VendorHelperBS = vendorhelperbs
-        Me.UserBS = UserBS
+        Me.SBUBS = SBUBS
         Me.QEBS = QEBS
 
         InitData()
@@ -38,42 +38,30 @@ Public Class DialogVendorQEAssignment
     End Sub
 
     Private Sub InitData()
-
-
-        ComboBox1.DisplayMember = "description"
-        ComboBox1.ValueMember = "vendorcode"
-        ComboBox1.DataSource = VendorBS
-
-        'ComboBox2.DisplayMember = "username"
-        'ComboBox2.ValueMember = "userid"
-        'ComboBox2.DataSource = UserBS
+        ComboBox2.DisplayMember = "description"
+        ComboBox2.ValueMember = "sbuid"
+        ComboBox2.DataSource = sbubs
 
         ComboBox3.DisplayMember = "qename"
         ComboBox3.ValueMember = "QEID"
         ComboBox3.DataSource = QEBS
 
-        ComboBox1.DataBindings.Clear()
+
         'ComboBox2.DataBindings.Clear()
         ComboBox3.DataBindings.Clear()
        
-        ComboBox1.DataBindings.Add(New Binding("SelectedValue", drv, "vendorcode", True, DataSourceUpdateMode.OnPropertyChanged))
-        'ComboBox2.DataBindings.Add(New Binding("SelectedValue", drv, "userid", True, DataSourceUpdateMode.OnPropertyChanged))
+        ComboBox2.DataBindings.Add(New Binding("SelectedValue", drv, "sbuid", True, DataSourceUpdateMode.OnPropertyChanged))
         TextBox1.DataBindings.Add(New Binding("Text", drv, "userid", True, DataSourceUpdateMode.OnPropertyChanged))
+        TextBox2.DataBindings.Add(New Binding("Text", drv, "description", True, DataSourceUpdateMode.OnPropertyChanged))
         ComboBox3.DataBindings.Add(New Binding("SelectedValue", drv, "fgcp", True, DataSourceUpdateMode.OnPropertyChanged))
        
 
     End Sub
 
-    Private Sub ComboBox1_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles ComboBox1.SelectionChangeCommitted
+    Private Sub ComboBox1_SelectionChangeCommitted(sender As Object, e As EventArgs)
         selectionchangecommitted()
-        
-    End Sub
 
-    'Private Sub ComboBox2_SelectionChangeCommitted(sender As Object, e As EventArgs)
-    '    Dim userdrv As DataRowView = ComboBox2.SelectedItem
-    '    drv.Item("username") = userdrv.Row.Item("username")
-    '    RaiseEvent RefreshInterface()
-    'End Sub
+    End Sub
 
     Private Sub ComboBox3_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles ComboBox3.SelectionChangeCommitted
         drv.Item("qe") = ComboBox3.SelectedItem
@@ -89,20 +77,19 @@ Public Class DialogVendorQEAssignment
           
             drv.Row.Item("vendorcode") = Helperdrv.Row.Item("vendorcode").ToString.Trim
             drv.Row.Item("vendorname") = Helperdrv.Row.Item("vendorname").ToString.Trim
-            drv.Row.Item("shortname") = Helperdrv.Row.Item("shortname").ToString.Trim
-
-            'Need bellow code to sync with combobox
-            Dim myposition = VendorBS.Find("vendorcode", drv.Row.Item("vendorcode"))
-            VendorBS.Position = myposition
+            drv.Row.Item("shortname") = Helperdrv.Row.Item("shortname").ToString.Trim            
+            TextBox2.Text = Helperdrv.Row.Item("description").ToString.Trim
             selectionchangecommitted()
         End If
     End Sub
 
     Private Sub selectionchangecommitted()
-        Dim cbdrv As DataRowView = ComboBox1.SelectedItem
-        drv.Item("vendorname") = cbdrv.Row.Item("vendorname").ToString.Trim
-        drv.Item("shortname") = cbdrv.Row.Item("shortname").ToString.Trim
         RaiseEvent RefreshInterface()
     End Sub
 
+    Private Sub ComboBox2_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles ComboBox2.SelectionChangeCommitted
+        Dim cbdrv As DataRowView = ComboBox2.SelectedItem
+        drv.Row.Item("sbuname") = cbdrv.Row.Item("description")
+        RaiseEvent RefreshInterface()
+    End Sub
 End Class

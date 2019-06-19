@@ -89,3 +89,5 @@ C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\Qua
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormTimeStampSendingReport.resources
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormFirstCMMF.resources
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.DialogActivityLogNew.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.DialogGenerateTemplate.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormMissingVendor.resources

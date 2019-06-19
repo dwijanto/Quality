@@ -15,8 +15,6 @@ Public Class FormVendorQEAssignment
     End Function
     Dim myThread As New System.Threading.Thread(AddressOf DoWork)
 
-    'Dim UserInfo1 As UserInfo = UserInfo.getInstance
-
     Dim drv As DataRowView
 
 
@@ -60,13 +58,6 @@ Public Class FormVendorQEAssignment
                 Case 4
 
                     DataGridView1.AutoGenerateColumns = False
-                    'QEBS = New BindingSource
-                    'QEBS.DataSource = QES
-                    'DirectCast(DataGridView1.Columns("cbTeam"), DataGridViewComboBoxColumn).DataSource = QES
-                    'DirectCast(DataGridView1.Columns("cbTeam"), DataGridViewComboBoxColumn).DisplayMember = "TeamName"
-                    'DirectCast(DataGridView1.Columns("cbTeam"), DataGridViewComboBoxColumn).ValueMember = "TeamId"
-                    'DirectCast(DataGridView1.Columns("cbTeam"), DataGridViewComboBoxColumn).DataPropertyName = "activitygroup"
-
                     DataGridView1.DataSource = myController.BS
                     QEBS = New BindingSource
                     QEBS.DataSource = QES                   
@@ -86,7 +77,7 @@ Public Class FormVendorQEAssignment
                     drv = myController.GetCurrentRecord                
             End Select
             drv.BeginEdit()
-            Dim myform = New DialogVendorQEAssignment(drv, myController.GetVendorBS, myController.GetVendorHelperBS, myController.GetUserBS, QEBS)
+            Dim myform = New DialogVendorQEAssignment(drv, myController.GetVendorBS, myController.GetVendorHelperBS, myController.GetSBUBS, QEBS)
             RemoveHandler myform.RefreshInterface, AddressOf RefreshMYInterface
             AddHandler myform.RefreshInterface, AddressOf RefreshMYInterface
             myform.ShowDialog()

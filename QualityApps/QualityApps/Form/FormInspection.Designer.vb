@@ -49,6 +49,7 @@ Partial Class FormInspection
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Column25 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -245,7 +246,7 @@ Partial Class FormInspection
         Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView1.ColumnHeadersHeight = 35
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column25, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column27, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column9, Me.Column20, Me.Column22, Me.Column23, Me.Column10, Me.Column11, Me.Column12, Me.Column14, Me.Column15, Me.Column16, Me.Column18, Me.Column21, Me.Column17, Me.Column19, Me.Column13, Me.Column24, Me.Column26, Me.soldtoparty, Me.soldtopartyname, Me.Column28, Me.Column29})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column25, Me.Column30, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column27, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column9, Me.Column20, Me.Column22, Me.Column23, Me.Column10, Me.Column11, Me.Column12, Me.Column14, Me.Column15, Me.Column16, Me.Column18, Me.Column21, Me.Column17, Me.Column19, Me.Column13, Me.Column24, Me.Column26, Me.soldtoparty, Me.soldtopartyname, Me.Column28, Me.Column29})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
@@ -260,6 +261,12 @@ Partial Class FormInspection
         Me.Column25.Name = "Column25"
         Me.Column25.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.Column25.Width = 50
+        '
+        'Column30
+        '
+        Me.Column30.DataPropertyName = "plant"
+        Me.Column30.HeaderText = "Plant"
+        Me.Column30.Name = "Column30"
         '
         'Column1
         '
@@ -520,6 +527,7 @@ Partial Class FormInspection
     Friend WithEvents ToolStripButton6 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripButton7 As System.Windows.Forms.ToolStripButton
     Friend WithEvents Column25 As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents Column30 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn

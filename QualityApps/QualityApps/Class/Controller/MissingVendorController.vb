@@ -1,60 +1,29 @@
-﻿Public Class VendorAssignmentController
+﻿Public Class MissingVendorController
     Implements IController
     Implements IToolbarAction
 
-    Public Model As New VendorAssignmentModel
+    Public Model As New MissingVendorModel
     Public BS As BindingSource
     Dim DS As DataSet
-
-    Dim SBUBS As BindingSource
-    Dim VendorBS As BindingSource
-    Dim VendorHelperBS As BindingSource
-    Dim EQBS As BindingSource
-
 
     Public ReadOnly Property GetDataset As DataSet
         Get
             Return DS
         End Get
     End Property
-    Public ReadOnly Property GetVendorBS As BindingSource
-        Get
-            Return VendorBS
-        End Get
-    End Property
-
-    Public ReadOnly Property GetVendorHelperBS As BindingSource
-        Get
-            Return VendorHelperBS
-        End Get
-    End Property
-    Public ReadOnly Property GetSBUBS As BindingSource
-        Get
-            Return SBUBS
-        End Get
-    End Property
-
     Public ReadOnly Property GetTable As DataTable Implements IController.GetTable
         Get
             Return DS.Tables(Model.tablename).Copy()
         End Get
     End Property
 
-
-
     Public Function loaddata() As Boolean Implements IController.loaddata
         Dim myret As Boolean = False
-        Model = New VendorAssignmentModel
+        Model = New MissingVendorModel
         DS = New DataSet
         If Model.LoadData(DS) Then
             BS = New BindingSource
             BS.DataSource = DS.Tables(0)
-            SBUBS = New BindingSource
-            SBUBS.DataSource = DS.Tables("SBUSAP")
-            VendorBS = New BindingSource
-            VendorBS.DataSource = DS.Tables("Vendor")
-            VendorHelperBS = New BindingSource
-            VendorHelperBS.DataSource = New DataView(DS.Tables("Vendor"))
             myret = True
         End If
         Return myret

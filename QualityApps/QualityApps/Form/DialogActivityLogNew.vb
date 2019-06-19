@@ -57,39 +57,40 @@ Public Class DialogActivityLogNew
         Me.Close()
     End Sub
     Public Overloads Function validate() As Boolean
-        Dim myret As Boolean = False
-        If IsNothing(myRBAC.getAssignment("Key User", User.getId)) Then
-            'Not Key User
-            Dim ActivityDate As Date = drv.Row.Item("activitydate")
-            ErrorProvider1.SetError(DateTimePicker1, "")
-            If ActivityDate.Month = Today.Month Then
-                myret = True
-            ElseIf ActivityDate.Month + 1 = Month(Today) Then
-                If Today.Date.Day <= ds.Tables("Cutoff").Rows(0).Item("ivalue") Then
-                    myret = True
-                Else
-                    ErrorProvider1.SetError(DateTimePicker1, String.Format("This Activity date  '{0:dd-MMM-yyyy}' has been closed. Please contact Key User!", ActivityDate))
-                End If
-            Else
-                ErrorProvider1.SetError(DateTimePicker1, String.Format("This Activity date  '{0:dd-MMM-yyyy}' has been closed. Please contact Key User!", ActivityDate))
-            End If
-        Else
-            myret = True 'Key User
-        End If
-        Dim cbdrv As DataRowView = ComboBox1.SelectedItem
-        If IsNothing(cbdrv) Then
-            ErrorProvider1.SetError(ComboBox1, "Please select from the list.")
-            myret = False
-        Else
-            If Not cbdrv.Row.Item("activityname") = "On leave" Then
-                If IsDBNull(drv.Row.Item("vendorcode")) Then
-                    ErrorProvider1.SetError(TextBox3, "Vendorcode cannot be blank!")
-                    myret = False
-                End If
-            End If
-        End If
-        
-        Return myret
+        'Dim myret As Boolean = False
+        'If IsNothing(myRBAC.getAssignment("Key User", User.getId)) Then
+        '    'Not Key User
+        '    Dim ActivityDate As Date = drv.Row.Item("activitydate")
+        '    ErrorProvider1.SetError(DateTimePicker1, "")
+        '    If ActivityDate.Month = Today.Month Then
+        '        myret = True
+        '    ElseIf ActivityDate.Month + 1 = Month(Today) Then
+        '        If Today.Date.Day <= ds.Tables("Cutoff").Rows(0).Item("ivalue") Then
+        '            myret = True
+        '        Else
+        '            ErrorProvider1.SetError(DateTimePicker1, String.Format("This Activity date  '{0:dd-MMM-yyyy}' has been closed. Please contact Key User!", ActivityDate))
+        '        End If
+        '    Else
+        '        ErrorProvider1.SetError(DateTimePicker1, String.Format("This Activity date  '{0:dd-MMM-yyyy}' has been closed. Please contact Key User!", ActivityDate))
+        '    End If
+        'Else
+        '    myret = True 'Key User
+        'End If
+        'Dim cbdrv As DataRowView = ComboBox1.SelectedItem
+        'If IsNothing(cbdrv) Then
+        '    ErrorProvider1.SetError(ComboBox1, "Please select from the list.")
+        '    myret = False
+        'Else
+        '    If Not cbdrv.Row.Item("activityname") = "On leave" Then
+        '        If IsDBNull(drv.Row.Item("vendorcode")) Then
+        '            ErrorProvider1.SetError(TextBox3, "Vendorcode cannot be blank!")
+        '            myret = False
+        '        End If
+        '    End If
+        'End If
+
+        'Return myret
+        Return True
     End Function
     Private Sub InitData()
         ComboBox1.DataSource = ActivityBS
@@ -103,14 +104,14 @@ Public Class DialogActivityLogNew
         TextBox3.DataBindings.Clear()
         TextBox4.DataBindings.Clear()
         CheckBox1.DataBindings.Clear()
-
+        CheckBox2.DataBindings.Clear()
         ComboBox1.DataBindings.Add(New Binding("SelectedValue", drv, "activityid", True, DataSourceUpdateMode.OnPropertyChanged))
         DateTimePicker1.DataBindings.Add(New Binding("Text", drv, "activitydate", True, DataSourceUpdateMode.OnPropertyChanged))
         TextBox1.DataBindings.Add(New Binding("Text", drv, "projectname", True, DataSourceUpdateMode.OnPropertyChanged))
         TextBox2.DataBindings.Add(New Binding("Text", drv, "remark", True, DataSourceUpdateMode.OnPropertyChanged))
         TextBox3.DataBindings.Add(New Binding("Text", drv, "vendorcodename", True, DataSourceUpdateMode.OnPropertyChanged))
         TextBox4.DataBindings.Add(New Binding("Text", drv, "username", True, DataSourceUpdateMode.OnPropertyChanged))
-        'CheckBox1.DataBindings.Add(New Binding("checked", drv, "ot", True, DataSourceUpdateMode.OnPropertyChanged))
+        CheckBox2.DataBindings.Add(New Binding("checked", drv, "inoffice", True, DataSourceUpdateMode.OnPropertyChanged))
         Me.DataBindings.Add(New Binding("WorkingOT", drv, "timesession", True, DataSourceUpdateMode.OnPropertyChanged))
     End Sub
 

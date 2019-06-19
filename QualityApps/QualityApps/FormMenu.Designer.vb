@@ -46,6 +46,7 @@ Partial Class FormMenu
         Me.ActivityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VendorAssignmentQEUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FirstCmmfToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MissingVendorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdminToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RBACToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OTMToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -184,7 +185,7 @@ Partial Class FormMenu
         '
         'MasterToolStripMenuItem
         '
-        Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VendorToolStripMenuItem, Me.AnnouncementToolStripMenuItem, Me.ParameterToolStripMenuItem, Me.UserToolStripMenuItem, Me.ActivityToolStripMenuItem, Me.VendorAssignmentQEUserToolStripMenuItem, Me.FirstCmmfToolStripMenuItem})
+        Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VendorToolStripMenuItem, Me.AnnouncementToolStripMenuItem, Me.ParameterToolStripMenuItem, Me.UserToolStripMenuItem, Me.ActivityToolStripMenuItem, Me.VendorAssignmentQEUserToolStripMenuItem, Me.FirstCmmfToolStripMenuItem, Me.MissingVendorToolStripMenuItem})
         Me.MasterToolStripMenuItem.Name = "MasterToolStripMenuItem"
         Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
         Me.MasterToolStripMenuItem.Text = "Master"
@@ -237,6 +238,13 @@ Partial Class FormMenu
         Me.FirstCmmfToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
         Me.FirstCmmfToolStripMenuItem.Tag = "FormFirstCMMF"
         Me.FirstCmmfToolStripMenuItem.Text = "First CMMF"
+        '
+        'MissingVendorToolStripMenuItem
+        '
+        Me.MissingVendorToolStripMenuItem.Name = "MissingVendorToolStripMenuItem"
+        Me.MissingVendorToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.MissingVendorToolStripMenuItem.Tag = "FormMissingVendor"
+        Me.MissingVendorToolStripMenuItem.Text = "Missing Vendor"
         '
         'AdminToolStripMenuItem
         '
@@ -321,5 +329,6 @@ Partial Class FormMenu
     Friend WithEvents VendorAssignmentQEUserToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ReportAcitivtyLogAllDataToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FirstCmmfToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MissingVendorToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

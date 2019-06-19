@@ -21,7 +21,7 @@ Public Class ActivityLogModel
         '                           " left join vendor v on v.vendorcode = u.vendorcode  " &
         '                           " left join quality.user us on lower(us.userid) = lower(u.userid)" &
         '                           " {1} order by {2};", tablename, criteria, "us.username,u.activitydate"))
-        sb.Append(String.Format("select u.id,u.activitydate,u.timesession,u.vendorcode,u.userid,u.projectname,u.remark,u.modifiedby,us.username,v.vendorcode,v.shortname::text,v.vendorname::text ,u.activityid,a.activityname,case u.timesession when 2 then 'OT' else '' end as timesessiondesc,u.postingdate from {0} u" &
+        sb.Append(String.Format("select u.id,u.activitydate,u.timesession,u.vendorcode,u.userid,u.projectname,u.remark,u.modifiedby,us.username,v.vendorcode,v.shortname::text,v.vendorname::text ,u.activityid,a.activityname,case u.timesession when 2 then 'OT' else '' end as timesessiondesc,u.postingdate,u.inoffice from {0} u" &
                                   " left join quality.activity a on a.id = u.activityid  " &
                                   " left join vendor v on v.vendorcode = u.vendorcode  " &
                                   " left join quality.user us on lower(us.userid) = lower(u.userid)" &
@@ -34,6 +34,20 @@ Public Class ActivityLogModel
             Return "(vendorcodename like '%{0}%') or (username like '%{0}%') or (projectname like '%{0}%') or (activityname like '%{0}%') "
         End Get
     End Property
+
+    Public Function getActivityDate(ByRef DS As DataSet, ByRef Sqlstr As String) As Boolean
+        Dim dataAdapter As NpgsqlDataAdapter = myadapter.getDbDataAdapter
+        Dim myret As Boolean = False
+
+        Using conn As NpgsqlConnection = myadapter.getConnection
+            conn.Open()
+            dataAdapter.SelectCommand = myadapter.getCommandObject(Sqlstr, conn)
+            dataAdapter.SelectCommand.CommandType = CommandType.Text
+            dataAdapter.Fill(DS)
+            myret = True
+        End Using
+        Return myret
+    End Function
 
 
     Public Function LoadData(DS As DataSet) As Boolean Implements IModel.LoadData
@@ -99,7 +113,7 @@ Public Class ActivityLogModel
                                    " {1} order by {2};", tablename, criteria, sortField))
             'sb.Append(String.Format("select *,qv.vendorcode::text || ' - ' || v.shortname::text || ' - ' || v.vendorname as vendorcodename from quality.vendorassignment qv left join vendor v on v.vendorcode = qv.vendorcode where lower(qv.userid) = lower('{0}') order by v.shortname;", userinfo1.Userid.ToLower))
             'sb.Append(String.Format("select v.vendorcode::text || ' - ' || coalesce(v.shortname::text,'') || ' - ' || v.vendorname as name,v.*,v.vendorcode::text || ' - ' || coalesce(v.shortname::text,'') || ' - ' || v.vendorname as vendorcodename from vendor v order by v.shortname;"))
-            sb.Append(String.Format("select ''::text as name,null::bigint as vendorcode,''::text as vendorcodename union all (select v.vendorcode::text || ' - ' || coalesce(v.shortname::text,'') || ' - ' || v.vendorname as name,v.vendorcode,v.vendorcode::text || ' - ' || coalesce(v.shortname::text,'') || ' - ' || v.vendorname as vendorcodename from vendor v order by v.shortname);"))
+            sb.Append(String.Format("select ''::text as name,null::bigint as vendorcode,''::text as vendorcodename union all (select v.vendorcode::text || ' - ' || coalesce(v.shortname::text,'') || ' - ' || v.vendorname as name,v.vendorcode,v.vendorcode::text || ' - ' || coalesce(v.shortname::text,'') || ' - ' || v.vendorname as vendorcodename from quality.vendorview v order by v.shortname);"))
             sb.Append(String.Format("select * from quality.activity  {0} order by activitygroup, activityname;", mygroup))
             sb.Append(String.Format("select 0.5 as myvalue,'Half day'::text as description" &
                                     " union all select 0.1 as myvalue,'Full day'::text as description" &
@@ -208,6 +222,7 @@ Public Class ActivityLogModel
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "remark").SourceVersion = DataRowVersion.Current
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "modifiedby").SourceVersion = DataRowVersion.Current
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Timestamp, 0, "postingdate").SourceVersion = DataRowVersion.Current
+            dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Boolean, 0, "inoffice").SourceVersion = DataRowVersion.Current
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "id").Direction = ParameterDirection.InputOutput
 
             dataadapter.InsertCommand.CommandType = CommandType.StoredProcedure
@@ -223,6 +238,7 @@ Public Class ActivityLogModel
             dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "activityid").SourceVersion = DataRowVersion.Current
             dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "remark").SourceVersion = DataRowVersion.Current
             dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "modifiedby").SourceVersion = DataRowVersion.Current
+            dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Boolean, 0, "inoffice").SourceVersion = DataRowVersion.Current
             dataadapter.UpdateCommand.CommandType = CommandType.StoredProcedure
 
             dataadapter.InsertCommand.Transaction = mytransaction
