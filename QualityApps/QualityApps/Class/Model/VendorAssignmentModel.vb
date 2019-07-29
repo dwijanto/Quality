@@ -29,10 +29,10 @@ Public Class VendorAssignmentModel
         Dim sb As New StringBuilder
         Using conn As NpgsqlConnection = myadapter.getConnection
             conn.Open()
-            sb.Append(String.Format("select u.vendorcode::text,v.vendorname::text,v.shortname::text,qu.username,u.fgcp,u.id,u.sbuid,s.sbuid || ' - ' || s.sbuname as sbuname ,quality.getqename(u.fgcp)as qe,u.userid,v.vendorcode::text || ' - ' || coalesce(v.shortname::text,'') || ' - ' || v.vendorname as description from {0} u left join vendor v on v.vendorcode = u.vendorcode" &
-                                   " left join quality.user qu on lower(qu.userid) = lower(u.userid) left join sbusap s on s.sbuid = u.sbuid order by {1};", tablename, sortField))
+            sb.Append(String.Format("select u.vendorcode::text,v.vendorname::text,v.shortname::text,qu.username,u.fgcp,u.id,u.sbuid,s.sbu as sbuname ,quality.getqename(u.fgcp)as qe,u.userid,v.vendorcode::text || ' - ' || coalesce(v.shortname::text,'') || ' - ' || v.vendorname as description,m.monitoringlevel,u.factorylocation from {0} u left join vendor v on v.vendorcode = u.vendorcode" &
+                                   " left join quality.user qu on lower(qu.userid) = lower(u.userid) left join quality.sbu s on s.id = u.sbuid left join quality.monitoringlevel m on m.id = u.monitoringlevelid order by {1};", tablename, sortField))
             sb.Append(String.Format("select *,v.vendorcode::text || ' - ' || coalesce(v.shortname::text,'') || ' - ' || v.vendorname as description from quality.vendorview v order by v.shortname;"))
-            sb.Append(String.Format("select *,sbuid || ' - ' || sbuname as description from sbusap order by sbuid;"))
+            sb.Append(String.Format("select *,sbu as description from quality.sbu order by id;"))
 
             sqlstr = sb.ToString
             dataAdapter.SelectCommand = myadapter.getCommandObject(sqlstr, conn)
@@ -88,7 +88,7 @@ Public Class VendorAssignmentModel
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "vendorcode").SourceVersion = DataRowVersion.Current
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "userid").SourceVersion = DataRowVersion.Current
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "fgcp").SourceVersion = DataRowVersion.Current
-            dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "sbuid").SourceVersion = DataRowVersion.Current
+            dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "sbuid").SourceVersion = DataRowVersion.Current
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "id").Direction = ParameterDirection.InputOutput
 
             dataadapter.InsertCommand.CommandType = CommandType.StoredProcedure
@@ -99,7 +99,7 @@ Public Class VendorAssignmentModel
             dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "vendorcode").SourceVersion = DataRowVersion.Current
             dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "userid").SourceVersion = DataRowVersion.Current
             dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "fgcp").SourceVersion = DataRowVersion.Current
-            dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "sbuid").SourceVersion = DataRowVersion.Current
+            dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "sbuid").SourceVersion = DataRowVersion.Current
 
             dataadapter.UpdateCommand.CommandType = CommandType.StoredProcedure
 

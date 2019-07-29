@@ -45,6 +45,8 @@ Partial Class FormVendorQEAssignment
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
@@ -60,7 +62,7 @@ Partial Class FormVendorQEAssignment
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripProgressBar1})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 0)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(945, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1221, 22)
         Me.StatusStrip1.TabIndex = 0
         '
         'ToolStripStatusLabel1
@@ -72,7 +74,7 @@ Partial Class FormVendorQEAssignment
         'ToolStripStatusLabel2
         '
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(828, 17)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(1104, 17)
         Me.ToolStripStatusLabel2.Spring = True
         Me.ToolStripStatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -162,11 +164,11 @@ Partial Class FormVendorQEAssignment
         'ToolStripContainer1.ContentPanel
         '
         Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.DataGridView1)
-        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(945, 443)
+        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(1221, 443)
         Me.ToolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolStripContainer1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStripContainer1.Name = "ToolStripContainer1"
-        Me.ToolStripContainer1.Size = New System.Drawing.Size(945, 490)
+        Me.ToolStripContainer1.Size = New System.Drawing.Size(1221, 490)
         Me.ToolStripContainer1.TabIndex = 4
         Me.ToolStripContainer1.Text = "ToolStripContainer1"
         '
@@ -183,13 +185,13 @@ Partial Class FormVendorQEAssignment
         Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView1.ColumnHeadersHeight = 35
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column6, Me.Column5, Me.Column4})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column6, Me.Column5, Me.Column4, Me.Column7, Me.Column8})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(945, 443)
+        Me.DataGridView1.Size = New System.Drawing.Size(1221, 443)
         Me.DataGridView1.TabIndex = 0
         '
         'Column1
@@ -236,11 +238,25 @@ Partial Class FormVendorQEAssignment
         Me.Column4.ReadOnly = True
         Me.Column4.Width = 200
         '
+        'Column7
+        '
+        Me.Column7.DataPropertyName = "monitoringlevel"
+        Me.Column7.HeaderText = "Monitoring Level"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        '
+        'Column8
+        '
+        Me.Column8.DataPropertyName = "factorylocation"
+        Me.Column8.HeaderText = "Location"
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
+        '
         'FormVendorQEAssignment
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(945, 490)
+        Me.ClientSize = New System.Drawing.Size(1221, 490)
         Me.Controls.Add(Me.ToolStripContainer1)
         Me.Name = "FormVendorQEAssignment"
         Me.Text = "FormVendorQEAssignement"
@@ -280,4 +296,6 @@ Partial Class FormVendorQEAssignment
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column8 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

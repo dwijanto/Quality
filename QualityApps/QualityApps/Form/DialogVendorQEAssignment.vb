@@ -39,7 +39,7 @@ Public Class DialogVendorQEAssignment
 
     Private Sub InitData()
         ComboBox2.DisplayMember = "description"
-        ComboBox2.ValueMember = "sbuid"
+        ComboBox2.ValueMember = "id"
         ComboBox2.DataSource = sbubs
 
         ComboBox3.DisplayMember = "qename"
