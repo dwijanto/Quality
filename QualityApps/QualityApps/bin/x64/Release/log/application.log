@@ -3,3 +3,7 @@
 2018-11-30 05:06:34.631 PM	doWork	Generate Report.
 2018-11-30 05:07:12.605 PM	doWork	Exception from HRESULT: 0x800A03EC
 2018-11-30 05:07:14.030 PM	doWork	--------End----------
+2019-08-02 05:18:03.608 PM	doWork	--------Start----------
+2019-08-02 05:18:03.614 PM	doWork	Generate Report.
+2019-08-02 05:18:08.696 PM	doWork	Sorry, we couldn't find C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\bin\x64\Release\templates\ExcelTemplate.xltx. Is it possible it was moved, renamed or deleted?
+2019-08-02 05:18:09.250 PM	doWork	--------End----------

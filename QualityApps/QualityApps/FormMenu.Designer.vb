@@ -52,6 +52,8 @@ Partial Class FormMenu
         Me.OTMToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImportDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerateCSVToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InspectionReportToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
@@ -91,7 +93,7 @@ Partial Class FormMenu
         'MenuStrip1
         '
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TransactionToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.ActivityLogToolStripMenuItem, Me.MasterToolStripMenuItem, Me.AdminToolStripMenuItem, Me.OTMToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TransactionToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.ActivityLogToolStripMenuItem, Me.MasterToolStripMenuItem, Me.AdminToolStripMenuItem, Me.OTMToolStripMenuItem, Me.ReportToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(556, 24)
@@ -193,56 +195,56 @@ Partial Class FormMenu
         'VendorToolStripMenuItem
         '
         Me.VendorToolStripMenuItem.Name = "VendorToolStripMenuItem"
-        Me.VendorToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.VendorToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.VendorToolStripMenuItem.Tag = "FormVendor"
         Me.VendorToolStripMenuItem.Text = "Vendor"
         '
         'AnnouncementToolStripMenuItem
         '
         Me.AnnouncementToolStripMenuItem.Name = "AnnouncementToolStripMenuItem"
-        Me.AnnouncementToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.AnnouncementToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.AnnouncementToolStripMenuItem.Tag = "FormAnnouncement"
         Me.AnnouncementToolStripMenuItem.Text = "Announcement"
         '
         'ParameterToolStripMenuItem
         '
         Me.ParameterToolStripMenuItem.Name = "ParameterToolStripMenuItem"
-        Me.ParameterToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.ParameterToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.ParameterToolStripMenuItem.Tag = "FormParameters"
         Me.ParameterToolStripMenuItem.Text = "Parameter"
         '
         'UserToolStripMenuItem
         '
         Me.UserToolStripMenuItem.Name = "UserToolStripMenuItem"
-        Me.UserToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.UserToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.UserToolStripMenuItem.Tag = "FormUser"
         Me.UserToolStripMenuItem.Text = "User"
         '
         'ActivityToolStripMenuItem
         '
         Me.ActivityToolStripMenuItem.Name = "ActivityToolStripMenuItem"
-        Me.ActivityToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.ActivityToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.ActivityToolStripMenuItem.Tag = "FormActivityMaster"
         Me.ActivityToolStripMenuItem.Text = "Activity"
         '
         'VendorAssignmentQEUserToolStripMenuItem
         '
         Me.VendorAssignmentQEUserToolStripMenuItem.Name = "VendorAssignmentQEUserToolStripMenuItem"
-        Me.VendorAssignmentQEUserToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.VendorAssignmentQEUserToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.VendorAssignmentQEUserToolStripMenuItem.Tag = "FormVendorQEAssignment"
         Me.VendorAssignmentQEUserToolStripMenuItem.Text = "Vendor Assignment QE User"
         '
         'FirstCmmfToolStripMenuItem
         '
         Me.FirstCmmfToolStripMenuItem.Name = "FirstCmmfToolStripMenuItem"
-        Me.FirstCmmfToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.FirstCmmfToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.FirstCmmfToolStripMenuItem.Tag = "FormFirstCMMF"
         Me.FirstCmmfToolStripMenuItem.Text = "First CMMF"
         '
         'MissingVendorToolStripMenuItem
         '
         Me.MissingVendorToolStripMenuItem.Name = "MissingVendorToolStripMenuItem"
-        Me.MissingVendorToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.MissingVendorToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.MissingVendorToolStripMenuItem.Tag = "FormMissingVendor"
         Me.MissingVendorToolStripMenuItem.Text = "Missing Vendor"
         '
@@ -263,7 +265,7 @@ Partial Class FormMenu
         '
         Me.OTMToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImportDataToolStripMenuItem, Me.GenerateCSVToolStripMenuItem})
         Me.OTMToolStripMenuItem.Name = "OTMToolStripMenuItem"
-        Me.OTMToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
+        Me.OTMToolStripMenuItem.Size = New System.Drawing.Size(45, 20)
         Me.OTMToolStripMenuItem.Text = "OTM"
         '
         'ImportDataToolStripMenuItem
@@ -279,6 +281,19 @@ Partial Class FormMenu
         Me.GenerateCSVToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
         Me.GenerateCSVToolStripMenuItem.Tag = "FormGenerateCSVOTM"
         Me.GenerateCSVToolStripMenuItem.Text = "Generate CSV"
+        '
+        'ReportToolStripMenuItem
+        '
+        Me.ReportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InspectionReportToolStripMenuItem1})
+        Me.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem"
+        Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
+        Me.ReportToolStripMenuItem.Text = "Report"
+        '
+        'InspectionReportToolStripMenuItem1
+        '
+        Me.InspectionReportToolStripMenuItem1.Name = "InspectionReportToolStripMenuItem1"
+        Me.InspectionReportToolStripMenuItem1.Size = New System.Drawing.Size(167, 22)
+        Me.InspectionReportToolStripMenuItem1.Text = "Inspection Report"
         '
         'FormMenu
         '
@@ -330,5 +345,7 @@ Partial Class FormMenu
     Friend WithEvents ReportAcitivtyLogAllDataToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FirstCmmfToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MissingVendorToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents InspectionReportToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
 
 End Class

@@ -160,7 +160,7 @@ Public Class FormMenu
         ActivityToolStripMenuItem.Visible = User.can("View Master")
         VendorAssignmentQEUserToolStripMenuItem.Visible = User.can("View Master")
         FirstCmmfToolStripMenuItem.Visible = User.can("View Master")
-
+        ReportToolStripMenuItem.Visible = User.can("Create Inspection Report")
     End Sub
     Private Sub ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim ctrl As ToolStripMenuItem = CType(sender, ToolStripMenuItem)
@@ -236,6 +236,15 @@ Public Class FormMenu
 
 
     Private Sub MissingVendorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MissingVendorToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub InspectionReportToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles InspectionReportToolStripMenuItem1.Click
+        Dim myform = New FormAutoTask(AUTOGENERATE.NON_AUTO)
+        myform.ShowDialog()
+    End Sub
+
+    Private Sub GenerateExcelForSupplierToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles GenerateExcelForSupplierToolStripMenuItem1.Click
 
     End Sub
 End Class

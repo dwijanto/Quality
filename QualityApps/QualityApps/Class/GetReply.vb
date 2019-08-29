@@ -20,6 +20,7 @@ Public Class GetReply
     End Sub
 
     Public Sub run()
+        myform.ProgressReport(6, "Please wait until the current process finished.")
         Dim dir As New IO.DirectoryInfo(INBOXFolder)
         Dim arrFI As IO.FileInfo() = dir.GetFiles("*.xls*") '.Union(dir.GetFiles("*.xls")).ToArray
         totalFile = arrFI.Count
@@ -29,7 +30,7 @@ Public Class GetReply
             Thread.Sleep(100)
             convertToText(fi.FullName)
         Next
-
+        myform.ProgressReport(5, "Please wait until the current process finished.")
 
     End Sub
 
@@ -226,11 +227,16 @@ Public Class GetReply
 
             Dim message As String = String.Empty
             If Recordsb.Length > 0 Then
-
+                
                 Sqlstr = deleteSB.ToString & "begin;set statement_timeout to 0;end;copy quality.historytx( purchdoc,item , seqn ,vendor,ccetd, qty , inspdate ,remark, docdate,productionenddate)  from stdin with null as 'Null';"
                 message = myAdapter.copy(Sqlstr, Recordsb.ToString, myret)
                 If Not myret Then
-                    myform.ProgressReport(1, message)
+                    'save to text file first
+                    Using mystream As New StreamWriter(INBOXFolder & "\error.txt")
+                        mystream.WriteLine(Recordsb.ToString)
+                    End Using                    
+                    Process.Start(INBOXFolder & "\error.txt")
+                    myform.ProgressReport(1, String.Format("Error Found. {0}", message))
                 End If
             End If
         End If

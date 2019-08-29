@@ -68,9 +68,10 @@ Public Class InspectionModel
                                   " ntsg ,quality.dow(date_part('dow',quality.getinspdate(purchdoc,item,seqn,qty))::integer),v.location as ""Location"",v.groupnumber::character varying as ""Group"",startdate,enddate ,quality.getproductionenddate(purchdoc,item,seqn,qty) as ""Production End Date"", soldtoparty::character varying as ""Sold To Party"",soldtopartyname as ""Sold To Party Name"",reference,f.description,quality.getrisk(f.description,tx.city,tx.ntsg) as risk from {0} tx " &
                                   " left join quality.vendor v on v.vendorcode = tx.vendor" &
                                   " left join quality.firstcmmftx f on f.cmmf = tx.material and f.po = tx.purchdoc and f.poitem = tx.item and f.ccetd = tx.ccetd " &
-                                  " where (tx.ccetd >= (current_date -{2})) {1}  order by purchdoc,item,seqn", TableName, SBExecption.ToString, datespan)
-        sb.Append(_sqlstrExcel)
-        _sqlstr = sb.ToString
+                                  " where (tx.ccetd >= (current_date -{2})) {1}  order by purchdoc,item,seqn;", TableName, SBExecption.ToString, datespan)
+        'sb.Append(_sqlstrExcel)
+        '_sqlstr = sb.ToString
+        _sqlstr = String.Format("select * from quality.inspectionreport({0},'{1}');", datespan, SBExecption.ToString.Replace("'", "''"))
 
     End Sub
     Public ReadOnly Property TableName As String

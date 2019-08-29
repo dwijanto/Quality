@@ -21,11 +21,20 @@ Public Class ActivityLogModel
         '                           " left join vendor v on v.vendorcode = u.vendorcode  " &
         '                           " left join quality.user us on lower(us.userid) = lower(u.userid)" &
         '                           " {1} order by {2};", tablename, criteria, "us.username,u.activitydate"))
-        sb.Append(String.Format("select u.id,u.activitydate,u.timesession,u.vendorcode,u.userid,u.projectname,u.remark,u.modifiedby,us.username,v.vendorcode,v.shortname::text,v.vendorname::text ,u.activityid,a.activityname,case u.timesession when 2 then 'OT' else '' end as timesessiondesc,u.postingdate,u.inoffice from {0} u" &
-                                  " left join quality.activity a on a.id = u.activityid  " &
-                                  " left join vendor v on v.vendorcode = u.vendorcode  " &
-                                  " left join quality.user us on lower(us.userid) = lower(u.userid)" &
-                                  " {1} order by {2};", tablename, criteria, "us.username,u.activitydate"))
+        'sb.Append(String.Format("select u.id,u.activitydate,u.timesession,u.vendorcode,u.userid,u.projectname,u.remark,u.modifiedby,us.username,v.vendorcode,v.shortname::text,v.vendorname::text ,u.activityid,a.activityname,case u.timesession when 2 then 'OT' else '' end as timesessiondesc,u.postingdate,u.inoffice from {0} u" &
+        '                          " left join quality.activity a on a.id = u.activityid  " &
+        '                          " left join vendor v on v.vendorcode = u.vendorcode  " &
+        '                          " left join quality.user us on lower(us.userid) = lower(u.userid)" &
+        '                          " {1} order by {2};", tablename, criteria, "us.username,u.activitydate"))
+
+        sb.Append(String.Format("with ts as (select activitydate,userid,count(activitydate)::numeric from quality.logactivitytx  u {1} group by userid,activitydate) " &
+                                " select u.id,u.activitydate,1/ts.count as timesession,u.vendorcode,u.userid,u.projectname,u.remark,u.modifiedby,us.username,v.vendorcode,v.shortname::text,v.vendorname::text ,u.activityid,a.activityname,case u.timesession when 2 then 'OT' else '' end as timesessiondesc,u.postingdate,u.inoffice from {0} u" &
+                                 " left join quality.activity a on a.id = u.activityid  " &
+                                 " left join vendor v on v.vendorcode = u.vendorcode  " &
+                                 " left join quality.user us on lower(us.userid) = lower(u.userid)" &
+                                 " left join ts on ts.userid = u.userid and ts.activitydate = u.activitydate" &
+                                 " {1} order by {2};", tablename, criteria, "us.username,u.activitydate"))
+
         Return sb.ToString
     End Function
 

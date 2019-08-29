@@ -28,3 +28,70 @@
 2018-10-18 10:56:38.815 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
 2018-10-18 10:56:40.822 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
 2018-10-18 10:56:43.293 AM	GenerateReportWithKey	Exception from HRESULT: 0x800A03EC\\HON01IT\Users_I\Quality\Inspection Arrangement\Inspection Scheduling Data Outbox
+2019-08-02 12:20:21.979 PM	doWork	--------Start----------
+2019-08-02 12:20:23.360 PM	doWork	Generate Report.
+2019-08-02 12:21:05.521 PM	doWork	Exception from HRESULT: 0x800A03EC
+2019-08-02 12:21:05.532 PM	doWork	--------End----------
+2019-08-02 12:21:34.488 PM	doWork	--------Start----------
+2019-08-02 12:21:34.501 PM	doWork	Generate Report.
+2019-08-02 12:22:32.437 PM	doWork	Exception from HRESULT: 0x800A03EC
+2019-08-02 12:22:34.945 PM	doWork	--------End----------
+2019-08-02 12:24:15.701 PM	doWork	--------Start----------
+2019-08-02 12:24:15.718 PM	doWork	Generate Report.
+2019-08-02 12:29:30.109 PM	doWork	Exception from HRESULT: 0x800A03EC
+2019-08-02 12:29:30.891 PM	doWork	--------End----------
+2019-08-02 12:42:08.058 PM	doWork	--------Start----------
+2019-08-02 12:42:08.065 PM	doWork	Generate Report.
+2019-08-02 12:46:23.917 PM	doWork	--------End----------
+2019-08-02 02:23:35.691 PM	doWork	--------Start----------
+2019-08-02 02:23:35.701 PM	doWork	Generate Report.
+2019-08-02 02:29:29.328 PM	doWork	General ODBC Error
+2019-08-02 02:29:31.742 PM	doWork	--------End----------
+2019-08-02 02:29:47.163 PM	doWork	--------Start----------
+2019-08-02 02:29:47.179 PM	doWork	Generate Report.
+2019-08-02 02:30:39.733 PM	doWork	Exception from HRESULT: 0x800A03EC
+2019-08-02 02:30:46.450 PM	doWork	--------End----------
+2019-08-02 02:34:42.438 PM	doWork	--------Start----------
+2019-08-02 02:34:42.451 PM	doWork	Generate Report.
+2019-08-02 02:36:38.541 PM	doWork	Exception from HRESULT: 0x800A03EC
+2019-08-02 02:37:42.462 PM	doWork	General ODBC Error
+2019-08-02 02:37:43.170 PM	doWork	--------End----------
+2019-08-02 02:37:54.944 PM	doWork	--------Start----------
+2019-08-02 02:37:54.959 PM	doWork	Generate Report.
+2019-08-02 02:38:52.110 PM	doWork	--------End----------
+2019-08-02 02:39:04.351 PM	doWork	--------Start----------
+2019-08-02 02:39:04.364 PM	doWork	Generate Report.
+2019-08-02 02:39:43.487 PM	doWork	Exception from HRESULT: 0x800A03EC
+2019-08-02 02:39:45.275 PM	doWork	--------End----------
+2019-08-02 02:54:10.895 PM	doWork	--------Start----------
+2019-08-02 02:54:10.903 PM	doWork	Generate Report.
+2019-08-02 03:01:06.904 PM	doWork	General ODBC Error
+2019-08-02 03:01:08.853 PM	doWork	--------End----------
+2019-08-02 03:01:19.928 PM	doWork	--------Start----------
+2019-08-02 03:01:19.932 PM	doWork	Generate Report.
+2019-08-02 03:06:38.001 PM	doWork	--------End----------
+2019-08-02 03:06:52.118 PM	doWork	--------Start----------
+2019-08-02 03:06:52.126 PM	doWork	Generate Report.
+2019-08-02 03:08:28.255 PM	doWork	General ODBC Error
+2019-08-02 03:08:28.806 PM	doWork	--------End----------
+2019-08-02 03:08:42.253 PM	doWork	--------Start----------
+2019-08-02 03:08:42.265 PM	doWork	Generate Report.
+2019-08-02 03:11:31.309 PM	doWork	Exception from HRESULT: 0x800A03EC
+2019-08-02 03:11:32.854 PM	doWork	--------End----------
+2019-08-02 03:25:41.773 PM	doWork	--------Start----------
+2019-08-02 03:25:41.779 PM	doWork	Generate Report.
+2019-08-02 03:27:30.287 PM	doWork	--------End----------
+2019-08-02 03:27:46.541 PM	doWork	--------Start----------
+2019-08-02 03:27:46.547 PM	doWork	Generate Report.
+2019-08-02 04:04:54.431 PM	doWork	--------Start----------
+2019-08-02 04:04:54.444 PM	doWork	Generate Report.
+2019-08-02 04:06:01.971 PM	doWork	--------End----------
+2019-08-02 04:08:58.743 PM	doWork	--------Start----------
+2019-08-02 04:08:58.755 PM	doWork	Generate Report.
+2019-08-02 04:13:09.443 PM	doWork	--------End----------
+2019-08-02 04:21:03.768 PM	doWork	--------Start----------
+2019-08-02 04:21:03.782 PM	doWork	Generate Report.
+2019-08-02 04:23:55.105 PM	doWork	--------End----------
+2019-08-02 05:20:42.823 PM	doWork	--------Start----------
+2019-08-02 05:20:42.833 PM	doWork	Generate Report.
+2019-08-02 05:21:10.461 PM	doWork	--------End----------

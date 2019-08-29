@@ -35,9 +35,10 @@ Public Class FormGenerateReportActivityLog
         SaveFileDialog1.FileName = String.Format("ActivityLog-{0:yyyyMMdd}.xlsx", Date.Today)
         Dim Criteria As String = String.Empty
         If User.can("View Activity Log All Data") And ViewAllData Then
-            Criteria = String.Format(" where activitydate >= '{0:yyyy-MM-dd}' and activitydate <= '{1:yyyy-MM-dd}'", DateTimePicker1.Value.Date, DateTimePicker2.Value.Date)
+            SaveFileDialog1.FileName = String.Format("ActivityLogAll-{0:yyyyMMdd}.xlsx", Date.Today)
+            Criteria = String.Format(" where u.activitydate >= '{0:yyyy-MM-dd}' and u.activitydate <= '{1:yyyy-MM-dd}'", DateTimePicker1.Value.Date, DateTimePicker2.Value.Date)
         Else
-            Criteria = String.Format(" where u.userid in (select quality.getsubordinate('{0}')) and activitydate >= '{1:yyyy-MM-dd}' and activitydate <= '{2:yyyy-MM-dd}'", myIdentity.userid.ToLower, DateTimePicker1.Value.Date, DateTimePicker2.Value.Date)
+            Criteria = String.Format(" where u.userid in (select quality.getsubordinate('{0}')) and u.activitydate >= '{1:yyyy-MM-dd}' and u.activitydate <= '{2:yyyy-MM-dd}'", myIdentity.userid.ToLower, DateTimePicker1.Value.Date, DateTimePicker2.Value.Date)
         End If
 
         If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
