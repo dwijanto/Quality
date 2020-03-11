@@ -46,6 +46,9 @@ Partial Class DialogActivityLogNew
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -87,7 +90,7 @@ Partial Class DialogActivityLogNew
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(626, 109)
+        Me.Label10.Location = New System.Drawing.Point(626, 136)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(11, 13)
         Me.Label10.TabIndex = 32
@@ -96,7 +99,7 @@ Partial Class DialogActivityLogNew
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(626, 157)
+        Me.Label9.Location = New System.Drawing.Point(626, 184)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(11, 13)
         Me.Label9.TabIndex = 31
@@ -105,7 +108,7 @@ Partial Class DialogActivityLogNew
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(160, 296)
+        Me.Label8.Location = New System.Drawing.Point(160, 323)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(73, 13)
         Me.Label8.TabIndex = 30
@@ -114,7 +117,7 @@ Partial Class DialogActivityLogNew
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(113, 184)
+        Me.Label6.Location = New System.Drawing.Point(113, 211)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(49, 13)
         Me.Label6.TabIndex = 28
@@ -124,7 +127,7 @@ Partial Class DialogActivityLogNew
         '
         Me.TextBox2.AcceptsReturn = True
         Me.TextBox2.AcceptsTab = True
-        Me.TextBox2.Location = New System.Drawing.Point(163, 181)
+        Me.TextBox2.Location = New System.Drawing.Point(163, 208)
         Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(426, 71)
@@ -133,7 +136,7 @@ Partial Class DialogActivityLogNew
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(116, 104)
+        Me.Label5.Location = New System.Drawing.Point(116, 131)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(41, 13)
         Me.Label5.TabIndex = 26
@@ -142,7 +145,7 @@ Partial Class DialogActivityLogNew
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(64, 131)
+        Me.Label4.Location = New System.Drawing.Point(64, 158)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(93, 13)
         Me.Label4.TabIndex = 25
@@ -150,7 +153,7 @@ Partial Class DialogActivityLogNew
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(163, 128)
+        Me.TextBox1.Location = New System.Drawing.Point(163, 155)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(426, 20)
         Me.TextBox1.TabIndex = 24
@@ -158,7 +161,7 @@ Partial Class DialogActivityLogNew
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(117, 157)
+        Me.Label3.Location = New System.Drawing.Point(117, 184)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(41, 13)
         Me.Label3.TabIndex = 23
@@ -183,7 +186,7 @@ Partial Class DialogActivityLogNew
         'TextBox3
         '
         Me.TextBox3.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TextBox3.Location = New System.Drawing.Point(163, 154)
+        Me.TextBox3.Location = New System.Drawing.Point(163, 181)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.ReadOnly = True
         Me.TextBox3.Size = New System.Drawing.Size(426, 20)
@@ -191,7 +194,7 @@ Partial Class DialogActivityLogNew
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(595, 152)
+        Me.Button1.Location = New System.Drawing.Point(595, 179)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(24, 23)
         Me.Button1.TabIndex = 35
@@ -203,7 +206,7 @@ Partial Class DialogActivityLogNew
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(162, 101)
+        Me.ComboBox1.Location = New System.Drawing.Point(162, 128)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(427, 21)
         Me.ComboBox1.TabIndex = 36
@@ -238,7 +241,7 @@ Partial Class DialogActivityLogNew
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(72, 258)
+        Me.CheckBox1.Location = New System.Drawing.Point(72, 285)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.CheckBox1.Size = New System.Drawing.Size(106, 17)
@@ -253,13 +256,41 @@ Partial Class DialogActivityLogNew
         'CheckBox2
         '
         Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(103, 276)
+        Me.CheckBox2.Location = New System.Drawing.Point(103, 303)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.CheckBox2.Size = New System.Drawing.Size(75, 17)
         Me.CheckBox2.TabIndex = 41
         Me.CheckBox2.Text = "? In Office"
         Me.CheckBox2.UseVisualStyleBackColor = True
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Location = New System.Drawing.Point(162, 101)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(427, 21)
+        Me.ComboBox2.TabIndex = 43
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(107, 101)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(49, 13)
+        Me.Label7.TabIndex = 42
+        Me.Label7.Text = "Category"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(626, 104)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(11, 13)
+        Me.Label11.TabIndex = 44
+        Me.Label11.Text = "*"
         '
         'DialogActivityLogNew
         '
@@ -268,6 +299,9 @@ Partial Class DialogActivityLogNew
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(687, 409)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.ComboBox2)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Button2)
@@ -324,5 +358,8 @@ Partial Class DialogActivityLogNew
     Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
     Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
     Friend WithEvents CheckBox2 As System.Windows.Forms.CheckBox
+    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
 
 End Class

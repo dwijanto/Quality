@@ -8,6 +8,7 @@ Public Class DialogActivityLogNew
     Dim drv As DataRowView
     Dim vendorbs As BindingSource
     Dim ActivityBS As BindingSource
+    Dim CategoryBS As BindingSource
     Dim ds As DataSet
     Public Event RefreshInterface()
 
@@ -41,6 +42,19 @@ Public Class DialogActivityLogNew
 
         InitData()
     End Sub
+
+
+    Public Sub New(DRV As DataRowView, vendorbs As BindingSource, activitybs As BindingSource, timesessionbs As BindingSource, DS As DataSet, categorybs As BindingSource)
+        InitializeComponent()
+
+        Me.drv = DRV
+        Me.drv.BeginEdit()
+        Me.vendorbs = vendorbs
+        Me.ActivityBS = activitybs
+        Me.ds = DS
+        Me.CategoryBS = categorybs
+        InitData()
+    End Sub
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
         If Me.validate Then
             drv.EndEdit()
@@ -57,7 +71,7 @@ Public Class DialogActivityLogNew
         Me.Close()
     End Sub
     Public Overloads Function validate() As Boolean
-        'Dim myret As Boolean = False
+        Dim myret As Boolean = True
         'If IsNothing(myRBAC.getAssignment("Key User", User.getId)) Then
         '    'Not Key User
         '    Dim ActivityDate As Date = drv.Row.Item("activitydate")
@@ -88,14 +102,43 @@ Public Class DialogActivityLogNew
         '        End If
         '    End If
         'End If
+        Dim cbdrv As DataRowView = ComboBox1.SelectedItem
+        If IsNothing(cbdrv) Then
+            ErrorProvider1.SetError(ComboBox1, "Please select from the list.")
+            myret = False
+        Else
+            drv.Row.Item("activityname") = cbdrv.Row.Item("activityname")
+        End If
+        Dim cbdrv2 As DataRowView = ComboBox2.SelectedItem
+        If IsNothing(cbdrv2) Then
+            ErrorProvider1.SetError(ComboBox2, "Please select from the list.")
+            myret = False
+        Else
+            drv.Row.Item("categoryname") = cbdrv2.Row.Item("categoryname")
+        End If
 
-        'Return myret
-        Return True
+        ErrorProvider1.SetError(TextBox2, "")
+        If drv.Row.Item(12).ToString.Contains("(Please specify in remark)") Then
+            If TextBox2.Text = "" Then
+                ErrorProvider1.SetError(TextBox2, "Please specify the activity here.")
+                myret = False
+            End If
+        End If
+
+        RaiseEvent RefreshInterface()
+        Return myret
+        'Return True
     End Function
     Private Sub InitData()
+
         ComboBox1.DataSource = ActivityBS
         ComboBox1.DisplayMember = "activityname"
         ComboBox1.ValueMember = "id"
+
+        ComboBox2.DataSource = CategoryBS
+        ComboBox2.DisplayMember = "categoryname"
+        ComboBox2.ValueMember = "id"
+
 
         ComboBox1.DataBindings.Clear()
         DateTimePicker1.DataBindings.Clear()
@@ -106,6 +149,7 @@ Public Class DialogActivityLogNew
         CheckBox1.DataBindings.Clear()
         CheckBox2.DataBindings.Clear()
         ComboBox1.DataBindings.Add(New Binding("SelectedValue", drv, "activityid", True, DataSourceUpdateMode.OnPropertyChanged))
+        ComboBox2.DataBindings.Add(New Binding("SelectedValue", drv, "categoryid", True, DataSourceUpdateMode.OnPropertyChanged))
         DateTimePicker1.DataBindings.Add(New Binding("Text", drv, "activitydate", True, DataSourceUpdateMode.OnPropertyChanged))
         TextBox1.DataBindings.Add(New Binding("Text", drv, "projectname", True, DataSourceUpdateMode.OnPropertyChanged))
         TextBox2.DataBindings.Add(New Binding("Text", drv, "remark", True, DataSourceUpdateMode.OnPropertyChanged))
@@ -167,4 +211,9 @@ Public Class DialogActivityLogNew
         RaiseEvent RefreshInterface()
     End Sub
 
+    Private Sub ComboBox2_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles ComboBox2.SelectionChangeCommitted
+        Dim cbdrv As DataRowView = ComboBox2.SelectedItem
+        drv.Row.Item("categoryname") = cbdrv.Row.Item("categoryname")
+        RaiseEvent RefreshInterface()
+    End Sub
 End Class

@@ -130,6 +130,7 @@
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="Class\ActiveRecord.vb" />
     <Compile Include="Class\Adapter\ParamAdapter.vb" />
+    <Compile Include="Class\Adapter\ParamDTLAdapter.vb" />
     <Compile Include="Class\Adapter\PostgreSQLDBAdapter.vb" />
     <Compile Include="Class\ADPrincipalContext.vb" />
     <Compile Include="Class\AutoInspectionReport.vb" />
@@ -138,6 +139,7 @@
     <Compile Include="Class\Controller\ActivityLogController.vb" />
     <Compile Include="Class\Controller\ActivityMasterController.vb" />
     <Compile Include="Class\Controller\AnnouncementController.vb" />
+    <Compile Include="Class\Controller\CategoryController.vb" />
     <Compile Include="Class\Controller\FirstCMMFController.vb" />
     <Compile Include="Class\Controller\GenerateExcelController.vb" />
     <Compile Include="Class\Controller\InspectionController.vb" />
@@ -165,6 +167,7 @@
     <Compile Include="Class\Model\ActivityLogModel.vb" />
     <Compile Include="Class\Model\ActivityMasterModel.vb" />
     <Compile Include="Class\Model\AnnouncementModel.vb" />
+    <Compile Include="Class\Model\CategoryModel.vb" />
     <Compile Include="Class\Model\FirstCMMFModel.vb" />
     <Compile Include="Class\Model\GenerateExcelModel.vb" />
     <Compile Include="Class\Model\InspectionModel.vb" />
@@ -275,6 +278,12 @@
     <Compile Include="Form\FormAutoTask.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FormCategory.Designer.vb">
+      <DependentUpon>FormCategory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormCategory.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FormFirstCMMF.Designer.vb">
       <DependentUpon>FormFirstCMMF.vb</DependentUpon>
     </Compile>
@@ -345,6 +354,12 @@
       <DependentUpon>FormMissingVendor.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\FormMissingVendor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormParamDTL.Designer.vb">
+      <DependentUpon>FormParamDTL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormParamDTL.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FormParameters.Designer.vb">
@@ -464,6 +479,9 @@
     <EmbeddedResource Include="Form\FormAutoTask.resx">
       <DependentUpon>FormAutoTask.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormCategory.resx">
+      <DependentUpon>FormCategory.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormFirstCMMF.resx">
       <DependentUpon>FormFirstCMMF.vb</DependentUpon>
     </EmbeddedResource>
@@ -499,6 +517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormMissingVendor.resx">
       <DependentUpon>FormMissingVendor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormParamDTL.resx">
+      <DependentUpon>FormParamDTL.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormParameters.resx">
       <DependentUpon>FormParameters.vb</DependentUpon>

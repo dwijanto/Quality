@@ -21,5 +21,14 @@
     <Setting Name="oExConDev" Type="System.String" Scope="User">
       <Value Profile="(Default)">ODBC;DSN=PostgreSQLhon14nt;</Value>
     </Setting>
+    <Setting Name="Local" Type="System.String" Scope="User">
+      <Value Profile="(Default)">host=localhost;port=5433;database=LogisticDb20190909;CommandTimeout=10000;TimeOut=1024;</Value>
+    </Setting>
+    <Setting Name="Live" Type="System.String" Scope="User">
+      <Value Profile="(Default)">host=hon14nt;port=5432;database=LogisticDb;CommandTimeout=10000;TimeOut=1024;</Value>
+    </Setting>
+    <Setting Name="Test" Type="System.String" Scope="User">
+      <Value Profile="(Default)">host=172.22.13.190;port=5433;database=LogisticDb20190909;CommandTimeout=10000;TimeOut=1024;</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

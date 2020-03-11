@@ -37,23 +37,24 @@ Partial Class FormActivityLog
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.UcUserInfo1 = New QualityApps.UCUserInfo()
         Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column9 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.UcUserInfo1 = New QualityApps.UCUserInfo()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
@@ -69,7 +70,7 @@ Partial Class FormActivityLog
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripButton, Me.CopyToolStripButton, Me.UpdateToolStripButton, Me.DeleteToolStripButton, Me.CommitToolStripButton, Me.RefreshToolStripButton, Me.ToolStripSeparator1, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripLabel2, Me.ToolStripButton1})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(723, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(691, 25)
         Me.ToolStrip1.TabIndex = 0
         '
         'AddToolStripButton
@@ -148,6 +149,15 @@ Partial Class FormActivityLog
         Me.ToolStripLabel2.Size = New System.Drawing.Size(58, 22)
         Me.ToolStripLabel2.Text = "Start Date"
         '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(110, 22)
+        Me.ToolStripButton1.Text = "Generate Template"
+        '
         'StatusStrip1
         '
         Me.StatusStrip1.Dock = System.Windows.Forms.DockStyle.None
@@ -210,7 +220,7 @@ Partial Class FormActivityLog
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView1.ColumnHeadersHeight = 35
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column8, Me.Column1, Me.Column2, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column3, Me.Column9})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column8, Me.Column1, Me.Column2, Me.Column4, Me.Column5, Me.Column10, Me.Column6, Me.Column7, Me.Column3, Me.Column9})
         Me.DataGridView1.Location = New System.Drawing.Point(0, 93)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
@@ -218,14 +228,12 @@ Partial Class FormActivityLog
         Me.DataGridView1.Size = New System.Drawing.Size(1340, 437)
         Me.DataGridView1.TabIndex = 0
         '
-        'ToolStripButton1
+        'UcUserInfo1
         '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(111, 22)
-        Me.ToolStripButton1.Text = "Generate Template"
+        Me.UcUserInfo1.Location = New System.Drawing.Point(3, 3)
+        Me.UcUserInfo1.Name = "UcUserInfo1"
+        Me.UcUserInfo1.Size = New System.Drawing.Size(613, 84)
+        Me.UcUserInfo1.TabIndex = 1
         '
         'Column8
         '
@@ -271,6 +279,14 @@ Partial Class FormActivityLog
         Me.Column5.ReadOnly = True
         Me.Column5.Width = 200
         '
+        'Column10
+        '
+        Me.Column10.DataPropertyName = "categoryname"
+        Me.Column10.HeaderText = "Category"
+        Me.Column10.Name = "Column10"
+        Me.Column10.ReadOnly = True
+        Me.Column10.Width = 200
+        '
         'Column6
         '
         Me.Column6.DataPropertyName = "activityname"
@@ -302,13 +318,6 @@ Partial Class FormActivityLog
         Me.Column9.HeaderText = "In Office?"
         Me.Column9.Name = "Column9"
         Me.Column9.ReadOnly = True
-        '
-        'UcUserInfo1
-        '
-        Me.UcUserInfo1.Location = New System.Drawing.Point(3, 3)
-        Me.UcUserInfo1.Name = "UcUserInfo1"
-        Me.UcUserInfo1.Size = New System.Drawing.Size(613, 84)
-        Me.UcUserInfo1.TabIndex = 1
         '
         'FormActivityLog
         '
@@ -357,6 +366,7 @@ Partial Class FormActivityLog
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column10 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewCheckBoxColumn

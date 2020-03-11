@@ -26,7 +26,7 @@ Public Class VendorModel
         Dim sqlstr As String = String.Empty
         Using conn As NpgsqlConnection = myadapter.getConnection
             conn.Open()
-            sqlstr = String.Format("select vendorcode::text,vendorname,email,groupnumber::text,location,sp,spemail,phone,copytosp,address,quality.getqeassignment(vendorcode) as qeassignment from {0} u order by {1}", tablename, sortField)
+            sqlstr = String.Format("select vendorcode::text,vendorname,email,groupnumber::text,location, quality.getvendorsp(vendorcode) as spname,sp,spemail,phone,copytosp,address,quality.getqeassignment(vendorcode) as qeassignment from {0} u order by {1}", tablename, sortField)
 
             dataAdapter.SelectCommand = myadapter.getCommandObject(sqlstr, conn)
             dataAdapter.SelectCommand.CommandType = CommandType.Text

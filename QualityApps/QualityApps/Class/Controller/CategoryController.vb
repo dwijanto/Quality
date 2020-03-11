@@ -1,15 +1,14 @@
-﻿Public Class ActivityLogController
+﻿Public Class CategoryController
     Implements IController
     Implements IToolbarAction
 
-    Public Model As New ActivityLogModel
+    Public Model As New CategoryModel
     Public BS As BindingSource
-    Public BS2 As BindingSource
-    Public DS As DataSet
-    Private VendorBS As BindingSource
-    Private ActivityBS As BindingSource
-    Private CategoryBS As BindingSource
-    Private TimeSessionBS As BindingSource
+    Dim DS As DataSet
+
+    Public Function getCategoryBS() As BindingSource
+        Return Model.GetCategoryBS
+    End Function
 
     Public ReadOnly Property GetDataset As DataSet
         Get
@@ -22,67 +21,13 @@
         End Get
     End Property
 
-    Public ReadOnly Property GetVendorBS As BindingSource
-        Get
-            Return VendorBS
-        End Get
-    End Property
-
-    Public ReadOnly Property GetActivityBS As BindingSource
-        Get
-            Return ActivityBS
-        End Get
-    End Property
-
-    Public ReadOnly Property GetCategoryBS As BindingSource
-        Get
-            Return CategoryBS
-        End Get
-    End Property
-    Public ReadOnly Property GetTimeSessionBS As BindingSource
-        Get
-            Return TimeSessionBS
-        End Get
-    End Property
-
-    Public Function GetSQLSTRReport(criteria) As String
-        Return Model.SQLSTRReport(criteria)
-    End Function
-
     Public Function loaddata() As Boolean Implements IController.loaddata
         Dim myret As Boolean = False
-        Model = New ActivityLogModel
+        Model = New CategoryModel
         DS = New DataSet
         If Model.LoadData(DS) Then
             BS = New BindingSource
             BS.DataSource = DS.Tables(0)
-            myret = True
-        End If
-        Return myret
-    End Function
-
-    Public Function loaddata(criteria As String) As Boolean
-        Dim myret As Boolean = False
-        Model = New ActivityLogModel
-        DS = New DataSet
-        If Model.LoadData(DS, criteria) Then
-            BS = New BindingSource
-            BS.DataSource = DS.Tables(0)
-            'BS2 = New BindingSource
-            'bs2.DataSource = BS
-            'bs2.DataMember = "hdrel"
-
-            VendorBS = New BindingSource
-            VendorBS.DataSource = DS.Tables("Vendor")
-            CategoryBS = New BindingSource
-            CategoryBS.DataSource = DS.Tables("Category")
-
-            ActivityBS = New BindingSource
-            ActivityBS.DataSource = CategoryBS 'DS.Tables("Activity")
-            ActivityBS.DataMember = "hdrel"
-
-            TimeSessionBS = New BindingSource
-            TimeSessionBS.DataSource = DS.Tables("TimeSession")
             myret = True
         End If
         Return myret
@@ -99,12 +44,7 @@
             Try
                 If save(mye) Then
                     DS.Merge(ds2)
-                    For Each dt As DataTable In ds2.Tables
-                        If dt.Rows.Count > 0 Then
-                            DS.Tables(dt.TableName).AcceptChanges()
-                        End If
-                    Next
-                    'DS.AcceptChanges()
+                    DS.AcceptChanges()
                     MessageBox.Show("Saved.")
                     myret = True
                 End If
@@ -136,11 +76,7 @@
     Public Function GetCurrentRecord() As DataRowView Implements IToolbarAction.GetCurrentRecord
         Return BS.Current
     End Function
-    Public Function GetCurrentPosition() As Integer
-        Dim drv = BS.Current
-        BS.Find("id", drv.row.item("id"))
-        Return BS.Position
-    End Function
+
     Public Function GetNewRecord() As DataRowView Implements IToolbarAction.GetNewRecord
         Return BS.AddNew
     End Function

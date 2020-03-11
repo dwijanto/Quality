@@ -455,6 +455,7 @@ Public Class ExportToExcelFile
                     ProgressReport(2, "Get records..")
                     FillWorksheet(oSheet, sqlstr, Location)
                     'Dim orange = oSheet.Range("A1")
+                    ProgressReport(2, "Get records done...")
                     Dim orange = oSheet.Range(Location)
                     Dim lastrow = GetLastRow(oXl, oSheet, orange)
                     If lastrow > 1 Then
@@ -495,11 +496,20 @@ Public Class ExportToExcelFile
 
 
             PivotCallback.Invoke(oWb, New EventArgs)
-            For i = 0 To oWb.Connections.Count - 1
-                oWb.Connections(1).Delete()
-            Next
-            StopWatch.Stop()
+            ProgressReport(2, "Remove connections...")
+            ProgressReport(2, String.Format("Remove connections...{0}", oWb.Connections.Count))
 
+            'For i = 0 To oWb.Connections.Count - 1
+            '    ProgressReport(2, String.Format("Remove connections...{0}", i))
+            '    oWb.Connections(1).Delete()
+            'Next
+
+            'For Each connection In oWb.Connections
+            '    'connection.delete()
+            'Next
+
+            StopWatch.Stop()
+            ProgressReport(2, "Remove connections Done...")
             'FileName = FileName & "\" & String.Format("Report" & ReportName & "-{0}-{1}-{2}.xlsx", Today.Year, Format("00", Today.Month), Format("00", Today.Day))
             FileName = FileName & "\" & String.Format(ReportName)
             ProgressReport(3, "")

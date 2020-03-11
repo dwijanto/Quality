@@ -41,6 +41,7 @@ Partial Class FormActivityMaster
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cbTeam = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.cbCategory = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
@@ -127,7 +128,7 @@ Partial Class FormActivityMaster
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripProgressBar1})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 0)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(704, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(731, 22)
         Me.StatusStrip1.TabIndex = 0
         '
         'ToolStripStatusLabel1
@@ -139,7 +140,7 @@ Partial Class FormActivityMaster
         'ToolStripStatusLabel2
         '
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(587, 17)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(614, 17)
         Me.ToolStripStatusLabel2.Spring = True
         Me.ToolStripStatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -158,11 +159,11 @@ Partial Class FormActivityMaster
         'ToolStripContainer1.ContentPanel
         '
         Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.DataGridView1)
-        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(704, 463)
+        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(731, 463)
         Me.ToolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolStripContainer1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStripContainer1.Name = "ToolStripContainer1"
-        Me.ToolStripContainer1.Size = New System.Drawing.Size(704, 510)
+        Me.ToolStripContainer1.Size = New System.Drawing.Size(731, 510)
         Me.ToolStripContainer1.TabIndex = 3
         Me.ToolStripContainer1.Text = "ToolStripContainer1"
         '
@@ -179,12 +180,12 @@ Partial Class FormActivityMaster
         Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView1.ColumnHeadersHeight = 35
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.cbTeam})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.cbTeam, Me.cbCategory})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(704, 463)
+        Me.DataGridView1.Size = New System.Drawing.Size(731, 463)
         Me.DataGridView1.TabIndex = 0
         '
         'Column1
@@ -202,11 +203,18 @@ Partial Class FormActivityMaster
         Me.cbTeam.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.cbTeam.Width = 150
         '
+        'cbCategory
+        '
+        Me.cbCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbCategory.HeaderText = "Category"
+        Me.cbCategory.Name = "cbCategory"
+        Me.cbCategory.Width = 200
+        '
         'FormActivityMaster
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(704, 510)
+        Me.ClientSize = New System.Drawing.Size(731, 510)
         Me.Controls.Add(Me.ToolStripContainer1)
         Me.Name = "FormActivityMaster"
         Me.Text = "FormActivityMaster"
@@ -242,4 +250,5 @@ Partial Class FormActivityMaster
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cbTeam As System.Windows.Forms.DataGridViewComboBoxColumn
+    Friend WithEvents cbCategory As System.Windows.Forms.DataGridViewComboBoxColumn
 End Class

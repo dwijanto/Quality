@@ -1,18 +1,14 @@
 ﻿Imports System.Threading
-Public Class FormActivityMaster
-    Private Shared myform As FormActivityMaster
-    Dim myController As ActivityMasterController
-    Public Teams As New List(Of Team)
-    Dim TEAMBS As BindingSource
-    Dim CategoryBS As BindingSource
-    Dim ParamDTLAdapter1 As New ParamDTLAdapter
-    Dim CategoryController1 As New CategoryController
-
+Public Class FormCategory
+    Private Shared myform As FormCategory
+    Dim myController As CategoryController
+   
+    
     Public Shared Function getInstance()
         If myform Is Nothing Then
-            myform = New FormActivityMaster
+            myform = New FormCategory
         ElseIf myform.IsDisposed Then
-            myform = New FormActivityMaster
+            myform = New FormCategory
         End If
         Return myform
     End Function
@@ -30,10 +26,7 @@ Public Class FormActivityMaster
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        Teams.Add(New Team With {.TeamId = "1", .TeamName = "QE"})
-        Teams.Add(New Team With {.TeamId = "2", .TeamName = "Process Improvement"})
-        'CategoryBS = ParamDTLAdapter1.GetParamDTLBS("groupactivity")
-        CategoryBS = CategoryController1.getCategoryBS
+       
     End Sub
 
     Private Sub RefreshMYInterface()
@@ -41,7 +34,7 @@ Public Class FormActivityMaster
     End Sub
 
     Sub DoWork()
-        myController = New ActivityMasterController
+        myController = New CategoryController
         Try
             ProgressReport(1, "Loading...Please wait.")
             If myController.loaddata() Then
@@ -64,17 +57,7 @@ Public Class FormActivityMaster
                 Case 4
 
                     DataGridView1.AutoGenerateColumns = False
-                    TEAMBS = New BindingSource
-                    TEAMBS.DataSource = Teams
-                    DirectCast(DataGridView1.Columns("cbTeam"), DataGridViewComboBoxColumn).DataSource = TEAMBS
-                    DirectCast(DataGridView1.Columns("cbTeam"), DataGridViewComboBoxColumn).DisplayMember = "TeamName"
-                    DirectCast(DataGridView1.Columns("cbTeam"), DataGridViewComboBoxColumn).ValueMember = "TeamId"
-                    DirectCast(DataGridView1.Columns("cbTeam"), DataGridViewComboBoxColumn).DataPropertyName = "activitygroup"
-
-                    DirectCast(DataGridView1.Columns("cbCategory"), DataGridViewComboBoxColumn).DataSource = CategoryBS
-                    DirectCast(DataGridView1.Columns("cbCategory"), DataGridViewComboBoxColumn).DisplayMember = "categoryname"
-                    DirectCast(DataGridView1.Columns("cbCategory"), DataGridViewComboBoxColumn).ValueMember = "id"
-                    DirectCast(DataGridView1.Columns("cbCategory"), DataGridViewComboBoxColumn).DataPropertyName = "categoryid"
+                   
 
                     DataGridView1.DataSource = myController.BS
 
@@ -86,9 +69,8 @@ Public Class FormActivityMaster
 
     Private Sub AddNewToolStripButton1_Click(sender As Object, e As EventArgs) Handles AddToolStripButton.Click
         Me.Validate()
-
         drv = myController.GetNewRecord
-        Me.drv.BeginEdit()
+        Me.drv.EndEdit()
     End Sub
 
     Private Sub DeleteToolStripButton2_Click(sender As Object, e As EventArgs) Handles DeleteToolStripButton.Click
@@ -138,16 +120,4 @@ Public Class FormActivityMaster
 
 
 
-    Private Sub DataGridView1_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles DataGridView1.DataError
-
-    End Sub
-End Class
-
-Public Class Team
-    Public Property TeamId
-    Public Property TeamName
-
-    Public Overrides Function tostring() As String
-        Return TeamName
-    End Function
 End Class

@@ -47,6 +47,7 @@ Partial Class FormMenu
         Me.VendorAssignmentQEUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FirstCmmfToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MissingVendorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GroupActivityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdminToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RBACToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OTMToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -187,7 +188,7 @@ Partial Class FormMenu
         '
         'MasterToolStripMenuItem
         '
-        Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VendorToolStripMenuItem, Me.AnnouncementToolStripMenuItem, Me.ParameterToolStripMenuItem, Me.UserToolStripMenuItem, Me.ActivityToolStripMenuItem, Me.VendorAssignmentQEUserToolStripMenuItem, Me.FirstCmmfToolStripMenuItem, Me.MissingVendorToolStripMenuItem})
+        Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VendorToolStripMenuItem, Me.AnnouncementToolStripMenuItem, Me.ParameterToolStripMenuItem, Me.UserToolStripMenuItem, Me.ActivityToolStripMenuItem, Me.VendorAssignmentQEUserToolStripMenuItem, Me.FirstCmmfToolStripMenuItem, Me.MissingVendorToolStripMenuItem, Me.GroupActivityToolStripMenuItem})
         Me.MasterToolStripMenuItem.Name = "MasterToolStripMenuItem"
         Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
         Me.MasterToolStripMenuItem.Text = "Master"
@@ -247,6 +248,13 @@ Partial Class FormMenu
         Me.MissingVendorToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.MissingVendorToolStripMenuItem.Tag = "FormMissingVendor"
         Me.MissingVendorToolStripMenuItem.Text = "Missing Vendor"
+        '
+        'GroupActivityToolStripMenuItem
+        '
+        Me.GroupActivityToolStripMenuItem.Name = "GroupActivityToolStripMenuItem"
+        Me.GroupActivityToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
+        Me.GroupActivityToolStripMenuItem.Tag = "FormCategory"
+        Me.GroupActivityToolStripMenuItem.Text = "Category Activity"
         '
         'AdminToolStripMenuItem
         '
@@ -347,5 +355,6 @@ Partial Class FormMenu
     Friend WithEvents MissingVendorToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents InspectionReportToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents GroupActivityToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

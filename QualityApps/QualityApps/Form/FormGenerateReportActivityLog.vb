@@ -52,6 +52,7 @@ Public Class FormGenerateReportActivityLog
     End Sub
 
     Private Sub PivotCallback(ByRef sender As Object, ByRef e As EventArgs)
+        'MessageBox.Show("Call back")
         Dim oXl As Excel.Application = Nothing
         Dim owb As Excel.Workbook = CType(sender, Excel.Workbook)
         oXl = owb.Parent
@@ -64,18 +65,23 @@ Public Class FormGenerateReportActivityLog
         End If
         osheet.Columns("B:B").NumberFormat = "dd-MMM-yyyy"
         osheet.name = "RawData"
+
+
         owb.Names.Add("db", RefersToR1C1:="=OFFSET('RawData'!R1C1,0,0,COUNTA('RawData'!C1),COUNTA('RawData'!R1))")
 
         owb.Worksheets(1).select()
         osheet = owb.Worksheets(1)
-
+        'MessageBox.Show("change pivot cache")
         osheet.PivotTables("PivotTable1").ChangePivotCache(owb.PivotCaches.Create(Excel.XlPivotTableSourceType.xlDatabase, SourceData:="db"))
         'oXl.Run("ShowFG")
         Threading.Thread.Sleep(100)
+        'MessageBox.Show("refresh1")
         osheet.PivotTables("PivotTable1").PivotCache.Refresh()
         Threading.Thread.Sleep(100)
+        'MessageBox.Show("refresh2")
         osheet.pivottables("PivotTable1").SaveData = True
         Threading.Thread.Sleep(100)
+        'MessageBox.Show("refreshAll")
         owb.RefreshAll()
         Threading.Thread.Sleep(100)
     End Sub

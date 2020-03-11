@@ -116,13 +116,16 @@ Public Class FormActivityLog
                     drv.Item("projectname") = drv2.Item("projectname")
                     drv.Item("activityid") = drv2.Item("activityid")
                     drv.Item("activityname") = drv2.Item("activityname")
+                    drv.Item("categoryid") = drv2.Item("categoryid")
+                    drv.Item("categoryname") = drv2.Item("categoryname")
                     'drv.Item("timesessiondesc") = drv2.Item("timesessiondesc")
                     drv.Item("userid") = drv2.Item("userid")
                     drv.Item("remark") = drv2.Item("remark")
             End Select
             drv.Item("modifiedby") = myIdentity.userid
 
-            Dim myform = New DialogActivityLogNew(drv, myController.GetVendorBS, myController.GetActivityBS, myController.GetTimeSessionBS, myController.GetDataset)
+            'Dim myform = New DialogActivityLogNew(drv, myController.GetVendorBS, myController.GetActivityBS, myController.GetTimeSessionBS, myController.GetDataset)
+            Dim myform = New DialogActivityLogNew(drv, myController.GetVendorBS, myController.GetActivityBS, myController.GetTimeSessionBS, myController.GetDataset, myController.GetCategoryBS)
             RemoveHandler myform.RefreshInterface, AddressOf RefreshMYInterface
             AddHandler myform.RefreshInterface, AddressOf RefreshMYInterface
             If myform.ShowDialog() = Windows.Forms.DialogResult.Cancel Then

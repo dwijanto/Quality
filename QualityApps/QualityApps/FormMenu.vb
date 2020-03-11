@@ -141,6 +141,8 @@ Public Class FormMenu
         AddHandler FirstCmmfToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
         AddHandler MissingVendorToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
 
+        AddHandler GroupActivityToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+
 
         Dim identity As UserController = User.getIdentity
         TransactionToolStripMenuItem.Visible = User.can("View Actions")
@@ -247,4 +249,20 @@ Public Class FormMenu
     Private Sub GenerateExcelForSupplierToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles GenerateExcelForSupplierToolStripMenuItem1.Click
 
     End Sub
+
+    Private Sub GroupActivityToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GroupActivityToolStripMenuItem.Click
+        'Dim myform As New FormParamDTL("groupactivity")
+        'With myform.DataGridView1.Columns(0)
+        '    .HeaderText = "Group"
+        '    .Width = 150
+        'End With
+        'With myform.DataGridView1.Columns(1)
+        '    .HeaderText = "Order Line"
+        '    .Visible = True
+        'End With
+        'myform.DataGridView1.Columns(1).Visible = True
+        'myform.Show()
+    End Sub
+
+
 End Class
