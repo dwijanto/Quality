@@ -143,6 +143,12 @@ Public Class FormMenu
 
         AddHandler GroupActivityToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
 
+        AddHandler CzechImportTextFileToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+        AddHandler PanexImportTextFileToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+        AddHandler ShangHaiImportTextFileToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+        AddHandler WORImportTextFileToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+        AddHandler ConsolidationToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+
 
         Dim identity As UserController = User.getIdentity
         TransactionToolStripMenuItem.Visible = User.can("View Actions")
@@ -163,6 +169,7 @@ Public Class FormMenu
         VendorAssignmentQEUserToolStripMenuItem.Visible = User.can("View Master")
         FirstCmmfToolStripMenuItem.Visible = User.can("View Master")
         ReportToolStripMenuItem.Visible = User.can("Create Inspection Report")
+        CookwareToolStripMenuItem.Visible = User.can("View Cookware")
     End Sub
     Private Sub ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim ctrl As ToolStripMenuItem = CType(sender, ToolStripMenuItem)
@@ -174,11 +181,11 @@ Public Class FormMenu
         myform.activate()
     End Sub
 
-  
 
-   
+
+
     Private Sub Send2DaysEmailInAdvanceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Send2DaysEmailInAdvanceToolStripMenuItem.Click
-        
+
 
         Dim AskDate As New DialogAskDate
         If AskDate.ShowDialog = Windows.Forms.DialogResult.OK Then
@@ -187,7 +194,7 @@ Public Class FormMenu
             myform.Text = String.Format("{0} - Inspection Date {1:dd-MMM-yyyy}", myform.Text, myform.Inspectiondate)
             myform.ShowDialog()
         End If
-        
+
     End Sub
 
     Private Sub RBACToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RBACToolStripMenuItem.Click
@@ -195,7 +202,7 @@ Public Class FormMenu
         myform.ShowDialog()
     End Sub
 
-  
+
 
 
     Private Sub ReportAcitivtyLogAllDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportAcitivtyLogAllDataToolStripMenuItem.Click
@@ -265,4 +272,24 @@ Public Class FormMenu
     End Sub
 
 
+
+    Private Sub PanexImportTextFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PanexImportTextFileToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ImportTextFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CzechImportTextFileToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ShangHaiImportTextFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShangHaiImportTextFileToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub WORImportTextFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WORImportTextFileToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ConsolidationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsolidationToolStripMenuItem.Click
+
+    End Sub
 End Class

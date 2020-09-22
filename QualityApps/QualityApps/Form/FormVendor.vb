@@ -121,4 +121,9 @@ Public Class FormVendor
         Dim myform As New FormVendorQEAssignment
         myform.Show()
     End Sub
+
+    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+        Dim myform As New FormSPAssignment
+        myform.Show()
+    End Sub
 End Class

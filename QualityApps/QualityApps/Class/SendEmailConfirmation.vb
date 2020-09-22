@@ -196,9 +196,9 @@ Public Class SendEmailConfirmation
 
 
         sb.Append("<table border=1 cellspacing=0 class='defaultfont'> ")
-        sb.Append("<tr><th>Inspection Booking</th><th>Inspector</th><th>Insp.Lot.</th><th>Sample Size</th><th>Purch.Doc.</th><th>Item</th><th>Purchase Order Number</th><th>Supplier Name</th><th>Material</th><th>Material Description</th><th>SBU Description</th><th>Confirmed ETD</th><th>Quantity</th><th>City</th><th>Sold To Party Name</th></tr>")
+        sb.Append("<tr><th>Inspection Booking</th><th>Inspector</th><th>Insp.Lot.</th><th>Sample Size</th><th>Purch.Doc.</th><th>Item</th><th>Purchase Order Number</th><th>Supplier Name</th><th>Material</th><th>Material Description</th><th>SBU Description</th><th>Confirmed ETD</th><th>Quantity</th><th>City</th><th>Sold To Party Name</th><th>SP</th></tr>")
         For Each drv In bs.List
-            sb.Append(String.Format("<tr><td>{11:dd-MMM-yyyy}</td><td>{12}</td><td>{0}</td><td>{1:#,##0}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td><td>{9:dd-MMM-yyyy}</td><td>{10:#,##0}</td><td>{13}</td><td>{14}</td></tr>", drv.row.item("insplot"), drv.row.item("samplesize"), drv.row.item("purchdoc"), drv.row.item("item"), drv.row.item("custpono"), drv.row.item("vendorname"), drv.row.item("material"), drv.row.item("materialdesc"), drv.row.item("sbu"), drv.row.item("ccetd"), drv.row.item("qty"), drv.row.item("startdate"), drv.row.item("inspector"), drv.row.item("city"), drv.row.item("soldtopartyname")))
+            sb.Append(String.Format("<tr><td>{11:dd-MMM-yyyy}</td><td>{12}</td><td>{0}</td><td>{1:#,##0}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td><td>{9:dd-MMM-yyyy}</td><td>{10:#,##0}</td><td>{13}</td><td>{14}</td><td>{15}</td></tr>", drv.row.item("insplot"), drv.row.item("samplesize"), drv.row.item("purchdoc"), drv.row.item("item"), drv.row.item("custpono"), drv.row.item("vendorname"), drv.row.item("material"), drv.row.item("materialdesc"), drv.row.item("sbu"), drv.row.item("ccetd"), drv.row.item("qty"), drv.row.item("startdate"), drv.row.item("inspector"), drv.row.item("city"), drv.row.item("soldtopartyname"), drv.row.item("sp")))
         Next
         sb.Append("</table> ")        
         sb.Append("<p> Best Regards,<br>WONG Tracy</br></html>")
@@ -282,10 +282,10 @@ Public Class SendEmailConfirmation
         sbInternal.Append("<p>Dear Colleagues,</p><p>Please find inspection schedule for your reference.</p>")
 
         sbInternal.Append("<table border=1 cellspacing=0 class='defaultfont'> ")
-        sbInternal.Append("<tr><th>Insp.Lot.</th><th>Sample Size</th><th>Purch.Doc.</th><th>Item</th><th>Purchase Order Number</th><th>Supplier Name</th><th>Material</th><th>Material Description</th><th>SBU Description</th><th>Confirmed ETD</th><th>Quantity</th><th>Inspection Booking</th><th>Inspector</th><th>City</th><th>Sold To Party Name</th></tr>")
+        sbInternal.Append("<tr><th>Insp.Lot.</th><th>Sample Size</th><th>Purch.Doc.</th><th>Item</th><th>Purchase Order Number</th><th>Supplier Name</th><th>Material</th><th>Material Description</th><th>SBU Description</th><th>Confirmed ETD</th><th>Quantity</th><th>Inspection Booking</th><th>Inspector</th><th>City</th><th>Sold To Party Name</th><th>SP</th></tr>")
         For Each dr In myqueryInternal
             'sbInternal.Append(String.Format("<tr><td>{0}</td><td>{1:#,##0}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td><td>{9:dd-MMM-yyyy}</td><td>{10:#,##0}</td><td>{11:dd-MMM-yyyy}</td><td>{12}</td></tr>", dr.Item("Insp. Lot"), dr.Item("Sample size"), dr.Item("Purch.Doc."), dr.Item("Item"), dr.Item("Cust PO No"), dr.Item("Vendor Name"), dr.Item("Material"), dr.Item("Material desc"), dr.Item("SBU"), dr.Item("Confirmed ETD"), dr.Item("Quantity"), dr.Item("startdate"), dr.Item("inspector")))
-            sbInternal.Append(String.Format("<tr><td>{0}</td><td>{1:#,##0}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td><td>{9:dd-MMM-yyyy}</td><td>{10:#,##0}</td><td>{11:dd-MMM-yyyy}</td><td>{12}</td><td>{13}</td><td>{14}</td></tr>", dr.Item("Insp. Lot"), dr.Item("Sample size"), dr.Item("Purch.Doc."), dr.Item("Item"), dr.Item("Cust PO No"), dr.Item("Vendor Name"), dr.Item("Material"), dr.Item("Material desc"), dr.Item("SBU"), dr.Item("Confirmed ETD"), dr.Item("Quantity"), InspectionDate, dr.Item("inspector"), dr.Item("City"), dr.Item("Sold To Party Name")))
+            sbInternal.Append(String.Format("<tr><td>{0}</td><td>{1:#,##0}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td><td>{9:dd-MMM-yyyy}</td><td>{10:#,##0}</td><td>{11:dd-MMM-yyyy}</td><td>{12}</td><td>{13}</td><td>{14}</td><td>{15}</td></tr>", dr.Item("Insp. Lot"), dr.Item("Sample size"), dr.Item("Purch.Doc."), dr.Item("Item"), dr.Item("Cust PO No"), dr.Item("Vendor Name"), dr.Item("Material"), dr.Item("Material desc"), dr.Item("SBU"), dr.Item("Confirmed ETD"), dr.Item("Quantity"), InspectionDate, dr.Item("inspector"), dr.Item("City"), dr.Item("Sold To Party Name"), dr.Item("sp")))
         Next
         sbInternal.Append("</table> ")
         sbInternal.Append("<p> Best Regards,<br>WONG Tracy</br></html>")
@@ -321,6 +321,7 @@ Public Class SendEmailConfirmation
     Sub FormattingReport(ByRef sender As Object, ByRef e As EventArgs)
         Dim osheet As Excel.Worksheet = DirectCast(sender, Excel.Worksheet)
         osheet.Columns("A:E").Delete()
+        osheet.Columns("AB:AB").Delete()
     End Sub
 
     Sub MyPivotTable(ByRef sender As Object, ByRef e As EventArgs)

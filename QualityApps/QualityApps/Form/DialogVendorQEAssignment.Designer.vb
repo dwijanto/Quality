@@ -34,6 +34,10 @@ Partial Class DialogVendorQEAssignment
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -45,7 +49,7 @@ Partial Class DialogVendorQEAssignment
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(476, 173)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(526, 231)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
@@ -74,7 +78,7 @@ Partial Class DialogVendorQEAssignment
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(61, 39)
+        Me.Label1.Location = New System.Drawing.Point(97, 43)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(41, 13)
         Me.Label1.TabIndex = 4
@@ -83,7 +87,7 @@ Partial Class DialogVendorQEAssignment
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(80, 66)
+        Me.Label2.Location = New System.Drawing.Point(116, 70)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(22, 13)
         Me.Label2.TabIndex = 5
@@ -92,7 +96,7 @@ Partial Class DialogVendorQEAssignment
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(50, 93)
+        Me.Label3.Location = New System.Drawing.Point(86, 97)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(52, 13)
         Me.Label3.TabIndex = 6
@@ -100,7 +104,7 @@ Partial Class DialogVendorQEAssignment
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(564, 34)
+        Me.Button1.Location = New System.Drawing.Point(600, 38)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(38, 23)
         Me.Button1.TabIndex = 7
@@ -110,14 +114,14 @@ Partial Class DialogVendorQEAssignment
         'ComboBox3
         '
         Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(108, 90)
+        Me.ComboBox3.Location = New System.Drawing.Point(144, 94)
         Me.ComboBox3.Name = "ComboBox3"
         Me.ComboBox3.Size = New System.Drawing.Size(184, 21)
         Me.ComboBox3.TabIndex = 3
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(108, 63)
+        Me.TextBox1.Location = New System.Drawing.Point(144, 67)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(184, 20)
         Me.TextBox1.TabIndex = 8
@@ -125,7 +129,7 @@ Partial Class DialogVendorQEAssignment
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(73, 120)
+        Me.Label4.Location = New System.Drawing.Point(109, 124)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(29, 13)
         Me.Label4.TabIndex = 10
@@ -134,7 +138,7 @@ Partial Class DialogVendorQEAssignment
         'ComboBox2
         '
         Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(108, 117)
+        Me.ComboBox2.Location = New System.Drawing.Point(144, 121)
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(264, 21)
         Me.ComboBox2.TabIndex = 9
@@ -142,11 +146,44 @@ Partial Class DialogVendorQEAssignment
         'TextBox2
         '
         Me.TextBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TextBox2.Location = New System.Drawing.Point(108, 36)
+        Me.TextBox2.Location = New System.Drawing.Point(144, 40)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.ReadOnly = True
         Me.TextBox2.Size = New System.Drawing.Size(450, 20)
         Me.TextBox2.TabIndex = 11
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(53, 151)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(85, 13)
+        Me.Label5.TabIndex = 13
+        Me.Label5.Text = "Monitoring Level"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(144, 148)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(264, 21)
+        Me.ComboBox1.TabIndex = 12
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(144, 175)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(184, 20)
+        Me.TextBox3.TabIndex = 15
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(52, 178)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(86, 13)
+        Me.Label6.TabIndex = 14
+        Me.Label6.Text = "Factory Location"
         '
         'DialogVendorQEAssignment
         '
@@ -154,7 +191,11 @@ Partial Class DialogVendorQEAssignment
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
-        Me.ClientSize = New System.Drawing.Size(634, 214)
+        Me.ClientSize = New System.Drawing.Size(684, 272)
+        Me.Controls.Add(Me.TextBox3)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.ComboBox2)
@@ -189,5 +230,9 @@ Partial Class DialogVendorQEAssignment
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents Label6 As System.Windows.Forms.Label
 
 End Class

@@ -9,8 +9,20 @@ Public Class DialogVendorQEAssignment
     Private SBUBS As BindingSource
     Private QEBS As BindingSource
     Private VendorHelperBS As BindingSource
+    Private MonitoringLevelBS As BindingSource
     Public Event RefreshInterface()
+    Public Sub New(DRV As DataRowView, vendorbs As BindingSource, vendorhelperbs As BindingSource, SBUBS As BindingSource, QEBS As BindingSource, Monitoringlevelbs As BindingSource)
+        InitializeComponent()
 
+        Me.drv = DRV
+        Me.drv.BeginEdit()
+        Me.VendorBS = vendorbs
+        Me.VendorHelperBS = vendorhelperbs
+        Me.SBUBS = SBUBS
+        Me.QEBS = QEBS
+        Me.MonitoringLevelBS = Monitoringlevelbs
+        InitData()
+    End Sub
     Public Sub New(DRV As DataRowView, vendorbs As BindingSource, vendorhelperbs As BindingSource, SBUBS As BindingSource, QEBS As BindingSource)
         InitializeComponent()
 
@@ -38,6 +50,10 @@ Public Class DialogVendorQEAssignment
     End Sub
 
     Private Sub InitData()
+        ComboBox1.DisplayMember = "description"
+        ComboBox1.ValueMember = "id"
+        ComboBox1.DataSource = MonitoringLevelBS
+
         ComboBox2.DisplayMember = "description"
         ComboBox2.ValueMember = "id"
         ComboBox2.DataSource = sbubs
@@ -46,22 +62,26 @@ Public Class DialogVendorQEAssignment
         ComboBox3.ValueMember = "QEID"
         ComboBox3.DataSource = QEBS
 
-
-        'ComboBox2.DataBindings.Clear()
+        ComboBox1.DataBindings.Clear()
+        ComboBox2.DataBindings.Clear()
         ComboBox3.DataBindings.Clear()
-       
+        TextBox1.DataBindings.Clear()
+        TextBox2.DataBindings.Clear()
+
+        ComboBox1.DataBindings.Add(New Binding("SelectedValue", drv, "monitoringlevelid", True, DataSourceUpdateMode.OnPropertyChanged))
         ComboBox2.DataBindings.Add(New Binding("SelectedValue", drv, "sbuid", True, DataSourceUpdateMode.OnPropertyChanged))
         TextBox1.DataBindings.Add(New Binding("Text", drv, "userid", True, DataSourceUpdateMode.OnPropertyChanged))
         TextBox2.DataBindings.Add(New Binding("Text", drv, "description", True, DataSourceUpdateMode.OnPropertyChanged))
+        TextBox3.DataBindings.Add(New Binding("Text", drv, "factorylocation", True, DataSourceUpdateMode.OnPropertyChanged))
         ComboBox3.DataBindings.Add(New Binding("SelectedValue", drv, "fgcp", True, DataSourceUpdateMode.OnPropertyChanged))
        
 
     End Sub
 
-    Private Sub ComboBox1_SelectionChangeCommitted(sender As Object, e As EventArgs)
-        selectionchangecommitted()
+    'Private Sub ComboBox1_SelectionChangeCommitted(sender As Object, e As EventArgs)
+    '    selectionchangecommitted()
 
-    End Sub
+    'End Sub
 
     Private Sub ComboBox3_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles ComboBox3.SelectionChangeCommitted
         drv.Item("qe") = ComboBox3.SelectedItem
@@ -90,6 +110,11 @@ Public Class DialogVendorQEAssignment
     Private Sub ComboBox2_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles ComboBox2.SelectionChangeCommitted
         Dim cbdrv As DataRowView = ComboBox2.SelectedItem
         drv.Row.Item("sbuname") = cbdrv.Row.Item("description")
+        RaiseEvent RefreshInterface()
+    End Sub
+    Private Sub ComboBox1_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles ComboBox1.SelectionChangeCommitted
+        Dim cbdrv As DataRowView = ComboBox1.SelectedItem
+        drv.Row.Item("monitoringlevel") = cbdrv.Row.Item("description")
         RaiseEvent RefreshInterface()
     End Sub
 End Class

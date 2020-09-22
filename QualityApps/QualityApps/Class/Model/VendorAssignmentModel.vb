@@ -4,7 +4,7 @@ Imports System.Text
 Public Class VendorAssignmentModel
     Implements IModel
 
-    Dim myadapter As PostgreSQLDBAdapter = PostgreSQLDBAdapter.getInstance
+    Public myadapter As PostgreSQLDBAdapter = PostgreSQLDBAdapter.getInstance
     Private DS As DataSet
 
     Public ReadOnly Property tablename As String Implements IModel.tablename
@@ -29,10 +29,11 @@ Public Class VendorAssignmentModel
         Dim sb As New StringBuilder
         Using conn As NpgsqlConnection = myadapter.getConnection
             conn.Open()
-            sb.Append(String.Format("select u.vendorcode::text,v.vendorname::text,v.shortname::text,qu.username,u.fgcp,u.id,u.sbuid,s.sbu as sbuname ,quality.getqename(u.fgcp)as qe,u.userid,v.vendorcode::text || ' - ' || coalesce(v.shortname::text,'') || ' - ' || v.vendorname as description,m.monitoringlevel,u.factorylocation from {0} u left join vendor v on v.vendorcode = u.vendorcode" &
+            sb.Append(String.Format("select u.vendorcode::text,v.vendorname::text,v.shortname::text,qu.username,u.fgcp,u.id,u.sbuid,s.sbu as sbuname ,quality.getqename(u.fgcp)as qe,u.userid,v.vendorcode::text || ' - ' || coalesce(v.shortname::text,'') || ' - ' || v.vendorname as description,u.monitoringlevelid,m.monitoringlevel,u.factorylocation ,coalesce(u.monitoringlevelid::character varying,'Null') as monitoringlevelidnull from {0} u left join vendor v on v.vendorcode = u.vendorcode" &
                                    " left join quality.user qu on lower(qu.userid) = lower(u.userid) left join quality.sbu s on s.id = u.sbuid left join quality.monitoringlevel m on m.id = u.monitoringlevelid order by {1};", tablename, sortField))
             sb.Append(String.Format("select *,v.vendorcode::text || ' - ' || coalesce(v.shortname::text,'') || ' - ' || v.vendorname as description from quality.vendorview v order by v.shortname;"))
             sb.Append(String.Format("select *,sbu as description from quality.sbu order by id;"))
+            sb.Append(String.Format("select *,monitoringlevel as description from quality.monitoringlevel order by id;"))
 
             sqlstr = sb.ToString
             dataAdapter.SelectCommand = myadapter.getCommandObject(sqlstr, conn)
@@ -65,6 +66,7 @@ Public Class VendorAssignmentModel
 
         DS.Tables(1).TableName = "Vendor"
         DS.Tables(2).TableName = "SBUSAP"
+        DS.Tables(3).TableName = "MonitoringLevel"
 
     End Sub
 
@@ -89,6 +91,8 @@ Public Class VendorAssignmentModel
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "userid").SourceVersion = DataRowVersion.Current
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "fgcp").SourceVersion = DataRowVersion.Current
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "sbuid").SourceVersion = DataRowVersion.Current
+            dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "monitoringlevelid").SourceVersion = DataRowVersion.Current
+            dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "factorylocation").SourceVersion = DataRowVersion.Current
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "id").Direction = ParameterDirection.InputOutput
 
             dataadapter.InsertCommand.CommandType = CommandType.StoredProcedure
@@ -100,7 +104,8 @@ Public Class VendorAssignmentModel
             dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "userid").SourceVersion = DataRowVersion.Current
             dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "fgcp").SourceVersion = DataRowVersion.Current
             dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "sbuid").SourceVersion = DataRowVersion.Current
-
+            dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "monitoringlevelid").SourceVersion = DataRowVersion.Current
+            dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "factorylocation").SourceVersion = DataRowVersion.Current
             dataadapter.UpdateCommand.CommandType = CommandType.StoredProcedure
 
             dataadapter.InsertCommand.Transaction = mytransaction

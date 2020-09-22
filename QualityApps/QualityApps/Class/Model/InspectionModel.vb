@@ -71,7 +71,8 @@ Public Class InspectionModel
                                   " where (tx.ccetd >= (current_date -{2})) {1}  order by purchdoc,item,seqn;", TableName, SBExecption.ToString, datespan)
         'sb.Append(_sqlstrExcel)
         '_sqlstr = sb.ToString
-        _sqlstr = String.Format("select * from quality.inspectionreport({0},'{1}');", datespan, SBExecption.ToString.Replace("'", "''"))
+        '_sqlstr = String.Format("select * from quality.inspectionreportwrk({0},'{1}');", datespan, SBExecption.ToString.Replace("'", "''"))
+        _sqlstr = String.Format("select * from quality.inspectionreportwrk01({0},'{1}');", datespan, SBExecption.ToString.Replace("'", "''"))
 
     End Sub
     Public ReadOnly Property TableName As String

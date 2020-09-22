@@ -140,12 +140,14 @@
     <Compile Include="Class\Controller\ActivityMasterController.vb" />
     <Compile Include="Class\Controller\AnnouncementController.vb" />
     <Compile Include="Class\Controller\CategoryController.vb" />
+    <Compile Include="Class\Controller\ConsolidationController.vb" />
     <Compile Include="Class\Controller\FirstCMMFController.vb" />
     <Compile Include="Class\Controller\GenerateExcelController.vb" />
     <Compile Include="Class\Controller\InspectionController.vb" />
     <Compile Include="Class\Controller\MissingVendorController.vb" />
     <Compile Include="Class\Controller\OTMController.vb" />
     <Compile Include="Class\Controller\SendEmailController.vb" />
+    <Compile Include="Class\Controller\SPAssignmentController.vb" />
     <Compile Include="Class\Controller\UserController.vb" />
     <Compile Include="Class\Controller\VendorAssignmentController.vb" />
     <Compile Include="Class\Controller\VendorController.vb" />
@@ -155,8 +157,13 @@
     <Compile Include="Class\GenerateEmail.vb" />
     <Compile Include="Class\GenerateExcel.vb" />
     <Compile Include="Class\GetReply.vb" />
+    <Compile Include="Class\ImportConsolidation.vb" />
+    <Compile Include="Class\ImportCzech.vb" />
+    <Compile Include="Class\ImportDailyBrandTx.vb" />
     <Compile Include="Class\ImportDailyTx.vb" />
     <Compile Include="Class\ImportOTM.vb" />
+    <Compile Include="Class\ImportPanex.vb" />
+    <Compile Include="Class\ImportShanghai.vb" />
     <Compile Include="Class\Interface\IActiveRecord.vb" />
     <Compile Include="Class\Interface\IController.vb" />
     <Compile Include="Class\Interface\IIdentity.vb" />
@@ -168,11 +175,13 @@
     <Compile Include="Class\Model\ActivityMasterModel.vb" />
     <Compile Include="Class\Model\AnnouncementModel.vb" />
     <Compile Include="Class\Model\CategoryModel.vb" />
+    <Compile Include="Class\Model\ConsolidationModel.vb" />
     <Compile Include="Class\Model\FirstCMMFModel.vb" />
     <Compile Include="Class\Model\GenerateExcelModel.vb" />
     <Compile Include="Class\Model\InspectionModel.vb" />
     <Compile Include="Class\Model\MissingVendorModel.vb" />
     <Compile Include="Class\Model\SendEmailModel.vb" />
+    <Compile Include="Class\Model\SPAssignmentModel.vb" />
     <Compile Include="Class\Model\UserModel.vb" />
     <Compile Include="Class\Model\VendorAssignmentModel.vb" />
     <Compile Include="Class\Model\VendorModel.vb" />
@@ -254,6 +263,12 @@
     <Compile Include="Form\DialogVendorQEAssignment.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\DialogVendorSPAssignment.Designer.vb">
+      <DependentUpon>DialogVendorSPAssignment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogVendorSPAssignment.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FormActivityLog.Designer.vb">
       <DependentUpon>FormActivityLog.vb</DependentUpon>
     </Compile>
@@ -282,6 +297,12 @@
       <DependentUpon>FormCategory.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\FormCategory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormConsolidation.Designer.vb">
+      <DependentUpon>FormConsolidation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormConsolidation.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FormFirstCMMF.Designer.vb">
@@ -324,6 +345,30 @@
       <DependentUpon>FormHelper.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\FormHelper.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportCookwareCzech.Designer.vb">
+      <DependentUpon>FormImportCookwareCzech.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportCookwareCzech.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportCookwarePanex.Designer.vb">
+      <DependentUpon>FormImportCookwarePanex.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportCookwarePanex.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportCookwareSH.Designer.vb">
+      <DependentUpon>FormImportCookwareSH.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportCookwareSH.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportDailyBrandExtraction.Designer.vb">
+      <DependentUpon>FormImportDailyBrandExtraction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportDailyBrandExtraction.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FormImportDailyExtraction.Designer.vb">
@@ -384,6 +429,12 @@
       <DependentUpon>FormSendEmailConfirmation.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\FormSendEmailConfirmation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSPAssignment.Designer.vb">
+      <DependentUpon>FormSPAssignment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSPAssignment.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FormTimeStampSendingReport.Designer.vb">
@@ -467,6 +518,9 @@
     <EmbeddedResource Include="Form\DialogVendorQEAssignment.resx">
       <DependentUpon>DialogVendorQEAssignment.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogVendorSPAssignment.resx">
+      <DependentUpon>DialogVendorSPAssignment.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormActivityLog.resx">
       <DependentUpon>FormActivityLog.vb</DependentUpon>
     </EmbeddedResource>
@@ -481,6 +535,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormCategory.resx">
       <DependentUpon>FormCategory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormConsolidation.resx">
+      <DependentUpon>FormConsolidation.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormFirstCMMF.resx">
       <DependentUpon>FormFirstCMMF.vb</DependentUpon>
@@ -502,6 +559,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormHelper.resx">
       <DependentUpon>FormHelper.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportCookwareCzech.resx">
+      <DependentUpon>FormImportCookwareCzech.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportCookwarePanex.resx">
+      <DependentUpon>FormImportCookwarePanex.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportCookwareSH.resx">
+      <DependentUpon>FormImportCookwareSH.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportDailyBrandExtraction.resx">
+      <DependentUpon>FormImportDailyBrandExtraction.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormImportDailyExtraction.resx">
       <DependentUpon>FormImportDailyExtraction.vb</DependentUpon>
@@ -532,6 +601,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormSendEmailConfirmation.resx">
       <DependentUpon>FormSendEmailConfirmation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSPAssignment.resx">
+      <DependentUpon>FormSPAssignment.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormTimeStampSendingReport.resx">
       <DependentUpon>FormTimeStampSendingReport.vb</DependentUpon>

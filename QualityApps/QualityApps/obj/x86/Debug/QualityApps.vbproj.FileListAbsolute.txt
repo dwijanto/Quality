@@ -93,3 +93,10 @@ C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\Qua
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormMissingVendor.resources
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormParamDTL.resources
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormCategory.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormSPAssignment.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.DialogVendorSPAssignment.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormImportCookwareCzech.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormImportCookwarePanex.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormImportCookwareSH.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormImportDailyBrandExtraction.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormConsolidation.resources

@@ -93,3 +93,5 @@ C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x64\Release\Q
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x64\Release\QualityApps.FormMissingVendor.resources
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x64\Release\QualityApps.FormCategory.resources
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x64\Release\QualityApps.FormParamDTL.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x64\Release\QualityApps.DialogVendorSPAssignment.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x64\Release\QualityApps.FormSPAssignment.resources

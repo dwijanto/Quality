@@ -1,10 +1,15 @@
 ﻿Imports System.Threading
+Imports System.IO
+
 Public Class FormVendorQEAssignment
     Private Shared myform As FormVendorQEAssignment
     Dim myController As VendorAssignmentController
     Public QES As New List(Of QE)
     Dim QEBS As BindingSource
+    Dim MonitoringLevelBS As BindingSource
     Dim VendorBSHelper As BindingSource
+    Dim FileImport As String
+
     Public Shared Function getInstance()
         If myform Is Nothing Then
             myform = New FormVendorQEAssignment
@@ -60,7 +65,9 @@ Public Class FormVendorQEAssignment
                     DataGridView1.AutoGenerateColumns = False
                     DataGridView1.DataSource = myController.BS
                     QEBS = New BindingSource
-                    QEBS.DataSource = QES                   
+                    QEBS.DataSource = QES
+                    MonitoringLevelBS = New BindingSource
+                    MonitoringLevelBS.DataSource = myController.GetMonitoringLevelBS
 
             End Select
         End If
@@ -74,10 +81,10 @@ Public Class FormVendorQEAssignment
                     'drv.Item("activitydate") = Today.Date
                     ' drv.Item("userid") = myIdentity.userid
                 Case TxEnum.UpdateRecord
-                    drv = myController.GetCurrentRecord                
+                    drv = myController.GetCurrentRecord
             End Select
             drv.BeginEdit()
-            Dim myform = New DialogVendorQEAssignment(drv, myController.GetVendorBS, myController.GetVendorHelperBS, myController.GetSBUBS, QEBS)
+            Dim myform = New DialogVendorQEAssignment(drv, myController.GetVendorBS, myController.GetVendorHelperBS, myController.GetSBUBS, QEBS, MonitoringLevelBS)
             RemoveHandler myform.RefreshInterface, AddressOf RefreshMYInterface
             AddHandler myform.RefreshInterface, AddressOf RefreshMYInterface
             myform.ShowDialog()
@@ -86,7 +93,7 @@ Public Class FormVendorQEAssignment
 
     End Sub
 
-    Private Sub AddNewToolStripButton1_Click(sender As Object, e As EventArgs) Handles AddToolStripButton.Click     
+    Private Sub AddNewToolStripButton1_Click(sender As Object, e As EventArgs) Handles AddToolStripButton.Click
         showTx(TxEnum.NewRecord)
     End Sub
 
@@ -142,6 +149,40 @@ Public Class FormVendorQEAssignment
             MessageBox.Show("Nothing to update.")
         End If
     End Sub
+
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+        If Not myThread.IsAlive Then
+            ToolStripStatusLabel1.Text = ""
+
+            'GetFile
+            Dim openFileDialog1 As New OpenFileDialog
+            If openFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+                FileImport = openFileDialog1.FileName
+                myThread = New Thread(AddressOf DoImport)
+                myThread.Start()
+            End If
+
+        Else
+            MessageBox.Show("Please wait until the current process is finished.")
+        End If
+    End Sub
+
+    Private Sub DoImport()
+        If myController.ImportTextFile(Me, FileImport) Then
+            If myController.loaddata() Then
+                ProgressReport(4, "Init Data")
+            End If
+            ProgressReport(1, String.Format("Import File...Done. Records {0}", myController.BS.Count))
+        Else
+            'show error
+            Using mystream As New StreamWriter(IO.Path.GetDirectoryName(FileImport) & "\error.txt")
+                mystream.WriteLine(myController.errMsgSB.ToString)
+            End Using
+            Process.Start(IO.Path.GetDirectoryName(FileImport) & "\error.txt")
+            ProgressReport(1, String.Format("Found Error."))
+        End If
+    End Sub
+
 End Class
 
 Public Class QE

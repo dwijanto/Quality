@@ -121,12 +121,12 @@ Public Class PostgreSQLDBAdapter
                 cmd.CommandText = sqlstr
                 cmd.Connection = conn
                 Try
-                    If params.Length > 0 Then
-                        cmd.Parameters.AddRange(params)
-                    End If
-                    'If Not IsNothing(params) Then
+                    'If params.Length > 0 Then
                     '    cmd.Parameters.AddRange(params)
                     'End If
+                    If Not IsNothing(params) Then
+                        cmd.Parameters.AddRange(params)
+                    End If
                     recordAffected = cmd.ExecuteScalar
                     myret = True
                 Catch ex As Exception

@@ -143,10 +143,12 @@ Public Class SendEmailModel
             'Dim sqlstr = String.Format("select id,porg,cocd,plant,cc,purchdoc,item,seqn,insplot,stage,inspector,code,vendor,vendorname,material,ntsg,materialdesc,custpono,sbu,soldtoparty,soldtopartyname,city,ccetd,qty,qtyoun,quality.changesamplesize(inspector,samplesize::integer) as samplesize,uom,poqty,poqtyoun,startdate,enddate,quality.getproductionenddate(tx.purchdoc,tx.item,tx.seqn,qty)  as productionenddate" &
             '                           " from {0} tx  where {1} (code isnull or code in ('UF','DF','PP')) and tx.startdate >= '{2:yyyy-MM-dd}' and tx.startdate <= '{3:yyyy-MM-dd}' order by tx.startdate,inspector,vendorname,material", TableName, vendorCriteria, Me.startdate, Me.enddate)
 
-            Dim sqlstr = String.Format("select id,porg,cocd,plant,cc,purchdoc,item,seqn,insplot,stage,inspector,code,vendor,vendorname,material,ntsg,materialdesc,custpono,sbu,soldtoparty,soldtopartyname,city,ccetd,qty,qtyoun,quality.changesamplesize(inspector,samplesize::integer) as samplesize,uom,poqty,poqtyoun,startdate,enddate,quality.getproductionenddate(tx.purchdoc,tx.item,tx.seqn,qty)  as productionenddate" &
-                                       " from {0} tx  where {1} not(code in ('UF','PP')) and tx.startdate >= '{2:yyyy-MM-dd}' and tx.startdate <= '{3:yyyy-MM-dd}' order by tx.startdate,inspector,vendorname,material", TableName, vendorCriteria, Me.startdate, Me.enddate)
+            Dim sqlstr = String.Format("select id,porg,cocd,plant,cc,purchdoc,item,seqn,insplot,stage,inspector,code,vendor,vendorname,material,ntsg,materialdesc,custpono,sbu,soldtoparty,soldtopartyname,city,ccetd,qty,qtyoun,quality.changesamplesize(inspector,samplesize::integer) as samplesize,uom,poqty,poqtyoun,startdate,enddate,quality.getproductionenddate(tx.purchdoc,tx.item,tx.seqn,qty)  as productionenddate,quality.getvendorsp(vendor) as sp" &
+                                       " from {0} tx  where {1} (code isnull or not(code in ('UF','PP'))) and tx.startdate >= '{2:yyyy-MM-dd}' and tx.startdate <= '{3:yyyy-MM-dd}' order by tx.startdate,inspector,vendorname,material", TableName, vendorCriteria, Me.startdate, Me.enddate)
 
-            _InternalSqlstr = sqlstr
+            '_InternalSqlstr = sqlstr
+            _InternalSqlstr = String.Format("select id,porg,cocd,plant,cc,purchdoc,item,seqn,insplot,stage,inspector,code,vendor,vendorname,material,ntsg,materialdesc,custpono,sbu,soldtoparty,soldtopartyname,city,ccetd,qty,qtyoun,quality.changesamplesize(inspector,samplesize::integer) as samplesize,uom,poqty,poqtyoun,startdate,enddate,quality.getproductionenddate(tx.purchdoc,tx.item,tx.seqn,qty)  as productionenddate,quality.getvendorsp(vendor) as sp" &
+                                       " from {0} tx  where {1} (code isnull or not(code in ('UF','PP'))) and tx.startdate >= '{2:yyyy-MM-dd}' and tx.startdate <= '{3:yyyy-MM-dd}' order by tx.startdate,inspector,vendorname,material", TableName, vendorCriteria, Me.startdate, Me.enddate)
 
             dataadapter.SelectCommand = myAdapter.getCommandObject(sqlstr, conn)
             dataadapter.SelectCommand.CommandType = CommandType.Text
