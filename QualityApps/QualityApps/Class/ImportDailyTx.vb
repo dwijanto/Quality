@@ -92,13 +92,13 @@ Public Class ImportDailyTx
                     validint(value(9)) & vbTab & validLong(value(10)) & vbTab & validint(value(11)) & vbTab & validStr(value(12)) & vbTab & validStr(value(13)) & vbTab & validLong(value(14)) & vbTab &
                     validStr(value(15)) & vbTab & validLong(value(16)) & vbTab & validint(value(17)) & vbTab & validStr(value(18)) & vbTab & validStr(value(19)) & vbTab & validStr(value(20)) & vbTab &
                     validLong(value(21)) & vbTab & validStr(value(22)) & vbTab & validStr(value(23)) & vbTab & validSAPDate(value(24)) & vbTab & validint(value(25)) & vbTab & validStr(value(26)) & vbTab &
-                    validint(value(27)) & vbTab & validStr(value(28)) & vbTab & validint(value(29)) & vbTab & validStr(value(30)) & vbTab & validSAPDate(value(31)) & vbTab & validSAPDate(value(32)) & vbTab & validStr(value(33)) & vbCrLf)
+                    validNumeric(value(27)) & vbTab & validStr(value(28)) & vbTab & validint(value(29)) & vbTab & validStr(value(30)) & vbTab & validSAPDate(value(31)) & vbTab & validSAPDate(value(32)) & vbTab & validStr(value(33)) & vbCrLf)
             Else
                 TXSB.Append(validStr(value(2)) & vbTab & validStr(value(3)) & vbTab & validStr(value(5)) & vbTab & validStr(value(6)) & vbTab & validLong(value(7)) & vbTab & validint(value(8)) & vbTab &
                     validint(value(9)) & vbTab & validLong(value(10)) & vbTab & validint(value(11)) & vbTab & validStr(value(12)) & vbTab & validStr(value(13)) & vbTab & validLong(value(14)) & vbTab &
                     validStr(value(15)) & vbTab & validLong(value(16)) & vbTab & validint(value(17)) & vbTab & validStr(value(18)) & vbTab & validStr(value(19)) & vbTab & validStr(value(20)) & vbTab &
                     validLong(value(21)) & vbTab & validStr(value(22)) & vbTab & validStr(value(23)) & vbTab & validSAPDate(value(24)) & vbTab & validint(value(25)) & vbTab & validStr(value(26)) & vbTab &
-                    validint(value(27)) & vbTab & validStr(value(28)) & vbTab & validint(value(29)) & vbTab & validStr(value(30)) & vbTab & validSAPDate(value(31)) & vbTab & validSAPDate(value(32)) & vbTab & "Null" & vbCrLf)
+                    validNumeric(value(27)) & vbTab & validStr(value(28)) & vbTab & validint(value(29)) & vbTab & validStr(value(30)) & vbTab & validSAPDate(value(31)) & vbTab & validSAPDate(value(32)) & vbTab & "Null" & vbCrLf)
 
             End If
         

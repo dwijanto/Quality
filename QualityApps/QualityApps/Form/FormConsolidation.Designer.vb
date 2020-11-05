@@ -22,10 +22,10 @@ Partial Class FormConsolidation
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormConsolidation))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -42,7 +42,10 @@ Partial Class FormConsolidation
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripTextBox2 = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
         Me.Column25 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Column14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -56,7 +59,7 @@ Partial Class FormConsolidation
         Me.Column11 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
+        Me.Column15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
@@ -120,11 +123,11 @@ Partial Class FormConsolidation
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToOrderColumns = True
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView1.ColumnHeadersHeight = 35
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column25, Me.Column1, Me.Column2, Me.Column3, Me.Column9, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column10, Me.Column11, Me.Column13, Me.Column12})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column25, Me.Column14, Me.Column16, Me.Column1, Me.Column2, Me.Column3, Me.Column9, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column10, Me.Column11, Me.Column13, Me.Column12, Me.Column15})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
@@ -138,7 +141,7 @@ Partial Class FormConsolidation
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3, Me.ToolStripSeparator1, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripLabel2, Me.ToolStripTextBox2, Me.ToolStripButton4, Me.ToolStripButton5})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(973, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(943, 25)
         Me.ToolStrip1.TabIndex = 0
         '
         'ToolStripButton1
@@ -165,7 +168,7 @@ Partial Class FormConsolidation
         Me.ToolStripButton3.Image = CType(resources.GetObject("ToolStripButton3.Image"), System.Drawing.Image)
         Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(87, 22)
+        Me.ToolStripButton3.Size = New System.Drawing.Size(88, 22)
         Me.ToolStripButton3.Text = "Generate Excel"
         '
         'ToolStripSeparator1
@@ -204,6 +207,16 @@ Partial Class FormConsolidation
         Me.ToolStripButton4.Size = New System.Drawing.Size(32, 22)
         Me.ToolStripButton4.Text = "Run"
         '
+        'ToolStripButton5
+        '
+        Me.ToolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.ToolStripButton5.Image = CType(resources.GetObject("ToolStripButton5.Image"), System.Drawing.Image)
+        Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton5.Name = "ToolStripButton5"
+        Me.ToolStripButton5.Size = New System.Drawing.Size(74, 22)
+        Me.ToolStripButton5.Text = "Import Data"
+        Me.ToolStripButton5.ToolTipText = "Text Tab delimited with Header"
+        '
         'Column25
         '
         Me.Column25.DataPropertyName = "selected"
@@ -212,12 +225,24 @@ Partial Class FormConsolidation
         Me.Column25.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.Column25.Width = 50
         '
+        'Column14
+        '
+        Me.Column14.DataPropertyName = "period"
+        Me.Column14.HeaderText = "Week"
+        Me.Column14.Name = "Column14"
+        Me.Column14.Width = 50
+        '
+        'Column16
+        '
+        Me.Column16.DataPropertyName = "SEB PO No"
+        Me.Column16.HeaderText = "SEB PO No"
+        Me.Column16.Name = "Column16"
+        '
         'Column1
         '
-        Me.Column1.DataPropertyName = "Purch Doc"
-        Me.Column1.HeaderText = "Purch.Doc."
+        Me.Column1.DataPropertyName = "Customer Order No"
+        Me.Column1.HeaderText = "Customer Oder No"
         Me.Column1.Name = "Column1"
-        Me.Column1.Width = 70
         '
         'Column2
         '
@@ -248,7 +273,7 @@ Partial Class FormConsolidation
         '
         'Column5
         '
-        Me.Column5.DataPropertyName = "Vendor Name"
+        Me.Column5.DataPropertyName = "vendornameconverted"
         Me.Column5.HeaderText = "Vendor Name"
         Me.Column5.Name = "Column5"
         Me.Column5.Width = 150
@@ -256,8 +281,8 @@ Partial Class FormConsolidation
         'Column6
         '
         Me.Column6.DataPropertyName = "CCETD"
-        DataGridViewCellStyle5.Format = "dd-MMM-yyyy"
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Format = "dd-MMM-yyyy"
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column6.HeaderText = "CCETD"
         Me.Column6.Name = "Column6"
         '
@@ -295,19 +320,17 @@ Partial Class FormConsolidation
         'Column12
         '
         Me.Column12.DataPropertyName = "Inspection Date"
-        DataGridViewCellStyle6.Format = "dd-MMM-yyyy"
-        Me.Column12.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Format = "dd-MMM-yyyy"
+        Me.Column12.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column12.HeaderText = "Inspection Date"
         Me.Column12.Name = "Column12"
         '
-        'ToolStripButton5
+        'Column15
         '
-        Me.ToolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripButton5.Image = CType(resources.GetObject("ToolStripButton5.Image"), System.Drawing.Image)
-        Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton5.Name = "ToolStripButton5"
-        Me.ToolStripButton5.Size = New System.Drawing.Size(74, 22)
-        Me.ToolStripButton5.Text = "Import Data"
+        Me.Column15.DataPropertyName = "remark"
+        Me.Column15.HeaderText = "Remark"
+        Me.Column15.Name = "Column15"
+        Me.Column15.Width = 200
         '
         'FormConsolidation
         '
@@ -348,7 +371,10 @@ Partial Class FormConsolidation
     Friend WithEvents ToolStripLabel2 As System.Windows.Forms.ToolStripLabel
     Friend WithEvents ToolStripTextBox2 As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents ToolStripButton4 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripButton5 As System.Windows.Forms.ToolStripButton
     Friend WithEvents Column25 As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents Column14 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column16 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -362,5 +388,5 @@ Partial Class FormConsolidation
     Friend WithEvents Column11 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Column13 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column12 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ToolStripButton5 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents Column15 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

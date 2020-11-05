@@ -11,7 +11,8 @@ Public Class FormConsolidation
     Dim SaveFileDialog1 As New SaveFileDialog
     Public InspectionDate As Date
     Dim ImportFileName As String
-
+    Dim CETDStartDate As Date
+    Dim CETDEndDate As Date
 
     Public Shared Function getInstance()
         If myform Is Nothing Then
@@ -104,7 +105,15 @@ Public Class FormConsolidation
     End Sub
 
     Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
-        loaddata()
+        Dim myAskDateRange = New DialogAskDateRange
+        myAskDateRange.DateTimePicker1.Value = myController.StartDate
+        myAskDateRange.DateTimePicker2.Value = myController.EndDate
+        If myAskDateRange.ShowDialog = Windows.Forms.DialogResult.OK Then
+            myController.StartDate = myAskDateRange.DateTimePicker1.Value
+            myController.EndDate = myAskDateRange.DateTimePicker2.Value
+            loaddata()
+        End If
+
     End Sub
 
     Private Sub ToolStripButton4_Click(sender As Object, e As EventArgs) Handles ToolStripButton4.Click
@@ -137,7 +146,9 @@ Public Class FormConsolidation
     End Sub
 
     Private Sub bs_ListChanged(sender As Object, e As System.ComponentModel.ListChangedEventArgs) Handles bs.ListChanged
-        ProgressReport(1, String.Format("Loading Data.Done! Records Count: {0}", myController.BS.Count))
+        If Not myThread.IsAlive Then
+            ProgressReport(1, String.Format("Loading Data.Done! Records Count: {0}", myController.BS.Count))
+        End If
     End Sub
 
     Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
@@ -256,7 +267,8 @@ Public Class FormConsolidation
 
         ' This call is required by the designer.
         InitializeComponent()
-
+        CETDStartDate = Today.Date.AddDays(-30)
+        CETDEndDate = Today.Date.AddDays(30)
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
@@ -297,4 +309,7 @@ Public Class FormConsolidation
         myImport.RunImport(ImportFileName)
     End Sub
 
+    Private Sub DataGridView1_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles DataGridView1.DataError
+        MessageBox.Show(e.Exception.Message)
+    End Sub
 End Class

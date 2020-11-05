@@ -7,6 +7,7 @@ Public Class FormGenerateExcelDataGrid
     Private TotalProcess As Integer
     Dim MyCallBack As System.Net.Mail.SendCompletedEventHandler = AddressOf SendCompletedCallBack
     Dim MyDate As Date = Date.Today
+    Dim Mydate2 As Date = Date.Today
 
     Public Shared Function getInstance()
         If myForm Is Nothing Then
@@ -107,7 +108,7 @@ Public Class FormGenerateExcelDataGrid
             Dim AskDate As New DialogAskDate
             AskDate.Label1.Text = "Processing Date"
             If AskDate.ShowDialog = Windows.Forms.DialogResult.OK Then
-                MyDate = AskDate.DTInscpectionDate.Value.Date
+                MyDate = AskDate.DTInscpectionDate.Value.Date                
                 myThread = New Thread(AddressOf DoCreateExcel)
                 myThread.SetApartmentState(ApartmentState.STA)
                 myThread.Start()
@@ -156,10 +157,14 @@ Public Class FormGenerateExcelDataGrid
         If Not myThread.IsAlive Then
             ToolStripStatusLabel1.Text = ""
             UcDataGridExcel1.Validate()
-            Dim AskDate As New DialogAskDate
+            'Dim AskDate As New DialogAskDate
+            Dim AskDate As New DialogAskDateRange
             AskDate.Label1.Text = "Processing Date"
+            AskDate.Label2.Text = "Deadline Booking Date"
             If AskDate.ShowDialog = Windows.Forms.DialogResult.OK Then
-                MyDate = AskDate.DTInscpectionDate.Value.Date
+                'MyDate = AskDate.DTInscpectionDate.Value.Date
+                MyDate = AskDate.DateTimePicker1.Value.Date
+                Mydate2 = AskDate.DateTimePicker2.Value.Date
                 myThread = New Thread(AddressOf DoCreateEmailEWS)
                 myThread.SetApartmentState(ApartmentState.STA)
                 myThread.Start()
@@ -171,10 +176,14 @@ Public Class FormGenerateExcelDataGrid
         End If
     End Sub
    
-    Private Sub DoCreateEmailEWS()
+    Private Sub DoCreateEmailEWS01()
         'Dim myGenerateEmail As New GenerateEmail(Me, MyCallBack)
         Dim myGenerateEmail As New GenerateEmail(Me, MyCallBack, MyDate)
         myGenerateEmail.runEWS(myController.DS)
     End Sub
-
+    Private Sub DoCreateEmailEWS()
+        'Dim myGenerateEmail As New GenerateEmail(Me, MyCallBack)
+        Dim myGenerateEmail As New GenerateEmail(Me, MyCallBack, MyDate, Mydate2)
+        myGenerateEmail.runEWS(myController.DS)
+    End Sub
 End Class

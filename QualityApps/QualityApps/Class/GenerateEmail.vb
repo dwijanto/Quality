@@ -13,6 +13,7 @@ Public Class GenerateEmail
     Dim OUTBOXFolder As String = myParam.GetMailFolder("OUTBOX")
 
     Dim mydate As Date = Date.Today
+    Dim mydate2 As Date = Date.Today
 
     Public Sub New(ByVal parent As Object)
         Me.myForm = parent
@@ -27,6 +28,13 @@ Public Class GenerateEmail
         Me.myForm = parent
         Me.myCallback = mycallback
         Me.mydate = mydate
+    End Sub
+
+    Public Sub New(ByVal parent As Object, ByVal mycallback As System.Net.Mail.SendCompletedEventHandler, ByVal mydate As Date, ByVal mydate2 As Date)
+        Me.myForm = parent
+        Me.myCallback = mycallback
+        Me.mydate = mydate
+        Me.mydate2 = mydate2
     End Sub
 
     Public Function runEWS(ByVal ds As DataSet) As Boolean
@@ -155,10 +163,44 @@ Public Class GenerateEmail
                   "</ol></span>" &
                   "<p>Vendor must return this file to SEB Asia Quality Inspection booking team before <b><u><span style='background:yellow'>")
 
+        'sb.Append(String.Format("{0:dd-MMM-yyyy} ", nextday(mydate2)))
+        sb.Append(String.Format("{0:dd-MMM-yyyy} ", mydate2))
+        sb.Append("10:30am </b></span></u><span style='background:yellow'> </span></b>.<span style='color:#365F91'> </span>All late incoming inspection booking will be disregarded, and the vendor shall wait for the next day&#8217;s new schedule from SEB Asia.</p><p>This file solely is for Quality inspection allocation purpose only. Any changes of the PO information, vendor must update it from <u><span style='color:#0033CC'><a href='https://asiavendor.groupeseb.com/SCM/login.do'>VENDOR PORTAL</a></span></u></p><span style='color:#746661'><b><p>Best Regards,</p><p>SEB Asia Inspection Booking Team</p></b></span></body></html>")
+        Return sb.ToString
+    End Function
+
+    Private Function GetBodyMessage1(maxdate As Date) As String
+        Dim sb As New StringBuilder
+        Dim myNotification As String = myParam.GetNotification(Date.Today)
+
+        'sb.Append("<!DOCTYPE html><html><head><meta name='description' content='[QualitySystem]'/><meta http-equiv='Content-Type' content='text/html; charset=us-ascii'><style>body{font-size:11.0pt; font-family:'Calibri','sans-serif';}</style></head><body>")
+        'sb.Append("<!DOCTYPE html><html><head><meta name='description' content='[QualitySystem]'/><meta http-equiv='Content-Type' content='text/html; charset=us-ascii'></head><style>.defaultfont(){font-size:11.0pt; font-family:'Calibri','sans-serif';}</style><body class='defaultfont'>")
+        sb.Append("<!DOCTYPE html><html><head><meta name='description' content='[QualitySystem]'/><meta http-equiv='Content-Type' content='text/html; charset=us-ascii'><style>td,th {padding-left:5px;         padding-right:10px; text-align:left;  }  th {background-color:red;    color:white} body{font-size:11.0pt; font-family:'Calibri','sans-serif';}</style></head><body>")
+        If myNotification.Length > 0 Then
+            sb.Append(myNotification)
+        End If
+        ' class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l0 level1 lfo1'
+        'sb.Append("<!DOCTYPE html><html><head><meta name='description' content='[QualitySystem]'/><meta http-equiv='Content-Type' content='text/html; charset=us-ascii'></head><style>.defaultfont(){font-size:11.0pt; font-family:'Calibri','sans-serif';}</style><body class='defaultfont'><p>Dear Vendor,</p><p>Enclosed with the CCETD 2-4 weeks PO list for your review. Please check and provide the <u>inspection date</u> for the PO(s) CCETD +14 days.</p><p><span style='color:red'><b>**Important Notice**</b></span></p>" &
+        '          "<ol start=1 type=1>" &
+        '          "<span style='color:red'>" &
+        '          "<li>Vendor is required to provide inspection date and <b><u>MUST</u></b> put it in the &#8220;Inspection Date&#8221; Column, <b><u>DO NOT</u></b> put inspection date in &#8220;Supplier Remark&#8221; column, misplacement will be considered as not an official booking.</li>" &
+        '          "<li>Please also be aware that the inspection date should avoid Saturday and Sunday except request for OT. </li>" &
+        '          "<li>&#8220;Supplier Remark&#8221; column is for supporting information only, ie. different inspection location, address and contact person, etc.</li>" &
+        '          "</span></ol>" &
+        '          "<p>Vendor must return this file to SEB Asia Quality Inspection booking team before <b><u><span style='background:yellow'>")
+        sb.Append("<p>Dear Vendor,</p><p>Enclosed with the CCETD 2-4 weeks PO list for your review. Please check and provide the <u>inspection date</u> for the PO(s) CCETD +14 days.</p><span style='color:red'><p><b>**Important Notice**</b></p>" &
+                  "<ol start=1 type=1>" &
+                  "<li>Vendor is required to provide inspection date and <b><u>MUST</u></b> put it in the &#8220;New Input Inspection Date&#8221; Column, <b><u>DO NOT</u></b> put inspection date in &#8220;Supplier Remark&#8221; column, misplacement will be considered as not an official booking.</li>" &
+                  "<li>Please also be aware that the inspection date should avoid Saturday and Sunday except request for OT. </li>" &
+                  "<li>&#8220;Supplier Remark&#8221; column is for supporting information only, ie. different inspection location, address and contact person, etc.</li>" &
+                  "</ol></span>" &
+                  "<p>Vendor must return this file to SEB Asia Quality Inspection booking team before <b><u><span style='background:yellow'>")
+
         sb.Append(String.Format("{0:dd-MMM-yyyy} ", nextday(Date.Today)))
         sb.Append("10:30am </b></span></u><span style='background:yellow'> </span></b>.<span style='color:#365F91'> </span>All late incoming inspection booking will be disregarded, and the vendor shall wait for the next day&#8217;s new schedule from SEB Asia.</p><p>This file solely is for Quality inspection allocation purpose only. Any changes of the PO information, vendor must update it from <u><span style='color:#0033CC'><a href='https://asiavendor.groupeseb.com/SCM/login.do'>VENDOR PORTAL</a></span></u></p><span style='color:#746661'><b><p>Best Regards,</p><p>SEB Asia Inspection Booking Team</p></b></span></body></html>")
         Return sb.ToString
     End Function
+
     Private Function GetBodyMessageold(maxdate As Date) As String
         Dim sb As New StringBuilder
         Dim myNotification As String = myParam.GetNotification(Date.Today)

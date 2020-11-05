@@ -61,6 +61,7 @@ Partial Class FormMenu
         Me.PanexImportTextFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WORImportTextFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsolidationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VendorNameConversionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
@@ -279,7 +280,7 @@ Partial Class FormMenu
         '
         Me.OTMToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImportDataToolStripMenuItem, Me.GenerateCSVToolStripMenuItem})
         Me.OTMToolStripMenuItem.Name = "OTMToolStripMenuItem"
-        Me.OTMToolStripMenuItem.Size = New System.Drawing.Size(45, 20)
+        Me.OTMToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.OTMToolStripMenuItem.Text = "OTM"
         '
         'ImportDataToolStripMenuItem
@@ -311,7 +312,7 @@ Partial Class FormMenu
         '
         'CookwareToolStripMenuItem
         '
-        Me.CookwareToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CzechImportTextFileToolStripMenuItem, Me.ShangHaiImportTextFileToolStripMenuItem, Me.PanexImportTextFileToolStripMenuItem, Me.WORImportTextFileToolStripMenuItem, Me.ConsolidationToolStripMenuItem})
+        Me.CookwareToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CzechImportTextFileToolStripMenuItem, Me.ShangHaiImportTextFileToolStripMenuItem, Me.PanexImportTextFileToolStripMenuItem, Me.WORImportTextFileToolStripMenuItem, Me.ConsolidationToolStripMenuItem, Me.VendorNameConversionToolStripMenuItem})
         Me.CookwareToolStripMenuItem.Name = "CookwareToolStripMenuItem"
         Me.CookwareToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
         Me.CookwareToolStripMenuItem.Tag = ""
@@ -320,37 +321,44 @@ Partial Class FormMenu
         'CzechImportTextFileToolStripMenuItem
         '
         Me.CzechImportTextFileToolStripMenuItem.Name = "CzechImportTextFileToolStripMenuItem"
-        Me.CzechImportTextFileToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.CzechImportTextFileToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
         Me.CzechImportTextFileToolStripMenuItem.Tag = "FormImportCookwareCzech"
         Me.CzechImportTextFileToolStripMenuItem.Text = "Czech Import Text File"
         '
         'ShangHaiImportTextFileToolStripMenuItem
         '
         Me.ShangHaiImportTextFileToolStripMenuItem.Name = "ShangHaiImportTextFileToolStripMenuItem"
-        Me.ShangHaiImportTextFileToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.ShangHaiImportTextFileToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
         Me.ShangHaiImportTextFileToolStripMenuItem.Tag = "FormImportCookwareSH"
         Me.ShangHaiImportTextFileToolStripMenuItem.Text = "Shanghai Import Text File"
         '
         'PanexImportTextFileToolStripMenuItem
         '
         Me.PanexImportTextFileToolStripMenuItem.Name = "PanexImportTextFileToolStripMenuItem"
-        Me.PanexImportTextFileToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.PanexImportTextFileToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
         Me.PanexImportTextFileToolStripMenuItem.Tag = "FormImportCookwarePanex"
         Me.PanexImportTextFileToolStripMenuItem.Text = "Panex Import Text File"
         '
         'WORImportTextFileToolStripMenuItem
         '
         Me.WORImportTextFileToolStripMenuItem.Name = "WORImportTextFileToolStripMenuItem"
-        Me.WORImportTextFileToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.WORImportTextFileToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
         Me.WORImportTextFileToolStripMenuItem.Tag = "FormImportDailyBrandExtraction"
         Me.WORImportTextFileToolStripMenuItem.Text = "WOR Import Text File"
         '
         'ConsolidationToolStripMenuItem
         '
         Me.ConsolidationToolStripMenuItem.Name = "ConsolidationToolStripMenuItem"
-        Me.ConsolidationToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.ConsolidationToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
         Me.ConsolidationToolStripMenuItem.Tag = "FormConsolidation"
         Me.ConsolidationToolStripMenuItem.Text = "Consolidation"
+        '
+        'VendorNameConversionToolStripMenuItem
+        '
+        Me.VendorNameConversionToolStripMenuItem.Name = "VendorNameConversionToolStripMenuItem"
+        Me.VendorNameConversionToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
+        Me.VendorNameConversionToolStripMenuItem.Tag = "FormVendorNameConversion"
+        Me.VendorNameConversionToolStripMenuItem.Text = "Vendor Name Conversion"
         '
         'FormMenu
         '
@@ -411,5 +419,6 @@ Partial Class FormMenu
     Friend WithEvents PanexImportTextFileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents WORImportTextFileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ConsolidationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents VendorNameConversionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

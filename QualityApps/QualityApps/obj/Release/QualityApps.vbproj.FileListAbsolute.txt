@@ -27,3 +27,8 @@ C:\Users\dlie\OneDrive\Projects\VB2013\Quality\QualityApps\QualityApps\obj\Relea
 C:\Users\dlie\OneDrive\Projects\VB2013\Quality\QualityApps\QualityApps\obj\Release\QualityApps.xml
 C:\Users\dlie\OneDrive\Projects\VB2013\Quality\QualityApps\QualityApps\obj\Release\QualityApps.pdb
 C:\Users\dlie\OneDrive\Projects\VB2013\Quality\QualityApps\QualityApps\obj\Release\QualityApps.vbprojResolveAssemblyReference.cache
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\bin\Release\QualityApps.exe.config
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\Release\QualityApps.vbproj.ResolveComReference.cache
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\Release\QualityApps.exe
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\Release\QualityApps.xml
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\Release\QualityApps.pdb

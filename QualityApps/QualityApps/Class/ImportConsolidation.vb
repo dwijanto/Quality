@@ -121,12 +121,14 @@ Public Class ImportConsolidation
             '    errMsgSB.Append("Sorry wrong file template.")
             '    Return False
             'End If
-            MyForm.ProgressReport(1, "Prepare Data..")
+            ' MyForm.ProgressReport(1, "Prepare Data..")
             'Get Existing Data
 
             'If Not PopulateExistingData() Then
             '    Return False
             'End If
+
+            MyForm.ProgressReport(6, "")
             MyForm.ProgressReport(1, "Build Record..")
             'Dim createhd As Boolean = False
             Try
@@ -135,19 +137,22 @@ Public Class ImportConsolidation
                     'If dtseq = 2 Then
                     '    Debug.Print("test")
                     'End If
-                    Dim mymodel As ConsolidationModel = New ConsolidationModel With {.po = myList(i)(1),
-                                                                     .item = myList(i)(2),
-                                                                     .seq = myList(i)(3),
-                                                                     .source = myList(i)(10),
-                                                                     .status = myList(i)(11),
-                                                                     .inspectorname = myList(i)(12),
-                                                                     .inspectiondate = myList(i)(13)}
+                    Dim mymodel As ConsolidationModel = New ConsolidationModel With {.po = myList(i)(3),
+                                                                     .item = myList(i)(4),
+                                                                     .seq = myList(i)(5),
+                                                                     .source = myList(i)(13),
+                                                                     .status = myList(i)(14),
+                                                                     .inspectorname = myList(i)(15),
+                                                                     .inspectiondate = myList(i)(16),
+                                                                     .remark = myList(i)(17)
+                                                                                     }
                     'Table(0)
                     Dim mykey1(3) As Object
                     mykey1(0) = mymodel.po
                     mykey1(1) = mymodel.item
                     mykey1(2) = mymodel.seq
                     mykey1(3) = mymodel.source
+
                     Dim myresult = DS.Tables(0).Rows.Find(mykey1)
 
                     If Not IsNothing(myresult) Then
@@ -157,7 +162,7 @@ Public Class ImportConsolidation
                                 myresult.Item("Inspection Type") = True
                             Case "0"
                                 myresult.Item("Inspection Type") = False
-                            Case ""
+                            Case "", "Indeterminate"
                                 myresult.Item("Inspection Type") = DBNull.Value
                         End Select
                         Select Case mymodel.inspectiondate
@@ -171,17 +176,26 @@ Public Class ImportConsolidation
                                 myresult.Item("Inspector Name") = DBNull.Value
                             Case Else
                                 myresult.Item("Inspector Name") = mymodel.inspectorname
-                        End Select                        
+                        End Select
+                        Select Case mymodel.remark
+                            Case ""
+                                myresult.Item("remark") = DBNull.Value
+                            Case Else
+                                myresult.Item("remark") = mymodel.remark
+                        End Select
                     Else
                         'Collect Error
                     End If
 
                 Next
             Catch ex As Exception
+                MyForm.ProgressReport(5, "")
                 errMsgSB.Append(ex.Message)
                 Return False
             End Try
         End Using
+        MyForm.ProgressReport(5, "")
+        MyForm.ProgressReport(1, "Import Done, Press button Commit to store to the Database.")
         Return myret
     End Function
     'Public Function RunImport(filename As String) As Boolean Implements IImport.RunImport

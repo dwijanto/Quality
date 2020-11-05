@@ -57,8 +57,7 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("host=localhost;port=5433;database=LogisticDb20200406;CommandTimeout=10000;TimeOut"& _ 
-            "=1024;")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("host=hon14nt;port=5432;database=LogisticDb;CommandTimeout=10000;TimeOut=1024;")>  _
         Public ReadOnly Property PostgreSQLCon() As String
             Get
                 Return CType(Me("PostgreSQLCon"),String)
@@ -140,7 +139,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("host=172.22.13.190;port=5433;database=LogisticDb20190909;CommandTimeout=10000;Tim"& _ 
+         Global.System.Configuration.DefaultSettingValueAttribute("host=172.22.13.190;port=5433;database=LogisticDb20200406;CommandTimeout=10000;Tim"& _ 
             "eOut=1024;")>  _
         Public Property Test() As String
             Get

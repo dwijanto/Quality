@@ -100,3 +100,5 @@ C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\Qua
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormImportCookwareSH.resources
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormImportDailyBrandExtraction.resources
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormConsolidation.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.DialogAskDateRange.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormVendorNameConversion.resources

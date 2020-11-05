@@ -63,7 +63,7 @@ Partial Class FormSPAssignment
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripButton, Me.UpdateToolStripButton, Me.DeleteToolStripButton, Me.CommitToolStripButton, Me.RefreshToolStripButton, Me.ToolStripSeparator1, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripButton1})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(554, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(555, 25)
         Me.ToolStrip1.TabIndex = 0
         '
         'AddToolStripButton
@@ -134,7 +134,7 @@ Partial Class FormSPAssignment
         Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(119, 22)
+        Me.ToolStripButton1.Size = New System.Drawing.Size(120, 22)
         Me.ToolStripButton1.Text = "Import Text File (.txt)"
         '
         'StatusStrip1

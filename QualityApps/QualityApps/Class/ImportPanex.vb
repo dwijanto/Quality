@@ -72,7 +72,7 @@ Public Class ImportPanex
         If UpdDTSB.Length > 0 Then
             'Parent.ProgressReport(2, "Update CMMF")
             Dim sqlstr = "update quality.cwpxdt cw set orderqty= foo.orderqty::integer,reqdeldate = foo.reqdeldate::date,period=foo.period::integer" &
-                        " from (select * from array_to_set7(Array[" & UpdDTSB.ToString &
+                        " from (select * from array_to_set4(Array[" & UpdDTSB.ToString &
                      "]) as tb (id character varying, orderqty character varying,reqdeldate character varying,period character varying))foo where cw.id = foo.id::bigint;"
 
             Dim errmsg As String = String.Empty
@@ -247,7 +247,7 @@ Public Class ImportPanex
             If UpdDTSB.Length > 0 Then
                 UpdDTSB.Append(",")
             End If
-            UpdDTSB.Append(String.Format("['{0}'::character varying,'{1}'::character varying,'{2}'::character varying,'{3}'::character varying]",
+            UpdDTSB.Append(String.Format("['{0}'::character varying,'{1}'::character varying,{2}::character varying,'{3}'::character varying]",
                                          myresultDT.Item("id"), validint(mymodel.orderqty), validDate(mymodel.reqdeldate), period))
         End If
     End Sub

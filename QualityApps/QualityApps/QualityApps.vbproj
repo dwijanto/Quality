@@ -151,6 +151,7 @@
     <Compile Include="Class\Controller\UserController.vb" />
     <Compile Include="Class\Controller\VendorAssignmentController.vb" />
     <Compile Include="Class\Controller\VendorController.vb" />
+    <Compile Include="Class\Controller\VendorNameController.vb" />
     <Compile Include="Class\Email.vb" />
     <Compile Include="Class\EmailEWS.vb" />
     <Compile Include="Class\ExportToExcelFile.vb" />
@@ -185,6 +186,7 @@
     <Compile Include="Class\Model\UserModel.vb" />
     <Compile Include="Class\Model\VendorAssignmentModel.vb" />
     <Compile Include="Class\Model\VendorModel.vb" />
+    <Compile Include="Class\Model\VendorNameModel.vb" />
     <Compile Include="Class\RBAC\Assignment.vb" />
     <Compile Include="Class\RBAC\BaseManager.vb" />
     <Compile Include="Class\RBAC\DbManager.vb" />
@@ -243,6 +245,12 @@
       <DependentUpon>DialogAskDate.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\DialogAskDate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogAskDateRange.Designer.vb">
+      <DependentUpon>DialogAskDateRange.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogAskDateRange.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\DialogGenerateTemplate.Designer.vb">
@@ -455,6 +463,12 @@
     <Compile Include="Form\FormVendor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FormVendorNameConversion.Designer.vb">
+      <DependentUpon>FormVendorNameConversion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendorNameConversion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FormVendorQEAssignment.Designer.vb">
       <DependentUpon>FormVendorQEAssignment.vb</DependentUpon>
     </Compile>
@@ -508,6 +522,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\DialogAskDate.resx">
       <DependentUpon>DialogAskDate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogAskDateRange.resx">
+      <DependentUpon>DialogAskDateRange.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\DialogGenerateTemplate.resx">
       <DependentUpon>DialogGenerateTemplate.vb</DependentUpon>
@@ -613,6 +630,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormVendor.resx">
       <DependentUpon>FormVendor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendorNameConversion.resx">
+      <DependentUpon>FormVendorNameConversion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormVendorQEAssignment.resx">
       <DependentUpon>FormVendorQEAssignment.vb</DependentUpon>

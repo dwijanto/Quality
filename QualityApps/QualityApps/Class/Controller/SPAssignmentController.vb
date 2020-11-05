@@ -185,7 +185,7 @@ Public Class SPAssignmentController
         End Using
         If errMsgSB.Length = 0 Then
             If UpdSPSB.Length > 0 Then
-                Parent.ProgressReport(2, "Update CMMF")
+                Parent.ProgressReport(2, "Update SP Assignment")
                 'cmmf.activitycode, cmmf.brandid, cmmf.cmmftype, cmmf.comfam, cmmf.commercialref, cmmf.materialdesc, cmmf.modelcode, cmmf.plnt, cmmf.rir, cmmf.sbu, cmmf.sorg
                 Dim sqlstr = "update quality.vendorsp set spcode= foo.sp,bck1 = foo.bck1,bck2 = foo.bck2,bu=foo.sbu " &
                             " from (select * from array_to_set5(Array[" & UpdSPSB.ToString &
@@ -194,7 +194,7 @@ Public Class SPAssignmentController
                 Dim errmsg As String = String.Empty
                 If Not Model.myadapter.ExecuteNonQuery(sqlstr, message:=errmsg) Then
                     errMsgSB.Append(errmsg & vbCrLf)
-                    Parent.ProgressReport(2, "Update QE" & "::" & errmsg)
+                    Parent.ProgressReport(2, "Update SP" & "::" & errmsg)
                     Return False
                 End If
             End If
@@ -216,7 +216,7 @@ Public Class SPAssignmentController
                     errMsgSB.Append(ex.Message & vbCrLf)
                 End Try
             End If
-            myret = True
+            'myret = True
         End If
 
 

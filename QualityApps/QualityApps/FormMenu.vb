@@ -148,7 +148,7 @@ Public Class FormMenu
         AddHandler ShangHaiImportTextFileToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
         AddHandler WORImportTextFileToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
         AddHandler ConsolidationToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
-
+        AddHandler VendorNameConversionToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
 
         Dim identity As UserController = User.getIdentity
         TransactionToolStripMenuItem.Visible = User.can("View Actions")
@@ -272,24 +272,7 @@ Public Class FormMenu
     End Sub
 
 
-
-    Private Sub PanexImportTextFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PanexImportTextFileToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub ImportTextFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CzechImportTextFileToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub ShangHaiImportTextFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShangHaiImportTextFileToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub WORImportTextFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WORImportTextFileToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub ConsolidationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsolidationToolStripMenuItem.Click
+    Private Sub VendorNameConversionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VendorNameConversionToolStripMenuItem.Click
 
     End Sub
 End Class

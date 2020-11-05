@@ -8,6 +8,23 @@
     Public BS As BindingSource
     Public BSMissing As BindingSource
 
+    Public Property StartDate As Date
+        Get
+            Return Model.StartDate
+        End Get
+        Set(value As Date)
+            Model.StartDate = value
+        End Set
+    End Property
+
+    Public Property EndDate As Date
+        Get
+            Return Model.Enddate
+        End Get
+        Set(value As Date)
+            Model.Enddate = value
+        End Set
+    End Property
     Public ReadOnly Property SQLSTR As String
         Get
             Return Model.sqlstr
@@ -31,6 +48,7 @@
             pk(2) = DS.Tables(0).Columns("SeqN")
             pk(3) = DS.Tables(0).Columns("Source")
             DS.Tables(0).PrimaryKey = pk
+            DS.Tables(0).TableName = "Consolidation"
             BS = New BindingSource
             BS.DataSource = DS.Tables(0)
 
@@ -43,6 +61,7 @@
             DS.Tables(1).Columns("id").AutoIncrement = True
             DS.Tables(1).Columns("id").AutoIncrementSeed = -1
             DS.Tables(1).Columns("id").AutoIncrementStep = -1
+            DS.Tables(1).TableName = "Consolidation TX"
 
         End If
         Return myret

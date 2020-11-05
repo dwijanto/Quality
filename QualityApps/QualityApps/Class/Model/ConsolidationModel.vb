@@ -24,7 +24,11 @@ Public Class ConsolidationModel
     Public Property status As String
     Public Property inspectorname As String
     Public Property inspectiondate As String
-    
+    Public Property remark As String
+
+    Public Property StartDate As Date
+    Public Property Enddate As Date
+
     Public Property sqlstr As String
         Get
             Return _sqlstr
@@ -63,21 +67,35 @@ Public Class ConsolidationModel
         '_sqlstrExcel = sb.ToString '_sqlstr
         'sb.Append("select * from quality.consolidationtx;")
         '_sqlstr = sb.ToString
-
+        StartDate = Date.Today.AddDays(-45)
+        Enddate = Date.Today.AddDays(45)
     End Sub
 
     Private Sub getSQLSTR()
         Dim sb As New StringBuilder
+        Dim criteria = String.Format("where d.""CCETD"" >= '{0:yyyy-MM-dd}' and d.""CCETD""<= '{1:yyyy-MM-dd}'", StartDate, Enddate)
+        'sb.Append("with data as (")
+        'sb.Append("(select period::text as ""Period"" , purchdoc::text as ""SEB PO No"", custpono as ""Purch Doc"",item::text as ""Item"",seqn::text as ""SeqN"",material::text as ""Material"",materialdesc as ""Material Description"",vendorname as ""Vendor Name"",ccetd as ""CCETD"",qty as ""QTY"",soldtopartyname::text as ""Sold To Party"",brand as ""Brand"",'WOR'::text as ""Source"" from quality.dailybrandtx)")
+        'sb.Append(" union all ")
+        'sb.Append("(select dt.period::text, null::text as ""SEB PO No"",hd.orderno,dt.orderpos,dt.subpos,dt.articleno,dt.materialdesc,hd.supplier,reqdeldate,orderqty,bu::text as ""Sold To Party"",null::text as brand,'Panex'::text as source  from quality.cwpxhd hd left join quality.cwpxdt dt on dt.cwpxhdid = hd.id)")
+        'sb.Append(" union all ")
+        'sb.Append("(select dt.period::text,null::text as ""SEB PO No"",hd.serno as orderno,dt.regno,dt.gg,dt.regno,dt.materialdesc,hd.vendorname,cetd,qty,null::text as ""Sold To Party"",null::text as brand,'Czech'::text as source from quality.cwczhd hd left join quality.cwczdt dt on dt.cwczhdid = hd.id order by serno,regno)")
+        'sb.Append(" union all ")
+        'sb.Append("(select dt.period::text,null::text as ""SEB PO No"", hd.pono as orderno,1::text as sebasiapono,seq::text,dt.itemno,dt.itemdescription,hd.supplier,coalesce(cetd,fcetd) as etd,dt.orderqty,null::text as ""Sold To Party"",null::text as brand,'Shanghai' as source from quality.cwshhd hd left join quality.cwshdt dt on dt.hdid = hd.id order by orderno,itemno)")
+        'sb.Append(String.Format(")  select d.*,c.status as ""Inspection Type"",c.inspectorname as ""Inspector Name"",c.inspectiondate as ""Inspection Date"",c.remark as ""Remark"",c.id as cid ," &
+        '                        " coalesce(vc.vendornameconversion,d.""Vendor Name"") as vendornameconverted from data d" &
+        '          " left join quality.consolidationtx c on c.purchdoc = d.""Purch Doc"" and c.item = d.""Item"" and c.seq = d.""SeqN"" and c.source = d.""Source"" left join quality.vendornameconversion vc on vc.vendornameoriginal = d.""Vendor Name"" {0};", criteria))
         sb.Append("with data as (")
-        sb.Append("(select period::text as ""Period"" , purchdoc::text as ""Purch Doc"",item::text as ""Item"",seqn::text as ""SeqN"",material::text as ""Material"",materialdesc as ""Material Description"",vendorname as ""Vendor Name"",ccetd as ""CCETD"",qty as ""QTY"",brand as ""Brand"",'WOR'::text as ""Source"" from quality.dailybrandtx)")
+        sb.Append("(select period::text as ""Period"" , purchdoc::text as ""SEB PO No"", custpono as ""Customer Order No"",purchdoc::text as ""Purch Doc"",item::text as ""Item"",seqn::text as ""SeqN"",material::text as ""Material"",materialdesc as ""Material Description"",vendorname as ""Vendor Name"",ccetd as ""CCETD"",qty as ""QTY"",soldtopartyname::text as ""Sold To Party"",brand as ""Brand"",'WOR'::text as ""Source"" from quality.dailybrandtx)")
         sb.Append(" union all ")
-        sb.Append("(select dt.period::text, hd.orderno,dt.orderpos,dt.subpos,dt.articleno,dt.materialdesc,hd.supplier,reqdeldate,orderqty,null::text as brand,'Panex'::text as source  from quality.cwpxhd hd left join quality.cwpxdt dt on dt.cwpxhdid = hd.id)")
+        sb.Append("(select dt.period::text, null::text as ""SEB PO No"",hd.orderno as ""Customer Order No"",hd.orderno,dt.orderpos,dt.subpos,dt.articleno,dt.materialdesc,hd.supplier,reqdeldate,orderqty,bu::text as ""Sold To Party"",null::text as brand,'Panex'::text as source  from quality.cwpxhd hd left join quality.cwpxdt dt on dt.cwpxhdid = hd.id)")
         sb.Append(" union all ")
-        sb.Append("(select dt.period::text,hd.serno as orderno,dt.regno,dt.gg,dt.regno,dt.materialdesc,hd.vendorname,cetd,qty,null::text as brand,'Czech'::text as source from quality.cwczhd hd left join quality.cwczdt dt on dt.cwczhdid = hd.id order by serno,regno)")
+        sb.Append("(select dt.period::text,null::text as ""SEB PO No"",hd.serno as ""Customer Order No"",hd.serno as orderno,dt.regno,dt.gg,dt.regno,dt.materialdesc,hd.vendorname,cetd,qty,null::text as ""Sold To Party"",null::text as brand,'Czech'::text as source from quality.cwczhd hd left join quality.cwczdt dt on dt.cwczhdid = hd.id order by serno,regno)")
         sb.Append(" union all ")
-        sb.Append("(select dt.period::text, hd.pono as orderno,1::text as sebasiapono,seq::text,dt.itemno,dt.itemdescription,hd.supplier,coalesce(cetd,fcetd) as etd,dt.orderqty,null::text as brand,'Shanghai' as source from quality.cwshhd hd left join quality.cwshdt dt on dt.hdid = hd.id order by orderno,itemno)")
-        sb.Append(")  select d.*,c.status as ""Inspection Type"",c.inspectorname as ""Inspector Name"",c.inspectiondate as ""Inspection Date"",c.id as cid from data d" &
-                  " left join quality.consolidationtx c on c.purchdoc = d.""Purch Doc"" and c.item = d.""Item"" and c.seq = d.""SeqN"" and c.source = d.""Source"";")
+        sb.Append("(select dt.period::text,null::text as ""SEB PO No"", hd.pono as ""Customer Order No"",hd.pono as orderno,1::text as sebasiapono,seq::text,dt.itemno,dt.itemdescription,hd.supplier,coalesce(cetd,fcetd) as etd,dt.orderqty,null::text as ""Sold To Party"",null::text as brand,'Shanghai' as source from quality.cwshhd hd left join quality.cwshdt dt on dt.hdid = hd.id order by orderno,itemno)")
+        sb.Append(String.Format(")  select d.*,c.status as ""Inspection Type"",c.inspectorname as ""Inspector Name"",c.inspectiondate as ""Inspection Date"",c.remark as ""Remark"",c.id as cid ," &
+                                " coalesce(vc.vendornameconversion,d.""Vendor Name"") as vendornameconverted from data d" &
+                  " left join quality.consolidationtx c on c.purchdoc = d.""Purch Doc"" and c.item = d.""Item"" and c.seq = d.""SeqN"" and c.source = d.""Source"" left join quality.vendornameconversion vc on vc.vendornameoriginal = d.""Vendor Name"" {0};", criteria))
         ' _sqlstr = sb.ToString
         _sqlstrExcel = sb.ToString '_sqlstr
         sb.Append("select * from quality.consolidationtx;")
@@ -262,10 +280,11 @@ Public Class ConsolidationModel
             dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "Inspector Name").SourceVersion = DataRowVersion.Current
             dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Date, 0, "Inspection Date").SourceVersion = DataRowVersion.Current
             dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "source").SourceVersion = DataRowVersion.Current
+            dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "remark").SourceVersion = DataRowVersion.Current
             dataadapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "cid").Direction = ParameterDirection.InputOutput
             dataadapter.UpdateCommand.CommandType = CommandType.StoredProcedure
 
-            sqlstr = "quality.sp_insert_consolidationtxa"
+            sqlstr = "quality.sp_insert_consolidationtx"
             dataadapter.InsertCommand = myAdapter.getCommandObject(sqlstr, conn)
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "purch doc").SourceVersion = DataRowVersion.Current
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "item").SourceVersion = DataRowVersion.Current
@@ -274,6 +293,7 @@ Public Class ConsolidationModel
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "Inspector Name").SourceVersion = DataRowVersion.Current
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Date, 0, "Inspection Date").SourceVersion = DataRowVersion.Current
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "source").SourceVersion = DataRowVersion.Current
+            dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "remark").SourceVersion = DataRowVersion.Current
             dataadapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "cid").Direction = ParameterDirection.InputOutput
             dataadapter.InsertCommand.CommandType = CommandType.StoredProcedure
 
