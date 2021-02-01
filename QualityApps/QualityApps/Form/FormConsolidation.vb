@@ -43,6 +43,7 @@ Public Class FormConsolidation
         sw.Start()
         Try
             If myController.LoadData() Then
+
                 ProgressReport(4, "InitData")
                 sw.Stop()
                 'ProgressReport(2, String.Format("Elapsed Time: {0}:{1}.{2} Done.", Format(sw.Elapsed.Minutes, "00"), Format(sw.Elapsed.Seconds, "00"), sw.Elapsed.Milliseconds.ToString))
@@ -96,9 +97,6 @@ Public Class FormConsolidation
     End Sub
 
 
-    Private Sub ToolStripTextBox1_Click(sender As Object, e As EventArgs) Handles ToolStripTextBox1.Click
-
-    End Sub
 
     Private Sub ToolStripTextBox1_TextChanged(sender As Object, e As EventArgs) Handles ToolStripTextBox1.TextChanged
         myController.ApplyFilter = ToolStripTextBox1.Text

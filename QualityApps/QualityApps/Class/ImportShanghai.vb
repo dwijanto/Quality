@@ -280,7 +280,7 @@ Public Class ImportShanghai
         dr.Item("itemno") = mymodel.itemno
         dr.Item("itemdescription") = mymodel.itemdescription        
         dr.Item("fcetd") = mymodel.fcetd
-        dr.Item("orderqty") = validint(mymodel.orderqty)
+        dr.Item("orderqty") = Int(validint(mymodel.orderqty))
         dr.Item("unitprice") = validint(mymodel.unitprice)
         dr.Item("totalamount") = mymodel.totalamount
         If mymodel.cetd <> "" Then dr.Item("cetd") = CDate(mymodel.cetd)       

@@ -62,6 +62,13 @@ Partial Class FormMenu
         Me.WORImportTextFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsolidationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VendorNameConversionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ComponentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ImportSQ01CPToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InspectionAllocationCPToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GenerateExcelForSupplierToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CollectReplyFromSupplierToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SendEmailScheduleConfirmationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HighRiskToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
@@ -77,11 +84,11 @@ Partial Class FormMenu
         '
         'ToolStripContainer1.ContentPanel
         '
-        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(556, 80)
+        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(621, 80)
         Me.ToolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolStripContainer1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStripContainer1.Name = "ToolStripContainer1"
-        Me.ToolStripContainer1.Size = New System.Drawing.Size(556, 126)
+        Me.ToolStripContainer1.Size = New System.Drawing.Size(621, 126)
         Me.ToolStripContainer1.TabIndex = 0
         Me.ToolStripContainer1.Text = "ToolStripContainer1"
         '
@@ -94,17 +101,17 @@ Partial Class FormMenu
         Me.StatusStrip1.Dock = System.Windows.Forms.DockStyle.None
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 0)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(556, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(621, 22)
         Me.StatusStrip1.TabIndex = 0
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'MenuStrip1
         '
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TransactionToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.ActivityLogToolStripMenuItem, Me.MasterToolStripMenuItem, Me.AdminToolStripMenuItem, Me.OTMToolStripMenuItem, Me.ReportToolStripMenuItem, Me.CookwareToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TransactionToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.ActivityLogToolStripMenuItem, Me.MasterToolStripMenuItem, Me.AdminToolStripMenuItem, Me.OTMToolStripMenuItem, Me.ReportToolStripMenuItem, Me.CookwareToolStripMenuItem, Me.ComponentsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(556, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(621, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -360,11 +367,59 @@ Partial Class FormMenu
         Me.VendorNameConversionToolStripMenuItem.Tag = "FormVendorNameConversion"
         Me.VendorNameConversionToolStripMenuItem.Text = "Vendor Name Conversion"
         '
+        'ComponentsToolStripMenuItem
+        '
+        Me.ComponentsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImportSQ01CPToolStripMenuItem, Me.InspectionAllocationCPToolStripMenuItem, Me.GenerateExcelForSupplierToolStripMenuItem2, Me.CollectReplyFromSupplierToolStripMenuItem1, Me.SendEmailScheduleConfirmationToolStripMenuItem, Me.HighRiskToolStripMenuItem})
+        Me.ComponentsToolStripMenuItem.Name = "ComponentsToolStripMenuItem"
+        Me.ComponentsToolStripMenuItem.Size = New System.Drawing.Size(88, 20)
+        Me.ComponentsToolStripMenuItem.Text = "Components"
+        '
+        'ImportSQ01CPToolStripMenuItem
+        '
+        Me.ImportSQ01CPToolStripMenuItem.Name = "ImportSQ01CPToolStripMenuItem"
+        Me.ImportSQ01CPToolStripMenuItem.Size = New System.Drawing.Size(580, 22)
+        Me.ImportSQ01CPToolStripMenuItem.Tag = "FormImportDailyExtractionCP"
+        Me.ImportSQ01CPToolStripMenuItem.Text = "Import SQ01-F037-Quality-002-PO Confirmation-Inspection Lot (Local File - Spreads" & _
+    "heet - 1133)"
+        '
+        'InspectionAllocationCPToolStripMenuItem
+        '
+        Me.InspectionAllocationCPToolStripMenuItem.Name = "InspectionAllocationCPToolStripMenuItem"
+        Me.InspectionAllocationCPToolStripMenuItem.Size = New System.Drawing.Size(580, 22)
+        Me.InspectionAllocationCPToolStripMenuItem.Tag = "FormInspectionCP"
+        Me.InspectionAllocationCPToolStripMenuItem.Text = "Inspection Allocation CP"
+        '
+        'GenerateExcelForSupplierToolStripMenuItem2
+        '
+        Me.GenerateExcelForSupplierToolStripMenuItem2.Name = "GenerateExcelForSupplierToolStripMenuItem2"
+        Me.GenerateExcelForSupplierToolStripMenuItem2.Size = New System.Drawing.Size(580, 22)
+        Me.GenerateExcelForSupplierToolStripMenuItem2.Tag = "FormGenerateExcelDatagridCP"
+        Me.GenerateExcelForSupplierToolStripMenuItem2.Text = "Generate Excel For Supplier"
+        '
+        'CollectReplyFromSupplierToolStripMenuItem1
+        '
+        Me.CollectReplyFromSupplierToolStripMenuItem1.Name = "CollectReplyFromSupplierToolStripMenuItem1"
+        Me.CollectReplyFromSupplierToolStripMenuItem1.Size = New System.Drawing.Size(580, 22)
+        Me.CollectReplyFromSupplierToolStripMenuItem1.Text = "Collect Reply From Supplier"
+        '
+        'SendEmailScheduleConfirmationToolStripMenuItem
+        '
+        Me.SendEmailScheduleConfirmationToolStripMenuItem.Name = "SendEmailScheduleConfirmationToolStripMenuItem"
+        Me.SendEmailScheduleConfirmationToolStripMenuItem.Size = New System.Drawing.Size(580, 22)
+        Me.SendEmailScheduleConfirmationToolStripMenuItem.Text = "Send Email Schedule Confirmation"
+        '
+        'HighRiskToolStripMenuItem
+        '
+        Me.HighRiskToolStripMenuItem.Name = "HighRiskToolStripMenuItem"
+        Me.HighRiskToolStripMenuItem.Size = New System.Drawing.Size(580, 22)
+        Me.HighRiskToolStripMenuItem.Tag = "FormHighRisk"
+        Me.HighRiskToolStripMenuItem.Text = "High Risk"
+        '
         'FormMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(556, 126)
+        Me.ClientSize = New System.Drawing.Size(621, 126)
         Me.Controls.Add(Me.ToolStripContainer1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
@@ -420,5 +475,12 @@ Partial Class FormMenu
     Friend WithEvents WORImportTextFileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ConsolidationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents VendorNameConversionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ComponentsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ImportSQ01CPToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents InspectionAllocationCPToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents GenerateExcelForSupplierToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CollectReplyFromSupplierToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SendEmailScheduleConfirmationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents HighRiskToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

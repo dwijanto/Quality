@@ -27,10 +27,10 @@ Partial Class FormImportCookwareSH
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
@@ -43,7 +43,7 @@ Partial Class FormImportCookwareSH
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripProgressBar1})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 0)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(607, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(737, 22)
         Me.StatusStrip1.TabIndex = 1
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -55,7 +55,7 @@ Partial Class FormImportCookwareSH
         'ToolStripStatusLabel2
         '
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(490, 17)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(620, 17)
         Me.ToolStripStatusLabel2.Spring = True
         Me.ToolStripStatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -77,22 +77,13 @@ Partial Class FormImportCookwareSH
         Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.Label1)
         Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.TextBox1)
         Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.Button1)
-        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(607, 166)
+        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(737, 162)
         Me.ToolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolStripContainer1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStripContainer1.Name = "ToolStripContainer1"
-        Me.ToolStripContainer1.Size = New System.Drawing.Size(607, 213)
+        Me.ToolStripContainer1.Size = New System.Drawing.Size(737, 209)
         Me.ToolStripContainer1.TabIndex = 5
         Me.ToolStripContainer1.Text = "ToolStripContainer1"
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(229, 72)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(131, 38)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Import Data"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'Label2
         '
@@ -120,11 +111,20 @@ Partial Class FormImportCookwareSH
         Me.TextBox1.Size = New System.Drawing.Size(76, 20)
         Me.TextBox1.TabIndex = 7
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(229, 72)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(131, 38)
+        Me.Button1.TabIndex = 0
+        Me.Button1.Text = "Import Data"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'FormImportCookwareSH
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(607, 213)
+        Me.ClientSize = New System.Drawing.Size(737, 209)
         Me.Controls.Add(Me.ToolStripContainer1)
         Me.Name = "FormImportCookwareSH"
         Me.Text = "FormImportCookware Shanghai"

@@ -110,7 +110,7 @@ Public Class ImportConsolidation
 
                 Do Until .EndOfData
                     myrecord = .ReadFields
-                    If myrecord(11) <> "" Then
+                    If myrecord(10) <> "" Then
                         myList.Add(myrecord)
                     End If
 

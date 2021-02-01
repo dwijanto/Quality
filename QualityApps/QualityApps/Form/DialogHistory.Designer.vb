@@ -46,15 +46,15 @@ Partial Class DialogHistory
         Me.CommitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.AssignSeqNToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.AssignSeqNToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -118,7 +118,7 @@ Partial Class DialogHistory
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(850, 400)
+        Me.TabPage1.Size = New System.Drawing.Size(891, 400)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Remarks"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -230,24 +230,6 @@ Partial Class DialogHistory
         Me.DataGridView2.Size = New System.Drawing.Size(885, 391)
         Me.DataGridView2.TabIndex = 1
         '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AssignSeqNToolStripMenuItem, Me.RefreshToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(141, 48)
-        '
-        'AssignSeqNToolStripMenuItem
-        '
-        Me.AssignSeqNToolStripMenuItem.Name = "AssignSeqNToolStripMenuItem"
-        Me.AssignSeqNToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
-        Me.AssignSeqNToolStripMenuItem.Text = "Assign SeqN"
-        '
-        'RefreshToolStripMenuItem
-        '
-        Me.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem"
-        Me.RefreshToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
-        Me.RefreshToolStripMenuItem.Text = "Refresh"
-        '
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "docdate"
@@ -300,6 +282,24 @@ Partial Class DialogHistory
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
         Me.DataGridViewTextBoxColumn2.Width = 400
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AssignSeqNToolStripMenuItem, Me.RefreshToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(141, 48)
+        '
+        'AssignSeqNToolStripMenuItem
+        '
+        Me.AssignSeqNToolStripMenuItem.Name = "AssignSeqNToolStripMenuItem"
+        Me.AssignSeqNToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.AssignSeqNToolStripMenuItem.Text = "Assign SeqN"
+        '
+        'RefreshToolStripMenuItem
+        '
+        Me.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem"
+        Me.RefreshToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.RefreshToolStripMenuItem.Text = "Refresh"
         '
         'DialogHistory
         '

@@ -53,11 +53,13 @@ Public Class SendEmailConfirmation
         dv.RowFilter = "selected = true"
         Dim myDataTable As DataTable = dv.ToTable
 
+        If dv.Count > 0 Then
+            If Not SendEmailConfirmationInternalManually(myDataTable, InspectionDate) Then
+                Return myret
+            End If
 
-        If Not SendEmailConfirmationInternalManually(myDataTable, InspectionDate) Then
-            Return myret
         End If
-
+        
 
 
 

@@ -131,7 +131,8 @@ Public Class ConsolidationModel
 
     Public ReadOnly Property FilterField
         Get
-            Return "[period] like '%{0}%' or [purch doc] like '%{0}%' or [Vendor Name] like '%{0}%' or [Material] like '%{0}%' or [Material Description] like '%{0}%'  or [Source] like '%{0}%' "
+            'Return "[period] like '%{0}%' or [purch doc] like '%{0}%' or [Vendor Name] like '%{0}%' or [Material] like '%{0}%' or [Material Description] like '%{0}%'  or [Source] like '%{0}%' "
+            Return "[period] like '%{0}%' or [SEB PO No] like '%{0}%' or [Customer Order No] like '%{0}%' or [Vendor Name] like '%{0}%' or [Material] like '%{0}%' or [Material Description] like '%{0}%'  or [Source] like '%{0}%' "
         End Get
     End Property
 

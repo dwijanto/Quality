@@ -54,6 +54,7 @@ Partial Class FormConsolidation
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column11 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
@@ -127,7 +128,7 @@ Partial Class FormConsolidation
         Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView1.ColumnHeadersHeight = 35
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column25, Me.Column14, Me.Column16, Me.Column1, Me.Column2, Me.Column3, Me.Column9, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column10, Me.Column11, Me.Column13, Me.Column12, Me.Column15})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column25, Me.Column14, Me.Column16, Me.Column1, Me.Column2, Me.Column3, Me.Column9, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column17, Me.Column8, Me.Column10, Me.Column11, Me.Column13, Me.Column12, Me.Column15})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
@@ -241,7 +242,7 @@ Partial Class FormConsolidation
         'Column1
         '
         Me.Column1.DataPropertyName = "Customer Order No"
-        Me.Column1.HeaderText = "Customer Oder No"
+        Me.Column1.HeaderText = "Customer Order No"
         Me.Column1.Name = "Column1"
         '
         'Column2
@@ -292,6 +293,12 @@ Partial Class FormConsolidation
         Me.Column7.HeaderText = "Qty"
         Me.Column7.Name = "Column7"
         '
+        'Column17
+        '
+        Me.Column17.DataPropertyName = "Sold To Party"
+        Me.Column17.HeaderText = "Sold To Party"
+        Me.Column17.Name = "Column17"
+        '
         'Column8
         '
         Me.Column8.DataPropertyName = "Brand"
@@ -309,6 +316,7 @@ Partial Class FormConsolidation
         Me.Column11.DataPropertyName = "Inspection Type"
         Me.Column11.HeaderText = "Inspection Type"
         Me.Column11.Name = "Column11"
+        Me.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.Column11.ThreeState = True
         '
         'Column13
@@ -383,6 +391,7 @@ Partial Class FormConsolidation
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column17 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column8 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column10 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column11 As System.Windows.Forms.DataGridViewCheckBoxColumn

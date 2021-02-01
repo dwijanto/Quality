@@ -150,6 +150,13 @@ Public Class FormMenu
         AddHandler ConsolidationToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
         AddHandler VendorNameConversionToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
 
+        'Components
+        AddHandler ImportSQ01CPToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+        AddHandler InspectionAllocationCPToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+        AddHandler GenerateExcelForSupplierToolStripMenuItem2.Click, AddressOf ToolStripMenuItem_Click
+        AddHandler HighRiskToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+
+
         Dim identity As UserController = User.getIdentity
         TransactionToolStripMenuItem.Visible = User.can("View Actions")
         ReportsToolStripMenuItem.Visible = User.can("View Scheduling")
@@ -273,6 +280,26 @@ Public Class FormMenu
 
 
     Private Sub VendorNameConversionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VendorNameConversionToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ImportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportSQ01CPToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ImportSQ01ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportSQ01ToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub InspectionAllocationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InspectionAllocationCPToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub GenerateExcelForSupplierToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles GenerateExcelForSupplierToolStripMenuItem2.Click
+
+    End Sub
+
+    Private Sub HighRiskToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HighRiskToolStripMenuItem.Click
 
     End Sub
 End Class

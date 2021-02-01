@@ -28,7 +28,8 @@
         If Not IsNumeric(p) Then
             Return "Null"
         End If
-        Return String.Format("{0}", p.Replace(",", "").Replace(".", ""))
+        'Return String.Format("{0}", p.Replace(",", "").Replace(".", ""))
+        Return String.Format("{0}", p.Replace(",", ""))
     End Function
 
     Public Function validDate(ByVal p As String) As String

@@ -143,7 +143,10 @@
     <Compile Include="Class\Controller\ConsolidationController.vb" />
     <Compile Include="Class\Controller\FirstCMMFController.vb" />
     <Compile Include="Class\Controller\GenerateExcelController.vb" />
+    <Compile Include="Class\Controller\GenerateExcelCPController.vb" />
+    <Compile Include="Class\Controller\HighRiskController.vb" />
     <Compile Include="Class\Controller\InspectionController.vb" />
+    <Compile Include="Class\Controller\InspectionControllerCP.vb" />
     <Compile Include="Class\Controller\MissingVendorController.vb" />
     <Compile Include="Class\Controller\OTMController.vb" />
     <Compile Include="Class\Controller\SendEmailController.vb" />
@@ -156,12 +159,15 @@
     <Compile Include="Class\EmailEWS.vb" />
     <Compile Include="Class\ExportToExcelFile.vb" />
     <Compile Include="Class\GenerateEmail.vb" />
+    <Compile Include="Class\GenerateEmailCP.vb" />
     <Compile Include="Class\GenerateExcel.vb" />
+    <Compile Include="Class\GenerateExcelCP.vb" />
     <Compile Include="Class\GetReply.vb" />
     <Compile Include="Class\ImportConsolidation.vb" />
     <Compile Include="Class\ImportCzech.vb" />
     <Compile Include="Class\ImportDailyBrandTx.vb" />
     <Compile Include="Class\ImportDailyTx.vb" />
+    <Compile Include="Class\ImportDailyTxCP.vb" />
     <Compile Include="Class\ImportOTM.vb" />
     <Compile Include="Class\ImportPanex.vb" />
     <Compile Include="Class\ImportShanghai.vb" />
@@ -178,8 +184,11 @@
     <Compile Include="Class\Model\CategoryModel.vb" />
     <Compile Include="Class\Model\ConsolidationModel.vb" />
     <Compile Include="Class\Model\FirstCMMFModel.vb" />
+    <Compile Include="Class\Model\GenerateExcelCPModel.vb" />
     <Compile Include="Class\Model\GenerateExcelModel.vb" />
+    <Compile Include="Class\Model\HighRiskModel.vb" />
     <Compile Include="Class\Model\InspectionModel.vb" />
+    <Compile Include="Class\Model\InspectionModelCP.vb" />
     <Compile Include="Class\Model\MissingVendorModel.vb" />
     <Compile Include="Class\Model\SendEmailModel.vb" />
     <Compile Include="Class\Model\SPAssignmentModel.vb" />
@@ -259,10 +268,22 @@
     <Compile Include="Form\DialogGenerateTemplate.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\DialogHighRisk.Designer.vb">
+      <DependentUpon>DialogHighRisk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogHighRisk.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\DialogHistory.Designer.vb">
       <DependentUpon>DialogHistory.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\DialogHistory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogHistoryCP.Designer.vb">
+      <DependentUpon>DialogHistoryCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogHistoryCP.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\DialogVendorQEAssignment.Designer.vb">
@@ -337,6 +358,12 @@
     <Compile Include="Form\FormGenerateExcelDataGrid.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FormGenerateExcelDatagridCP.Designer.vb">
+      <DependentUpon>FormGenerateExcelDatagridCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormGenerateExcelDatagridCP.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FormGenerateReportActivityLog.Designer.vb">
       <DependentUpon>FormGenerateReportActivityLog.vb</DependentUpon>
     </Compile>
@@ -353,6 +380,12 @@
       <DependentUpon>FormHelper.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\FormHelper.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormHighRisk.Designer.vb">
+      <DependentUpon>FormHighRisk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormHighRisk.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FormImportCookwareCzech.Designer.vb">
@@ -385,6 +418,12 @@
     <Compile Include="Form\FormImportDailyExtraction.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FormImportDailyExtractionCP.Designer.vb">
+      <DependentUpon>FormImportDailyExtractionCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportDailyExtractionCP.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FormImportOTM.Designer.vb">
       <DependentUpon>FormImportOTM.vb</DependentUpon>
     </Compile>
@@ -395,6 +434,18 @@
       <DependentUpon>FormInspection.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\FormInspection.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormInspectionCP.Designer.vb">
+      <DependentUpon>FormInspectionCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormInspectionCP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormMissingRemakCP.Designer.vb">
+      <DependentUpon>FormMissingRemakCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormMissingRemakCP.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FormMissingRemarks.Designer.vb">
@@ -529,8 +580,14 @@
     <EmbeddedResource Include="Form\DialogGenerateTemplate.resx">
       <DependentUpon>DialogGenerateTemplate.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogHighRisk.resx">
+      <DependentUpon>DialogHighRisk.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\DialogHistory.resx">
       <DependentUpon>DialogHistory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogHistoryCP.resx">
+      <DependentUpon>DialogHistoryCP.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\DialogVendorQEAssignment.resx">
       <DependentUpon>DialogVendorQEAssignment.vb</DependentUpon>
@@ -568,6 +625,9 @@
     <EmbeddedResource Include="Form\FormGenerateExcelDataGrid.resx">
       <DependentUpon>FormGenerateExcelDataGrid.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormGenerateExcelDatagridCP.resx">
+      <DependentUpon>FormGenerateExcelDatagridCP.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormGenerateReportActivityLog.resx">
       <DependentUpon>FormGenerateReportActivityLog.vb</DependentUpon>
     </EmbeddedResource>
@@ -576,6 +636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormHelper.resx">
       <DependentUpon>FormHelper.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormHighRisk.resx">
+      <DependentUpon>FormHighRisk.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormImportCookwareCzech.resx">
       <DependentUpon>FormImportCookwareCzech.vb</DependentUpon>
@@ -592,11 +655,20 @@
     <EmbeddedResource Include="Form\FormImportDailyExtraction.resx">
       <DependentUpon>FormImportDailyExtraction.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportDailyExtractionCP.resx">
+      <DependentUpon>FormImportDailyExtractionCP.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormImportOTM.resx">
       <DependentUpon>FormImportOTM.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormInspection.resx">
       <DependentUpon>FormInspection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormInspectionCP.resx">
+      <DependentUpon>FormInspectionCP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormMissingRemakCP.resx">
+      <DependentUpon>FormMissingRemakCP.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormMissingRemarks.resx">
       <DependentUpon>FormMissingRemarks.vb</DependentUpon>
