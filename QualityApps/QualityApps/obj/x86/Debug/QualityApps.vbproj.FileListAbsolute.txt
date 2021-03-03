@@ -109,3 +109,7 @@ C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\Qua
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormGenerateExcelDatagridCP.resources
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.DialogHighRisk.resources
 C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormHighRisk.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormGetReplyCP.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormParameterCP.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormSendEmailConfirmationCP.resources
+C:\Users\dlie\Documents\GitHub\Quality\QualityApps\QualityApps\obj\x86\Debug\QualityApps.FormTimeStampSendingReportCP.resources

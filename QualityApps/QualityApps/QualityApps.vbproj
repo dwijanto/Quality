@@ -150,6 +150,7 @@
     <Compile Include="Class\Controller\MissingVendorController.vb" />
     <Compile Include="Class\Controller\OTMController.vb" />
     <Compile Include="Class\Controller\SendEmailController.vb" />
+    <Compile Include="Class\Controller\SendEmailControllerCP.vb" />
     <Compile Include="Class\Controller\SPAssignmentController.vb" />
     <Compile Include="Class\Controller\UserController.vb" />
     <Compile Include="Class\Controller\VendorAssignmentController.vb" />
@@ -163,6 +164,7 @@
     <Compile Include="Class\GenerateExcel.vb" />
     <Compile Include="Class\GenerateExcelCP.vb" />
     <Compile Include="Class\GetReply.vb" />
+    <Compile Include="Class\GetReplyCP.vb" />
     <Compile Include="Class\ImportConsolidation.vb" />
     <Compile Include="Class\ImportCzech.vb" />
     <Compile Include="Class\ImportDailyBrandTx.vb" />
@@ -191,6 +193,7 @@
     <Compile Include="Class\Model\InspectionModelCP.vb" />
     <Compile Include="Class\Model\MissingVendorModel.vb" />
     <Compile Include="Class\Model\SendEmailModel.vb" />
+    <Compile Include="Class\Model\SendEmailModelCP.vb" />
     <Compile Include="Class\Model\SPAssignmentModel.vb" />
     <Compile Include="Class\Model\UserModel.vb" />
     <Compile Include="Class\Model\VendorAssignmentModel.vb" />
@@ -205,6 +208,7 @@
     <Compile Include="Class\RBAC\Role.vb" />
     <Compile Include="Class\RBAC\Rule.vb" />
     <Compile Include="Class\SendEmailConfirmation.vb" />
+    <Compile Include="Class\SendEmailConfirmationCP.vb" />
     <Compile Include="Class\User.vb" />
     <Compile Include="Class\UserControl\UCDataGridExcel.Designer.vb">
       <DependentUpon>UCDataGridExcel.vb</DependentUpon>
@@ -376,6 +380,12 @@
     <Compile Include="Form\FormGetReply.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FormGetReplyCP.Designer.vb">
+      <DependentUpon>FormGetReplyCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormGetReplyCP.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FormHelper.Designer.vb">
       <DependentUpon>FormHelper.vb</DependentUpon>
     </Compile>
@@ -466,6 +476,12 @@
     <Compile Include="Form\FormParamDTL.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FormParameterCP.Designer.vb">
+      <DependentUpon>FormParameterCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormParameterCP.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FormParameters.Designer.vb">
       <DependentUpon>FormParameters.vb</DependentUpon>
     </Compile>
@@ -490,6 +506,12 @@
     <Compile Include="Form\FormSendEmailConfirmation.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FormSendEmailConfirmationCP.Designer.vb">
+      <DependentUpon>FormSendEmailConfirmationCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSendEmailConfirmationCP.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FormSPAssignment.Designer.vb">
       <DependentUpon>FormSPAssignment.vb</DependentUpon>
     </Compile>
@@ -500,6 +522,12 @@
       <DependentUpon>FormTimeStampSendingReport.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\FormTimeStampSendingReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormTimeStampSendingReportCP.Designer.vb">
+      <DependentUpon>FormTimeStampSendingReportCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormTimeStampSendingReportCP.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FormUser.Designer.vb">
@@ -634,6 +662,9 @@
     <EmbeddedResource Include="Form\FormGetReply.resx">
       <DependentUpon>FormGetReply.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormGetReplyCP.resx">
+      <DependentUpon>FormGetReplyCP.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormHelper.resx">
       <DependentUpon>FormHelper.vb</DependentUpon>
     </EmbeddedResource>
@@ -679,6 +710,9 @@
     <EmbeddedResource Include="Form\FormParamDTL.resx">
       <DependentUpon>FormParamDTL.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormParameterCP.resx">
+      <DependentUpon>FormParameterCP.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormParameters.resx">
       <DependentUpon>FormParameters.vb</DependentUpon>
     </EmbeddedResource>
@@ -691,11 +725,17 @@
     <EmbeddedResource Include="Form\FormSendEmailConfirmation.resx">
       <DependentUpon>FormSendEmailConfirmation.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSendEmailConfirmationCP.resx">
+      <DependentUpon>FormSendEmailConfirmationCP.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormSPAssignment.resx">
       <DependentUpon>FormSPAssignment.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormTimeStampSendingReport.resx">
       <DependentUpon>FormTimeStampSendingReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormTimeStampSendingReportCP.resx">
+      <DependentUpon>FormTimeStampSendingReportCP.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormUser.resx">
       <DependentUpon>FormUser.vb</DependentUpon>

@@ -6,6 +6,7 @@ Public Class EmailEWS
     Public Property Username As String
     Public Property password As String
     Public Property domain As String
+
     Dim myParam As ParamAdapter = ParamAdapter.getInstance
     Public Property urlEWS As String = myParam.GeturlEWS("urlEWS") ' = "https://mail-eu.seb.com/ews/exchange.asmx"
 
@@ -194,7 +195,7 @@ Public Class EmailEWS
                 'Save Email
 
                 msg.Save()
-                
+
                 myret = True
                 myForm.ProgressReport(1, String.Format("{0},Saving Draft email...Done", myKey))
             Catch ex As Exception

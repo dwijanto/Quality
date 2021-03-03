@@ -42,6 +42,7 @@ Partial Class DialogHighRisk
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -127,14 +128,15 @@ Partial Class DialogHighRisk
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(84, 115)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(29, 13)
+        Me.Label4.Size = New System.Drawing.Size(22, 13)
         Me.Label4.TabIndex = 8
-        Me.Label4.Text = "SBU"
+        Me.Label4.Text = "BU"
         '
         'TextBox3
         '
         Me.TextBox3.Location = New System.Drawing.Point(119, 112)
         Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.ReadOnly = True
         Me.TextBox3.Size = New System.Drawing.Size(348, 20)
         Me.TextBox3.TabIndex = 7
         '
@@ -230,6 +232,15 @@ Partial Class DialogHighRisk
         Me.ComboBox1.Size = New System.Drawing.Size(205, 21)
         Me.ComboBox1.TabIndex = 19
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(473, 112)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(33, 23)
+        Me.Button3.TabIndex = 20
+        Me.Button3.Text = "..."
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'DialogHighRisk
         '
         Me.AcceptButton = Me.OK_Button
@@ -237,6 +248,7 @@ Partial Class DialogHighRisk
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(555, 353)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -287,5 +299,6 @@ Partial Class DialogHighRisk
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 
 End Class

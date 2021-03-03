@@ -7,7 +7,7 @@ Public Class GenerateExcelCP
     Dim _ErrorMessage As String
     Dim myform As Object
     Dim myParam As ParamAdapter = ParamAdapter.getInstance
-    Dim DirectoryName As String = myParam.GetMailFolder("OUTBOX")
+    Dim DirectoryName As String = myParam.GetMailFolder("OUTBOXCP")
     Dim datespan As Integer = myParam.GetCCETDDateSpan
     Private MyDate As Date = Date.Today
 
@@ -73,7 +73,7 @@ Public Class GenerateExcelCP
 
     Private Sub CreateExcel(ByVal vendorcode As Long, ByVal count As Integer)
         Dim SBException As New StringBuilder
-        Dim SBUExceptionList = myParam.GetSBUExceptionList
+        Dim SBUExceptionList = myParam.GetSBUExceptionList("SBU Exception CP")
         If SBUExceptionList.Length > 0 Then
             SBException.Append(String.Format(" and ( tx.sbu not in ({0}))", SBUExceptionList))
         End If

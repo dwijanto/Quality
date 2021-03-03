@@ -72,4 +72,8 @@ Public Class FormGetReply
             End Select
         End If
     End Sub
+
+    Private Sub StatusStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles StatusStrip1.ItemClicked
+
+    End Sub
 End Class

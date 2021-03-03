@@ -110,6 +110,9 @@ Public Class ImportDailyBrandTx
             End If
             MyForm.ProgressReport(1, "Build Record..")
             For i = 4 To myList.Count - 1
+                'If myList(i)(7) = "9324213873" Then
+                '    Debug.Print("debug")
+                'End If
                 CreateRecord(myList(i))
             Next
         End Using

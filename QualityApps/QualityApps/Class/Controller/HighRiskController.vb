@@ -7,6 +7,7 @@
     Private CMMFBS As BindingSource
     Private VendorBS As BindingSource
     Private StatusBS As BindingSource
+    Private BUBS As BindingSource
     Dim DS As DataSet
     Public ReadOnly Property GetCMMFBS As BindingSource
         Get
@@ -22,6 +23,11 @@
     Public ReadOnly Property GetStatusBS As BindingSource
         Get
             Return StatusBS
+        End Get
+    End Property
+    Public ReadOnly Property GetBUBS As BindingSource
+        Get
+            Return BUBS
         End Get
     End Property
 
@@ -51,7 +57,8 @@
             VendorBS.DataSource = DS.Tables(2)
             StatusBS = New BindingSource
             StatusBS.DataSource = DS.Tables(3)
-
+            BUBS = New BindingSource
+            BUBS.DataSource = DS.Tables(4)
             myret = True
         End If
         Return myret

@@ -66,3 +66,6 @@
 2019-03-27 03:48:35.736 PM	GenerateReportWithKey	General ODBC Errorc:\junk
 2019-03-27 03:57:11.765 PM	GenerateReportWithKey	Cannot access '20190327-10040640.xlsx'.c:\junk\20190327-10040640
 2019-03-27 03:58:43.475 PM	GenerateReportWithKey	General ODBC Errorc:\junk
+2021-02-16 12:27:26.439 PM	createemailSave	,Error found: The request failed. The remote server returned an error: (401) Unauthorized.
+2021-02-16 02:59:45.814 PM	createemailSave	,Error found: The request failed. The remote server returned an error: (401) Unauthorized.
+2021-02-16 03:02:12.664 PM	createemailSave	,Error found: The request failed. The remote server returned an error: (401) Unauthorized.

@@ -7,8 +7,8 @@ Public Class GenerateEmailCP
     Dim myCallback As System.Net.Mail.SendCompletedEventHandler
 
     Dim myParam As ParamAdapter = ParamAdapter.getInstance
-    Dim EWSUser As String() = myParam.GetEWSUser("EWS")
-    Dim OUTBOXFolder As String = myParam.GetMailFolder("OUTBOX")
+    Dim EWSUser As String() = myParam.GetEWSUser("EWSCP")
+    Dim OUTBOXFolder As String = myParam.GetMailFolder("OUTBOXCP")
 
     Dim mydate As Date = Date.Today
     Dim mydate2 As Date = Date.Today

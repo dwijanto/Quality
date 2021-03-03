@@ -4,7 +4,7 @@ Imports System.Text
 Public Class InspectionModelCP
     Dim myAdapter As PostgreSQLDBAdapter = PostgreSQLDBAdapter.getInstance
     Dim myParam As ParamAdapter = ParamAdapter.getInstance
-    Dim datespan As Integer = myParam.GetCCETDDateSpan()
+    Dim datespan As Integer = myParam.GetCCETDDateSpanCP()
     'Public sqlstr As String = String.Empty
     Private _sqlstr As String
     Private _sqlstrExcel As String
@@ -41,12 +41,12 @@ Public Class InspectionModelCP
         Dim SBExecption As New StringBuilder
         Dim sb As New StringBuilder
 
-        Dim VendorExceptionlist = myParam.GetVendorExceptionList
+        Dim VendorExceptionlist = myParam.GetVendorExceptionList("Vendor Exception CP")
         If VendorExceptionlist.Length > 0 Then
             SBExecption.Append(String.Format("and (tx.vendor not in ({0}))", VendorExceptionlist))
         End If
 
-        Dim SBUExceptionList = myParam.GetSBUExceptionList
+        Dim SBUExceptionList = myParam.GetSBUExceptionList("SBU Exception CP")
         If SBUExceptionList.Length > 0 Then
             SBExecption.Append(String.Format(" and (tx.sbu not in ({0}))", SBUExceptionList))
         End If
@@ -60,7 +60,7 @@ Public Class InspectionModelCP
         _sqlstrExcel = String.Format("select false::boolean as ""Selected"",tx.plant::character varying,purchdoc::character varying as ""Purch.Doc."",item as ""Item"",seqn as ""SeqN"",insplot::character varying as ""Insp. Lot"",inspector as ""Inspector"",code as ""Inspection Result"",tx.vendor::character varying as ""Vendor"",tx.vendorname as ""Vendor Name"",material::character varying as ""Material"", materialdesc as ""Material desc""," &
                                   " custpono as ""Cust PO No"",sbu as ""SBU"",city as ""City"",tx.ccetd as ""Confirmed ETD"",qty as ""Quantity"", qtyoun as	""OUn""," &
                                   " quality.changesamplesize(inspector,samplesize::integer) as ""Sample size"",quality.getinspdate(purchdoc,item,seqn,qty) as ""Inspection Date"",quality.getlatestremark(purchdoc,item,seqn,qty) as ""Remarks""," &
-                                  " ntsg ,quality.dow(date_part('dow',quality.getinspdatecp(purchdoc,item,seqn,qty))::integer),v.location as ""Location"",v.groupnumber::character varying as ""Group"",startdate,enddate ,quality.getproductionenddate(purchdoc,item,seqn,qty) as ""Production End Date"", soldtoparty::character varying as ""Sold To Party"",soldtopartyname as ""Sold To Party Name"",reference,f.description,quality.getrisk(f.description,tx.city,tx.ntsg) as risk from {0} tx " &
+                                  " ntsg ,quality.dow(date_part('dow',quality.getinspdatecp(purchdoc,item,seqn,qty))::integer),v.location as ""Location"",v.groupnumber::character varying as ""Group"",startdate,enddate ,quality.getproductionenddate(purchdoc,item,seqn,qty) as ""Production End Date"", soldtoparty::character varying as ""Sold To Party"",soldtopartyname as ""Sold To Party Name"",reference,f.description,quality.getrisk(tx.vendor,tx.material) as risk from {0} tx " &
                                   " left join quality.vendor v on v.vendorcode = tx.vendor" &
                                   " left join quality.firstcmmftx f on f.cmmf = tx.material and f.po = tx.purchdoc and f.poitem = tx.item and f.ccetd = tx.ccetd " &
                                   " where (tx.ccetd >= (current_date -{2})) {1}  order by purchdoc,item,seqn;", TableName, SBExecption.ToString, datespan)

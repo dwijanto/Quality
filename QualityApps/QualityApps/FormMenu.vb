@@ -155,6 +155,9 @@ Public Class FormMenu
         AddHandler InspectionAllocationCPToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
         AddHandler GenerateExcelForSupplierToolStripMenuItem2.Click, AddressOf ToolStripMenuItem_Click
         AddHandler HighRiskToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+        AddHandler ParameterCPToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+        AddHandler CollectReplyFromSupplierToolStripMenuItem1.Click, AddressOf ToolStripMenuItem_Click
+        'AddHandler SendEmailScheduleConfirmationToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
 
 
         Dim identity As UserController = User.getIdentity
@@ -170,13 +173,14 @@ Public Class FormMenu
         ReportAcitivtyLogAllDataToolStripMenuItem.Visible = User.can("View Activity Log All Data")
         VendorToolStripMenuItem.Visible = User.can("View Master") Or User.can("View Master Vendor")
         AnnouncementToolStripMenuItem.Visible = User.can("View Master")
-        ParameterToolStripMenuItem.Visible = User.can("View Master")
+        ParameterCPToolStripMenuItem.Visible = User.can("View Master")
         UserToolStripMenuItem.Visible = User.can("View Master")
         ActivityToolStripMenuItem.Visible = User.can("View Master")
         VendorAssignmentQEUserToolStripMenuItem.Visible = User.can("View Master")
         FirstCmmfToolStripMenuItem.Visible = User.can("View Master")
         ReportToolStripMenuItem.Visible = User.can("Create Inspection Report")
         CookwareToolStripMenuItem.Visible = User.can("View Cookware")
+        ParameterToolStripMenuItem.Visible = User.can("View Master")
     End Sub
     Private Sub ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim ctrl As ToolStripMenuItem = CType(sender, ToolStripMenuItem)
@@ -301,5 +305,23 @@ Public Class FormMenu
 
     Private Sub HighRiskToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HighRiskToolStripMenuItem.Click
 
+    End Sub
+
+    Private Sub CollectReplyFromSupplierToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CollectReplyFromSupplierToolStripMenuItem1.Click
+
+    End Sub
+
+    Private Sub ParameterCPToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ParameterCPToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub SendEmailScheduleConfirmationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SendEmailScheduleConfirmationToolStripMenuItem.Click
+        Dim AskDate As New DialogAskDate
+        If AskDate.ShowDialog = Windows.Forms.DialogResult.OK Then
+            Dim myform = New FormSendEmailConfirmationCP
+            myform.Inspectiondate = AskDate.DTInscpectionDate.Value
+            myform.Text = String.Format("{0} - Inspection Date {1:dd-MMM-yyyy}", myform.Text, myform.Inspectiondate)
+            myform.ShowDialog()
+        End If
     End Sub
 End Class

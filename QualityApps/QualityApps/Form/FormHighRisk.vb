@@ -131,10 +131,10 @@ Public Class FormHighRisk
 
             End Select
             drv.Row.Item("modifiedby") = UserInfo1.Userid
-            Dim myform = New DialogHighRisk(drv, myController.GetCMMFBS, myController.GetVendorBS, myController.GetStatusBS)
+            Dim myform = New DialogHighRisk(drv, myController.GetCMMFBS, myController.GetVendorBS, myController.GetStatusBS, myController.GetBUBS)
             RemoveHandler myform.RefreshDataGridView, AddressOf DataGridViewRefresh
             AddHandler myform.RefreshDataGridView, AddressOf DataGridViewRefresh
-            myform.Show()
+            myform.ShowDialog()
 
         End If
     End Sub

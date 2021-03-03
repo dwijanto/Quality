@@ -7,12 +7,14 @@ Public Class DialogHighRisk
     Private CMMFBS As BindingSource
     Private VendorBS As BindingSource
     Private StatusBS As BindingSource
-    Public Sub New(ByVal drv As DataRowView, ByVal cmmfbs As BindingSource, ByVal VendorBS As BindingSource, ByVal StatusBS As BindingSource)
+    Private BUBS As BindingSource
+    Public Sub New(ByVal drv As DataRowView, ByVal cmmfbs As BindingSource, ByVal VendorBS As BindingSource, ByVal StatusBS As BindingSource, ByVal BUBS As BindingSource)
         InitializeComponent()
         Me.drv = drv
         Me.CMMFBS = cmmfbs
         Me.VendorBS = VendorBS
         Me.StatusBS = StatusBS
+        Me.BUBS = BUBS
         BindingControl()
     End Sub
 
@@ -51,7 +53,7 @@ Public Class DialogHighRisk
         ComboBox1.DataBindings.Add(New Binding("selectedvalue", drv, "status", True, DataSourceUpdateMode.OnPropertyChanged))
         TextBox1.DataBindings.Add(New Binding("Text", drv, "cmmfdescription", True, DataSourceUpdateMode.OnPropertyChanged))
         TextBox2.DataBindings.Add(New Binding("Text", drv, "vendordescription", True, DataSourceUpdateMode.OnPropertyChanged))
-        TextBox3.DataBindings.Add(New Binding("Text", drv, "sbu", True, DataSourceUpdateMode.OnPropertyChanged))
+        TextBox3.DataBindings.Add(New Binding("Text", drv, "buname", True, DataSourceUpdateMode.OnPropertyChanged))
         TextBox4.DataBindings.Add(New Binding("Text", drv, "remarks", True, DataSourceUpdateMode.OnPropertyChanged))
         TextBox5.DataBindings.Add(New Binding("Text", drv, "qe", True, DataSourceUpdateMode.OnPropertyChanged))
         CheckBox1.DataBindings.Add(New Binding("checkstate", drv, "stresult", True, DataSourceUpdateMode.OnPropertyChanged))
@@ -93,5 +95,17 @@ Public Class DialogHighRisk
     Private Sub CheckBox1_CheckStateChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckStateChanged
         RaiseEvent RefreshDataGridView()
 
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim myform = New FormHelper(BUBS)
+        myform.DataGridView1.Columns(0).DataPropertyName = "buname"
+
+        If myform.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            Dim hdrv As DataRowView = BUBS.Current
+            drv.Row.Item("sbuid") = hdrv.Row.Item("id")
+            drv.Row.Item("buname") = hdrv.Row.Item("buname")
+            TextBox3.Text = drv.Row.Item("buname")
+        End If
     End Sub
 End Class

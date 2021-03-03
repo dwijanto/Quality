@@ -30,10 +30,15 @@ Partial Class FormParameters
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.UcdgvParam1 = New QualityApps.UCDGVParam()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.UcdgvParam2 = New QualityApps.UCDGVParam()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.UcdgvParam3 = New QualityApps.UCDGVParam()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.UcdgvParam4 = New QualityApps.UCDGVParam()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.UcdgvParam5 = New QualityApps.UCDGVParam()
         Me.TabPage6 = New System.Windows.Forms.TabPage()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -44,17 +49,12 @@ Partial Class FormParameters
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.UserEWS = New System.Windows.Forms.TabPage()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
-        Me.UcdgvParam1 = New QualityApps.UCDGVParam()
-        Me.UcdgvParam2 = New QualityApps.UCDGVParam()
-        Me.UcdgvParam3 = New QualityApps.UCDGVParam()
-        Me.UcdgvParam4 = New QualityApps.UCDGVParam()
-        Me.UcdgvParam5 = New QualityApps.UCDGVParam()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
@@ -149,6 +149,16 @@ Partial Class FormParameters
         Me.TabPage1.Text = "Path"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'UcdgvParam1
+        '
+        Me.UcdgvParam1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.UcdgvParam1.Location = New System.Drawing.Point(3, 3)
+        Me.UcdgvParam1.Name = "UcdgvParam1"
+        Me.UcdgvParam1.Size = New System.Drawing.Size(853, 392)
+        Me.UcdgvParam1.TabIndex = 0
+        '
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.UcdgvParam2)
@@ -159,6 +169,16 @@ Partial Class FormParameters
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "SBU Exception"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'UcdgvParam2
+        '
+        Me.UcdgvParam2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.UcdgvParam2.Location = New System.Drawing.Point(3, 3)
+        Me.UcdgvParam2.Name = "UcdgvParam2"
+        Me.UcdgvParam2.Size = New System.Drawing.Size(853, 392)
+        Me.UcdgvParam2.TabIndex = 0
         '
         'TabPage3
         '
@@ -171,6 +191,16 @@ Partial Class FormParameters
         Me.TabPage3.Text = "Vendor Exception"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
+        'UcdgvParam3
+        '
+        Me.UcdgvParam3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.UcdgvParam3.Location = New System.Drawing.Point(3, 3)
+        Me.UcdgvParam3.Name = "UcdgvParam3"
+        Me.UcdgvParam3.Size = New System.Drawing.Size(853, 392)
+        Me.UcdgvParam3.TabIndex = 0
+        '
         'TabPage4
         '
         Me.TabPage4.Controls.Add(Me.UcdgvParam4)
@@ -182,6 +212,16 @@ Partial Class FormParameters
         Me.TabPage4.Text = "Internal Email (TO)"
         Me.TabPage4.UseVisualStyleBackColor = True
         '
+        'UcdgvParam4
+        '
+        Me.UcdgvParam4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.UcdgvParam4.Location = New System.Drawing.Point(3, 3)
+        Me.UcdgvParam4.Name = "UcdgvParam4"
+        Me.UcdgvParam4.Size = New System.Drawing.Size(853, 392)
+        Me.UcdgvParam4.TabIndex = 1
+        '
         'TabPage5
         '
         Me.TabPage5.Controls.Add(Me.UcdgvParam5)
@@ -192,6 +232,16 @@ Partial Class FormParameters
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Internal Email (CC)"
         Me.TabPage5.UseVisualStyleBackColor = True
+        '
+        'UcdgvParam5
+        '
+        Me.UcdgvParam5.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.UcdgvParam5.Location = New System.Drawing.Point(3, 3)
+        Me.UcdgvParam5.Name = "UcdgvParam5"
+        Me.UcdgvParam5.Size = New System.Drawing.Size(853, 392)
+        Me.UcdgvParam5.TabIndex = 2
         '
         'TabPage6
         '
@@ -290,6 +340,31 @@ Partial Class FormParameters
         Me.UserEWS.Text = "User and Password EWS"
         Me.UserEWS.UseVisualStyleBackColor = True
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(213, 94)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(218, 13)
+        Me.Label6.TabIndex = 2
+        Me.Label6.Text = "Example: abc@groupeseb.com;MyPassw0rd"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(120, 65)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(90, 13)
+        Me.Label5.TabIndex = 1
+        Me.Label5.Text = "User && Password "
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(216, 62)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(295, 20)
+        Me.TextBox4.TabIndex = 0
+        '
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
@@ -316,81 +391,6 @@ Partial Class FormParameters
         Me.ToolStripButton3.Name = "ToolStripButton3"
         Me.ToolStripButton3.Size = New System.Drawing.Size(50, 22)
         Me.ToolStripButton3.Text = "Refresh"
-        '
-        'UcdgvParam1
-        '
-        Me.UcdgvParam1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.UcdgvParam1.Location = New System.Drawing.Point(3, 3)
-        Me.UcdgvParam1.Name = "UcdgvParam1"
-        Me.UcdgvParam1.Size = New System.Drawing.Size(853, 392)
-        Me.UcdgvParam1.TabIndex = 0
-        '
-        'UcdgvParam2
-        '
-        Me.UcdgvParam2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.UcdgvParam2.Location = New System.Drawing.Point(3, 3)
-        Me.UcdgvParam2.Name = "UcdgvParam2"
-        Me.UcdgvParam2.Size = New System.Drawing.Size(853, 392)
-        Me.UcdgvParam2.TabIndex = 0
-        '
-        'UcdgvParam3
-        '
-        Me.UcdgvParam3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.UcdgvParam3.Location = New System.Drawing.Point(3, 3)
-        Me.UcdgvParam3.Name = "UcdgvParam3"
-        Me.UcdgvParam3.Size = New System.Drawing.Size(853, 392)
-        Me.UcdgvParam3.TabIndex = 0
-        '
-        'UcdgvParam4
-        '
-        Me.UcdgvParam4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.UcdgvParam4.Location = New System.Drawing.Point(3, 3)
-        Me.UcdgvParam4.Name = "UcdgvParam4"
-        Me.UcdgvParam4.Size = New System.Drawing.Size(853, 392)
-        Me.UcdgvParam4.TabIndex = 1
-        '
-        'UcdgvParam5
-        '
-        Me.UcdgvParam5.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.UcdgvParam5.Location = New System.Drawing.Point(3, 3)
-        Me.UcdgvParam5.Name = "UcdgvParam5"
-        Me.UcdgvParam5.Size = New System.Drawing.Size(853, 392)
-        Me.UcdgvParam5.TabIndex = 2
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Location = New System.Drawing.Point(216, 62)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(295, 20)
-        Me.TextBox4.TabIndex = 0
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(120, 65)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(90, 13)
-        Me.Label5.TabIndex = 1
-        Me.Label5.Text = "User && Password "
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(213, 94)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(218, 13)
-        Me.Label6.TabIndex = 2
-        Me.Label6.Text = "Example: abc@groupeseb.com;MyPassw0rd"
         '
         'FormParameters
         '

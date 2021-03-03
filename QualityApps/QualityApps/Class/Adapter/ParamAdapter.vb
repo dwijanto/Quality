@@ -104,12 +104,43 @@ Public Class ParamAdapter
         Return sb.ToString
     End Function
 
+    Public Function GetVendorExceptionList(ByVal value As String) As String
+        Dim sqlstr = String.Format("select pd.ivalue from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :paramname")
+        Dim ds As New DataSet
+        Dim sb As New StringBuilder
+        Dim myparam(0) As NpgsqlParameter
+        myparam(0) = New NpgsqlParameter("paramname", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, value)
+        If myAdapter.GetDataset(sqlstr, ds, myparam) Then
+            For Each dr In ds.Tables(0).Rows
+                If sb.Length > 1 Then sb.Append(",")
+                sb.Append(dr.item(0))
+            Next
+        End If
+
+        Return sb.ToString
+    End Function
+
     Public Function GetSBUExceptionList() As String
         Dim sqlstr = String.Format("select pd.cvalue from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :paramname")
         Dim ds As New DataSet
         Dim sb As New StringBuilder
         Dim myparam(0) As NpgsqlParameter
         myparam(0) = New NpgsqlParameter("paramname", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, "SBU Exception")
+        If myAdapter.GetDataset(sqlstr, ds, myparam) Then
+            For Each dr In ds.Tables(0).Rows
+                If sb.Length > 1 Then sb.Append(",")
+                sb.Append(String.Format("'{0}'", dr.item(0)))
+            Next
+        End If
+        Return sb.ToString
+    End Function
+
+    Public Function GetSBUExceptionList(ByVal value As String) As String
+        Dim sqlstr = String.Format("select pd.cvalue from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :paramname")
+        Dim ds As New DataSet
+        Dim sb As New StringBuilder
+        Dim myparam(0) As NpgsqlParameter
+        myparam(0) = New NpgsqlParameter("paramname", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, value)
         If myAdapter.GetDataset(sqlstr, ds, myparam) Then
             For Each dr In ds.Tables(0).Rows
                 If sb.Length > 1 Then sb.Append(",")
@@ -143,12 +174,31 @@ Public Class ParamAdapter
         Return myresult
     End Function
 
+    Public Function GetCCETDDateSpanCP() As Integer
+        Dim sqlstr = String.Format("select pd.ivalue from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :paramname")
+        Dim myresult As Integer
+        Dim myparam(0) As NpgsqlParameter
+        myparam(0) = New NpgsqlParameter("paramname", "Date Span CP")
+        myAdapter.ExecuteScalar(sqlstr, myparam, recordAffected:=myresult)
+        Return myresult
+    End Function
+
     Public Function GetStartDate() As Integer
         'Dim sqlstr = String.Format("select ph.ivalue from quality.paramhd ph where ph.paramname = :paramname")
         Dim sqlstr = String.Format("select pd.ivalue from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :paramname")
         Dim myresult As Integer
         Dim myparam(0) As NpgsqlParameter
         myparam(0) = New NpgsqlParameter("paramname", "Start Date")
+        myAdapter.ExecuteScalar(sqlstr, myparam, recordAffected:=myresult)
+        Return myresult
+    End Function
+
+    Public Function GetStartDateCP() As Integer
+        'Dim sqlstr = String.Format("select ph.ivalue from quality.paramhd ph where ph.paramname = :paramname")
+        Dim sqlstr = String.Format("select pd.ivalue from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :paramname")
+        Dim myresult As Integer
+        Dim myparam(0) As NpgsqlParameter
+        myparam(0) = New NpgsqlParameter("paramname", "Start Date CP")
         myAdapter.ExecuteScalar(sqlstr, myparam, recordAffected:=myresult)
         Return myresult
     End Function
@@ -162,6 +212,16 @@ Public Class ParamAdapter
         myAdapter.ExecuteScalar(sqlstr, myparam, recordAffected:=myresult)
         Return myresult
     End Function
+
+    Public Function GetEndDateCP() As Integer
+        'Dim sqlstr = String.Format("select ph.ivalue from quality.paramhd ph where ph.paramname = :paramname")
+        Dim sqlstr = String.Format("select pd.ivalue from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :paramname")
+        Dim myresult As Integer
+        Dim myparam(0) As NpgsqlParameter
+        myparam(0) = New NpgsqlParameter("paramname", "End Date CP")
+        myAdapter.ExecuteScalar(sqlstr, myparam, recordAffected:=myresult)
+        Return myresult
+    End Function
     Public Function GetLastSendDate() As Date
         'Dim sqlstr = String.Format("select ph.dvalue from quality.paramhd ph where ph.paramname = :paramname")
         Dim sqlstr = String.Format("select pd.dvalue from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :paramname")
@@ -172,9 +232,31 @@ Public Class ParamAdapter
         Return myresult
     End Function
 
+    Public Function GetLastSendDateCP() As Date
+        'Dim sqlstr = String.Format("select ph.dvalue from quality.paramhd ph where ph.paramname = :paramname")
+        Dim sqlstr = String.Format("select pd.dvalue from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :paramname")
+        Dim myresult As Date
+        Dim myparam(0) As NpgsqlParameter
+        myparam(0) = New NpgsqlParameter("paramname", "Last Send Date CP")
+        myAdapter.ExecuteScalar(sqlstr, myparam, recordAffected:=myresult)
+        Return myresult
+    End Function
+
     Public Function UpdateLastSendDate(ByVal mydate As Date) As Boolean
         Dim myret As Boolean = False
         Dim sqlstr = String.Format("update quality.paramdt set dvalue = :paramvalue where paramhdid in (select paramhdid from quality.paramhd where paramname = 'Last Send Date')")
+        Dim myparam(0) As NpgsqlParameter
+
+        myparam(0) = New NpgsqlParameter("paramvalue", mydate)
+        Dim ra As Integer
+        Dim message As String = String.Empty
+        myAdapter.ExecuteNonQuery(sqlstr, myparam, message, ra)
+        Return myret
+    End Function
+
+    Public Function UpdateLastSendDateCP(ByVal mydate As Date) As Boolean
+        Dim myret As Boolean = False
+        Dim sqlstr = String.Format("update quality.paramdt set dvalue = :paramvalue where paramhdid in (select paramhdid from quality.paramhd where paramname = 'Last Send Date CP')")
         Dim myparam(0) As NpgsqlParameter
 
         myparam(0) = New NpgsqlParameter("paramvalue", mydate)
@@ -220,6 +302,95 @@ Public Class ParamAdapter
         myparam(7) = New NpgsqlParameter("enddate", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, "End Date")
         myparam(8) = New NpgsqlParameter("lastsenddate", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, "Last Send Date")
         myparam(9) = New NpgsqlParameter("userpassword", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, "EWS")
+        If myAdapter.GetDataset(sqlstr, DS, myparam) Then
+            Dim pk(0) As DataColumn
+            pk(0) = DS.Tables(0).Columns("paramdtid")
+            DS.Tables(0).PrimaryKey = pk
+            BS.DataSource = DS.Tables(0)
+            DS.Tables(0).Columns("paramdtid").AutoIncrement = True
+            DS.Tables(0).Columns("paramdtid").AutoIncrementSeed = -1
+            DS.Tables(0).Columns("paramdtid").AutoIncrementStep = -1
+
+
+
+            Dim pk2(0) As DataColumn
+            pk2(0) = DS.Tables(1).Columns("paramdtid")
+            DS.Tables(1).PrimaryKey = pk2
+            BS2.DataSource = DS.Tables(1)
+            DS.Tables(1).Columns("paramdtid").AutoIncrement = True
+            DS.Tables(1).Columns("paramdtid").AutoIncrementSeed = -1
+            DS.Tables(1).Columns("paramdtid").AutoIncrementStep = -1
+
+
+            Dim pk3(0) As DataColumn
+            pk3(0) = DS.Tables(2).Columns("paramdtid")
+            DS.Tables(2).PrimaryKey = pk3
+            BS3.DataSource = DS.Tables(2)
+            DS.Tables(2).Columns("paramdtid").AutoIncrement = True
+            DS.Tables(2).Columns("paramdtid").AutoIncrementSeed = -1
+            DS.Tables(2).Columns("paramdtid").AutoIncrementStep = -1
+
+            Dim pk4(0) As DataColumn
+            pk4(0) = DS.Tables(3).Columns("paramdtid")
+            DS.Tables(3).PrimaryKey = pk4
+            BS4.DataSource = DS.Tables(3)
+            DS.Tables(3).Columns("paramdtid").AutoIncrement = True
+            DS.Tables(3).Columns("paramdtid").AutoIncrementSeed = -1
+            DS.Tables(3).Columns("paramdtid").AutoIncrementStep = -1
+
+            Dim pk5(0) As DataColumn
+            pk5(0) = DS.Tables(4).Columns("paramdtid")
+            DS.Tables(4).PrimaryKey = pk5
+            BS5.DataSource = DS.Tables(4)
+            DS.Tables(4).Columns("paramdtid").AutoIncrement = True
+            DS.Tables(4).Columns("paramdtid").AutoIncrementSeed = -1
+            DS.Tables(4).Columns("paramdtid").AutoIncrementStep = -1
+
+            BS6.DataSource = DS.Tables(5)
+            BS7.DataSource = DS.Tables(6)
+            BS8.DataSource = DS.Tables(7)
+            BS9.DataSource = DS.Tables(8)
+            BS10.DataSource = DS.Tables(9)
+            myret = True
+        End If
+        Return myret
+    End Function
+    Public Function LoadDataCP()
+        Dim sb As New StringBuilder
+        Dim myret As Boolean = False
+        sb.Append(String.Format("select pd.* from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :pathparam;"))
+        sb.Append(String.Format("select pd.* from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :sbuparam order by cvalue;"))
+        sb.Append(String.Format("select pd.* from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :vendorparam order by ivalue;"))
+        sb.Append(String.Format("select pd.* from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :internalemailtoparam order by paramname;"))
+        sb.Append(String.Format("select pd.* from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :internalemailccparam order by paramname;"))
+        sb.Append(String.Format("select pd.* from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :datespan order by paramname;"))
+        sb.Append(String.Format("select pd.* from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :startdate order by paramname;"))
+        sb.Append(String.Format("select pd.* from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :enddate order by paramname;"))
+        sb.Append(String.Format("select pd.* from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :lastsenddate order by paramname;"))
+        sb.Append(String.Format("select pd.* from quality.paramdt pd left join quality.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :userpassword order by paramname;"))
+        Dim sqlstr = sb.ToString
+        DS = New DataSet
+        BS = New BindingSource
+        BS2 = New BindingSource
+        BS3 = New BindingSource
+        BS4 = New BindingSource
+        BS5 = New BindingSource
+        BS6 = New BindingSource
+        BS7 = New BindingSource
+        BS8 = New BindingSource
+        BS9 = New BindingSource
+        BS10 = New BindingSource
+        Dim myparam(9) As NpgsqlParameter
+        myparam(0) = New NpgsqlParameter("pathparam", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, "MailFolderCP")
+        myparam(1) = New NpgsqlParameter("sbuparam", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, "SBU Exception CP")
+        myparam(2) = New NpgsqlParameter("vendorparam", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, "Vendor Exception CP")
+        myparam(3) = New NpgsqlParameter("internalemailtoparam", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, "Internal Email CP (to)")
+        myparam(4) = New NpgsqlParameter("internalemailccparam", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, "Internal Email CP (cc)")
+        myparam(5) = New NpgsqlParameter("datespan", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, "Date Span CP")
+        myparam(6) = New NpgsqlParameter("startdate", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, "Start Date CP")
+        myparam(7) = New NpgsqlParameter("enddate", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, "End Date CP")
+        myparam(8) = New NpgsqlParameter("lastsenddate", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, "Last Send Date CP")
+        myparam(9) = New NpgsqlParameter("userpassword", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, "EWSCP")
         If myAdapter.GetDataset(sqlstr, DS, myparam) Then
             Dim pk(0) As DataColumn
             pk(0) = DS.Tables(0).Columns("paramdtid")
@@ -370,6 +541,21 @@ Public Class ParamAdapter
         Dim myret As Boolean = False
         Try
             Dim sqlstr = String.Format("insert into quality.sendemailtx(userid) values(:userid)")
+            Dim myresult As String = String.Empty
+            Dim myparam(0) As NpgsqlParameter
+            myparam(0) = New NpgsqlParameter("userid", userinfo1.Userid)
+            myAdapter.ExecuteScalar(sqlstr, myparam, recordAffected:=myresult)
+            myret = IsNothing(myresult)
+        Catch ex As Exception
+        End Try
+        Return myret
+    End Function
+
+    Public Function SaveSendEmailTxCP() As Boolean
+        Dim userinfo1 = UserInfo.getInstance
+        Dim myret As Boolean = False
+        Try
+            Dim sqlstr = String.Format("insert into quality.sendemailCPtx(userid) values(:userid)")
             Dim myresult As String = String.Empty
             Dim myparam(0) As NpgsqlParameter
             myparam(0) = New NpgsqlParameter("userid", userinfo1.Userid)

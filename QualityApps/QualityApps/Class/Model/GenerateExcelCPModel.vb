@@ -21,12 +21,12 @@ Public Class GenerateExcelCPModel
         Dim dataadapter As NpgsqlDataAdapter = myAdapter.getDbDataAdapter
         Dim SBException As New StringBuilder
 
-        Dim VendorExceptionlist = myParam.GetVendorExceptionList
+        Dim VendorExceptionlist = myParam.GetVendorExceptionList("Vendor Exception CP")
         If VendorExceptionlist.Length > 0 Then
             SBException.Append(String.Format("and (tx.vendor not in ({0}))", VendorExceptionlist))
         End If
 
-        Dim SBUExceptionList = myParam.GetSBUExceptionList
+        Dim SBUExceptionList = myParam.GetSBUExceptionList("SBU Exception CP")
         If SBUExceptionList.Length > 0 Then
             SBException.Append(String.Format(" and (tx.sbu not in ({0}))", SBUExceptionList))
         End If

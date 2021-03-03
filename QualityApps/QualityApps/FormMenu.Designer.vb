@@ -48,6 +48,7 @@ Partial Class FormMenu
         Me.FirstCmmfToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MissingVendorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupActivityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ParameterCPToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdminToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RBACToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OTMToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -202,7 +203,7 @@ Partial Class FormMenu
         '
         'MasterToolStripMenuItem
         '
-        Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VendorToolStripMenuItem, Me.AnnouncementToolStripMenuItem, Me.ParameterToolStripMenuItem, Me.UserToolStripMenuItem, Me.ActivityToolStripMenuItem, Me.VendorAssignmentQEUserToolStripMenuItem, Me.FirstCmmfToolStripMenuItem, Me.MissingVendorToolStripMenuItem, Me.GroupActivityToolStripMenuItem})
+        Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VendorToolStripMenuItem, Me.AnnouncementToolStripMenuItem, Me.ParameterToolStripMenuItem, Me.UserToolStripMenuItem, Me.ActivityToolStripMenuItem, Me.VendorAssignmentQEUserToolStripMenuItem, Me.FirstCmmfToolStripMenuItem, Me.MissingVendorToolStripMenuItem, Me.GroupActivityToolStripMenuItem, Me.ParameterCPToolStripMenuItem})
         Me.MasterToolStripMenuItem.Name = "MasterToolStripMenuItem"
         Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
         Me.MasterToolStripMenuItem.Text = "Master"
@@ -269,6 +270,13 @@ Partial Class FormMenu
         Me.GroupActivityToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
         Me.GroupActivityToolStripMenuItem.Tag = "FormCategory"
         Me.GroupActivityToolStripMenuItem.Text = "Category Activity"
+        '
+        'ParameterCPToolStripMenuItem
+        '
+        Me.ParameterCPToolStripMenuItem.Name = "ParameterCPToolStripMenuItem"
+        Me.ParameterCPToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
+        Me.ParameterCPToolStripMenuItem.Tag = "FormParameterCP"
+        Me.ParameterCPToolStripMenuItem.Text = "Parameter CP"
         '
         'AdminToolStripMenuItem
         '
@@ -400,12 +408,14 @@ Partial Class FormMenu
         '
         Me.CollectReplyFromSupplierToolStripMenuItem1.Name = "CollectReplyFromSupplierToolStripMenuItem1"
         Me.CollectReplyFromSupplierToolStripMenuItem1.Size = New System.Drawing.Size(580, 22)
+        Me.CollectReplyFromSupplierToolStripMenuItem1.Tag = "FormGetReplyCP"
         Me.CollectReplyFromSupplierToolStripMenuItem1.Text = "Collect Reply From Supplier"
         '
         'SendEmailScheduleConfirmationToolStripMenuItem
         '
         Me.SendEmailScheduleConfirmationToolStripMenuItem.Name = "SendEmailScheduleConfirmationToolStripMenuItem"
         Me.SendEmailScheduleConfirmationToolStripMenuItem.Size = New System.Drawing.Size(580, 22)
+        Me.SendEmailScheduleConfirmationToolStripMenuItem.Tag = "FormSendEmailConfirmationCP"
         Me.SendEmailScheduleConfirmationToolStripMenuItem.Text = "Send Email Schedule Confirmation"
         '
         'HighRiskToolStripMenuItem
@@ -482,5 +492,6 @@ Partial Class FormMenu
     Friend WithEvents CollectReplyFromSupplierToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SendEmailScheduleConfirmationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HighRiskToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ParameterCPToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
